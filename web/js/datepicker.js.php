@@ -200,7 +200,7 @@ $(document).on('page_ready', function() {
     if (!isMobile())
     {
       var div = $('.minicalendars');
-      for (var i=0; i<2; i++)
+      for (var i=0; i<1; i++)
       {
         div.append($('<span class="minicalendar" id="cal' + i + '"></span>'));
       }
@@ -211,7 +211,7 @@ $(document).on('page_ready', function() {
 
       var minicalendars = flatpickr('span.minicalendar', config);
 
-      
+
 
       <?php
       // Align the top of the mini-calendars with the top of the navigation bar

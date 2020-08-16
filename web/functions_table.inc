@@ -1640,7 +1640,8 @@ function get_booking_summary($start, $end, $day_start, $day_end)
 
 function month_table_innerhtml($view, $view_all, $year, $month, $day, $area, $room)
 {
-
+  //暂时去掉所有会议室页（view_all = 1）
+  $view_all = 0;
   if ($view_all)
   {
     return multiday_view_all_rooms_innerhtml($view, $view_all, $year, $month, $day, $area, $room);
