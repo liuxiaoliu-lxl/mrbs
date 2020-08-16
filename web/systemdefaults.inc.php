@@ -261,7 +261,7 @@ $approved_bookings_cannot_be_changed = false;
 //  become per-user settings]
 
 // Start of week: 0 for Sunday, 1 for Monday, etc.
-$weekstarts = 0;
+$weekstarts = 1;
 
 // Days of the week that are weekdays
 $weekdays = array(1, 2, 3, 4, 5);
