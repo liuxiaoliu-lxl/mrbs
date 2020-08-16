@@ -860,6 +860,7 @@ function get_flex_div($slots, $classes, $title=null, $text=null)
 
 function week_table_innerhtml($view, $view_all, $year, $month, $day, $area_id, $room_id)
 {
+  $view_all = 0;
   if ($view_all)
   {
     return multiday_view_all_rooms_innerhtml($view, $view_all, $year, $month, $day, $area_id, $room_id);

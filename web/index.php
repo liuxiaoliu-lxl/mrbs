@@ -104,7 +104,7 @@ function make_room_select_html ($view, $view_all, $year, $month, $day, $area, $c
       {
         $current = -abs($current);
       }
-      $options = array($all => get_vocab('all')) + $options;
+//      $options = array($all => get_vocab('all')) + $options;
     }
 
     $form = new Form();
@@ -439,11 +439,13 @@ if (($auth['type'] == 'db') && (count(authGetUsers()) == 0))
 // print the page header
 print_header($view, $view_all, $year, $month, $day, $area, isset($room) ? $room : null);
 
+echo "<div>创建</div>\n";
+
 echo "<div class=\"minicalendars\">\n";
 echo "</div>\n";
 
 echo "<div class=\"view_container js_hidden\">\n";
-echo get_date_heading($view, $year, $month, $day);
+//echo get_date_heading($view, $year, $month, $day);
 echo get_calendar_nav($view, $view_all, $year, $month, $day, $area, $room);
 
 $classes = array('dwm_main');

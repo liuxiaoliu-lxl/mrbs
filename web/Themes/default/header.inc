@@ -300,7 +300,7 @@ function print_banner($view, $year, $month, $day, $area, $room, $simple=false)
     echo "</nav>\n";
 
     echo "<nav>\n";
-    print_goto_date($view, $year, $month, $day, $area, $room);
+//    print_goto_date($view, $year, $month, $day, $area, $room);
     print_search($view, $year, $month, $day, $area, $room);
     echo "</nav>\n";
 
