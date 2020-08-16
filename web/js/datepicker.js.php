@@ -200,21 +200,21 @@ $(document).on('page_ready', function() {
   if (!isMobile())
   {
     var div = $('.minicalendars');
-    for (var i=0; i<2; i++)
+    for (var i=0; i<1; i++)
     {
       div.append($('<span class="minicalendar" id="cal' + i + '"></span>'));
     }
     config.inline = true;
-    config.onMonthChange = onMonthChange;
-    config.onYearChange = onYearChange;
+    //config.onMonthChange = onMonthChange;
+    //config.onYearChange = onYearChange;
     config.onChange = onMinicalChange;
 
     var minicalendars = flatpickr('span.minicalendar', config);
 
-    $.each(minicalendars, function(key, value) {
-      value.setDate(args.pageDate);
-      value.changeMonth(key);
-    });
+    //$.each(minicalendars, function(key, value) {
+    //  value.setDate(args.pageDate);
+    //  value.changeMonth(key);
+    //});
 
     <?php
     // Align the top of the mini-calendars with the top of the navigation bar
