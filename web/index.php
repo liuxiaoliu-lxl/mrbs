@@ -439,9 +439,28 @@ if (($auth['type'] == 'db') && (count(authGetUsers()) == 0))
 // print the page header
 print_header($view, $view_all, $year, $month, $day, $area, isset($room) ? $room : null);
 
-echo "<div>创建</div>\n";
 
 echo "<div class=\"minicalendars\">\n";
+echo <<<EOF
+
+<div class="left-top-bar">
+    <div class="left-top-bar-icon">
+        <i></i>
+    </div>
+    <div class="left-top-bar-btn">
+        新建会议
+    </div>
+</div>
+
+<div class="form-group leftNavDatepickerWrap">
+  <div class='input-group date' id='leftNavDatepicker'>
+      <input type='text' class="form-control leftinput" />
+      <span class="input-group-addon leftspan">
+          <span class="glyphicon glyphicon-calendar"></span>
+      </span>
+  </div>
+</div>
+EOF;
 echo "</div>\n";
 
 echo "<div class=\"view_container js_hidden\">\n";

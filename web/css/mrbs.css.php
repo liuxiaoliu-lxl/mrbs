@@ -2330,3 +2330,37 @@ h2.date.loading::after {
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
 }
+
+/* 新增css */
+.leftNavDatepickerWrap{
+  width: 196px;
+}
+.bootstrap-datetimepicker-widget.dropdown-menu.bottom:before{
+  display: none!important;
+}
+.bootstrap-datetimepicker-widget.dropdown-menu.bottom:after{
+  display: none!important;
+}
+.dropdown-menu{
+  top:0!important;
+  left:0!important;
+  border:none!important;
+  box-shadow: none!important;
+  margin-top:0!important;
+}
+.bootstrap-datetimepicker-widget table td.today:before{
+  display: none!important;
+}
+.leftinput,.leftspan{
+  visibility: hidden;
+}
+
+.bootstrap-datetimepicker-widget table td span.active{
+  color: #323130;
+  background-color: #C7E0F4;
+  font-weight: 600;
+}
+.bootstrap-datetimepicker-widget table td.active, .bootstrap-datetimepicker-widget table td.active:hover{
+  color: #323130;
+  background-color: #C7E0F4;
+}

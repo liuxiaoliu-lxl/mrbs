@@ -87,7 +87,7 @@ else
 <script src="js/functions.js.php?<?php echo $escaped_standard_query_string ?>"></script>
 <script src="js/general.js.php?<?php echo $escaped_standard_query_string ?>"></script>
 <script src="js/datepicker.js.php?<?php echo $escaped_standard_query_string ?>"></script>
-<script src="js/flatpickr/flatpickr.min.js"></script>
+<!--<script src="js/flatpickr/flatpickr.min.js"></script>-->
 <script src="jquery/select2/dist/js/select2.full.min.js"></script>
 
 <?php
@@ -150,6 +150,12 @@ if ($page == 'index')
   ?>
   <script src="js/refresh.js.php?<?php echo $escaped_standard_query_string ?>"></script>
   <script src="js/resizable.js.php?<?php echo $escaped_standard_query_string ?>"></script>
+
+  <link href="js/js_date/css/bootstrap.min.css" rel="stylesheet">
+  <link href="js/js_date/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+  <script src="js/js_date/js/moment-with-locales.js"></script>
+  <script src="js/js_date/js/bootstrap.min.js"></script>
+  <script src="js/js_date/js/bootstrap-datetimepicker.min.js"></script>
   <?php
 }
 ?>
