@@ -11,75 +11,101 @@ use MRBS\Form\FieldInputText;
 
 
 /*
-  Display the login form. 
+  Display the login form.
   Will eventually return to $target_url with query string returl=$returl
   If $error is set then an $error is printed.
   If $raw is true then the message is not HTML escaped
 */
 function print_login_form($action, $target_url, $returl, $error=null, $raw=false)
 {
-  $form = new Form();
-  $form->setAttributes(array('class'  => 'standard',
-                             'id'     => 'logon',
-                             'method' => 'post',
-                             'action' => $action));
-  
-  // Hidden inputs
-  $hidden_inputs = array('returl'     => $returl,
-                         'target_url' => $target_url,
-                         'action'     => 'SetName');
-  $form->addHiddenInputs($hidden_inputs);
-  
-  // Now for the visible fields
-  if (isset($error))
-  {
-    $p = new ElementP();
-    $p->setText($error, false, $raw);
-    $form->addElement($p);
-  }
-  
-  $fieldset = new ElementFieldset();
-  $fieldset->addLegend(get_vocab('please_login'));
-  
-  // The username field
-  if (function_exists(__NAMESPACE__ . "\\canValidateByEmail")
-      && canValidateByEmail())
-  {
-    $placeholder = get_vocab("username_or_email");
-  }
-  else
-  {
-    $placeholder = get_vocab("users.name");
-  }
-  
-  $field = new FieldInputText();
-  $field->setLabel(get_vocab('user'))
-        ->setLabelAttributes(array('title' => $placeholder))
-        ->setControlAttributes(array('id'           => 'username',
-                                     'name'         => 'username',
-                                     'placeholder'  => $placeholder,
-                                     'required'     => true,
-                                     'autofocus'    => true,
-                                     'autocomplete' => 'username'));               
-  $fieldset->addElement($field);
-  
-  // The password field
-  $field = new FieldInputPassword();
-  $field->setLabel(get_vocab('users.password'))
-        ->setControlAttributes(array('id'           => 'password',
-                                     'name'         => 'password',
-                                     'autocomplete' => 'current-password'));               
-  $fieldset->addElement($field);
-  
-  // The submit button
-  $field = new FieldInputSubmit();
-  $field->setControlAttributes(array('value' => get_vocab('login')));
-  $fieldset->addElement($field);
-  
-  $form->addElement($fieldset);
-  
-  $form->render();
-  
+
+  $csrf = Form::getTokenHTML();
+  $msg = isset($error) ? $error : '';
+echo <<<EOF
+    <form action="admin.php" method="post">
+      <div class="login--div">
+        <h1>登陆</h1>
+        $msg
+        <div class="login--input">
+          <input type="text" id="username" name="username" placeholder="请输入登陆账号" />
+        </div>
+        <div class="login--input">
+          <input type="password" id="password" name="password" placeholder="请输入登陆密码" />
+        </div>
+        $csrf
+        <input type="hidden" name="returl" value="$returl" />
+        <input type="hidden" name="target_url" value="$target_url" />
+        <input type="hidden" name="action" value="SetName" />
+        <div class='login--submit-btn'>
+          <button type="submit" class="btn btn-primary" >登陆</button>
+        </div>
+      </div>
+    </form>
+EOF;
+
+
+//  $form = new Form();
+//  $form->setAttributes(array('class'  => 'standard',
+//    'id'     => 'logon',
+//    'method' => 'post',
+//    'action' => $action));
+//
+//  // Hidden inputs
+//  $hidden_inputs = array('returl'     => $returl,
+//    'target_url' => $target_url,
+//    'action'     => 'SetName');
+//  $form->addHiddenInputs($hidden_inputs);
+//
+//  // Now for the visible fields
+//  if (isset($error))
+//  {
+//    $p = new ElementP();
+//    $p->setText($error, false, $raw);
+//    $form->addElement($p);
+//  }
+//
+//  $fieldset = new ElementFieldset();
+//  $fieldset->addLegend(get_vocab('please_login'));
+//
+//  // The username field
+//  if (function_exists(__NAMESPACE__ . "\\canValidateByEmail")
+//    && canValidateByEmail())
+//  {
+//    $placeholder = get_vocab("username_or_email");
+//  }
+//  else
+//  {
+//    $placeholder = get_vocab("users.name");
+//  }
+//
+//  $field = new FieldInputText();
+//  $field->setLabel(get_vocab('user'))
+//    ->setLabelAttributes(array('title' => $placeholder))
+//    ->setControlAttributes(array('id'           => 'username',
+//      'name'         => 'username',
+//      'placeholder'  => $placeholder,
+//      'required'     => true,
+//      'autofocus'    => true,
+//      'autocomplete' => 'username'));
+//  $fieldset->addElement($field);
+//
+//  // The password field
+//  $field = new FieldInputPassword();
+//  $field->setLabel(get_vocab('users.password'))
+//    ->setControlAttributes(array('id'           => 'password',
+//      'name'         => 'password',
+//      'autocomplete' => 'current-password'));
+//  $fieldset->addElement($field);
+//
+//  // The submit button
+//  $field = new FieldInputSubmit();
+//  $field->setControlAttributes(array('value' => get_vocab('login')));
+//  $fieldset->addElement($field);
+//
+//  $form->addElement($fieldset);
+//
+//  $form->render();
+
   // Print footer and exit
   print_footer(TRUE);
 }
@@ -108,20 +134,20 @@ function print_report_link($user)
     echo '<span>' . htmlspecialchars($user) . '</span>';
     return;
   }
-  
+
   // We're authorised for either Report or Search so print the form.
   $form = new Form();
-  
+
   $attributes['id'] = 'show_my_entries';
   $attributes['method'] = 'post';
   $form->setAttributes($attributes)
        ->addHiddenInputs($hidden_inputs);
-                               
+
   $submit = new ElementInputSubmit();
   $submit->setAttributes(array('title' => get_vocab('show_my_entries'),
                                'value' => $user));
   $form->addElement($submit);
-                               
+
   $form->render();
 }
 
@@ -129,7 +155,7 @@ function print_report_link($user)
 function print_logon_button($target_url)
 {
   global $auth;
-  
+
   if ($auth['session'] == 'cas')
   {
     $action = $target_url;
@@ -138,21 +164,21 @@ function print_logon_button($target_url)
   {
     $action = 'admin.php';
   }
-  
+
   $form = new Form();
   $form->setAttributes(array('method' => 'post',
                              'action' => $action));
-  
+
   // Add the hidden fields
   $hidden_inputs = array('target_url' => $target_url,
                          'action'     => 'QueryName');
   $form->addHiddenInputs($hidden_inputs);
-  
+
   // The submit button
   $element = new ElementInputSubmit();
   $element->setAttribute('value', get_vocab('login'));
   $form->addElement($element);
-  
+
   $form->render();
 }
 
@@ -162,18 +188,18 @@ function print_logoff_button($target_url)
   $form = new Form();
   $form->setAttributes(array('method' => 'post',
                              'action' => 'admin.php'));
-  
+
   // Add the hidden fields
   $hidden_inputs = array('target_url' => $target_url,
                          'action'     => 'SetName',
                          'username'   => '',
                          'password'   => '');
   $form->addHiddenInputs($hidden_inputs);
-  
+
   // The submit button
   $element = new ElementInputSubmit();
   $element->setAttribute('value', get_vocab('logoff'));
   $form->addElement($element);
-  
+
   $form->render();
 }

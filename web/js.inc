@@ -126,6 +126,14 @@ if (in_array($page, array('admin', 'edit_users', 'pending', 'report', 'search'))
   <script src="js/datatables.js.php?<?php echo $escaped_standard_query_string ?>"></script>
 
   <?php
+    if($page == 'admin'){
+  ?>
+      <script src="js/js_date/js/bootstrap.min.js"></script>
+  <?php
+    }
+  ?>
+
+  <?php
 }
 
 
@@ -151,8 +159,6 @@ if ($page == 'index')
   <script src="js/refresh.js.php?<?php echo $escaped_standard_query_string ?>"></script>
   <script src="js/resizable.js.php?<?php echo $escaped_standard_query_string ?>"></script>
 
-  <link href="js/js_date/css/bootstrap.min.css" rel="stylesheet">
-  <link href="js/js_date/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
   <script src="js/js_date/js/moment-with-locales.js"></script>
   <script src="js/js_date/js/bootstrap.min.js"></script>
   <script src="js/js_date/js/bootstrap-datetimepicker.min.js"></script>

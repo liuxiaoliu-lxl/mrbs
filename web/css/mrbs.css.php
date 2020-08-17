@@ -2331,30 +2331,18 @@ h2.date.loading::after {
   animation-iteration-count: infinite;
 }
 
-/* 新增css */
-.leftNavDatepickerWrap{
-  width: 196px;
-}
-.bootstrap-datetimepicker-widget.dropdown-menu.bottom:before{
-  display: none!important;
-}
-.bootstrap-datetimepicker-widget.dropdown-menu.bottom:after{
-  display: none!important;
-}
-.dropdown-menu{
-  top:0!important;
-  left:0!important;
-  border:none!important;
-  box-shadow: none!important;
-  margin-top:0!important;
-}
-.bootstrap-datetimepicker-widget table td.today:before{
-  display: none!important;
-}
-.leftinput,.leftspan{
-  visibility: hidden;
+/* -----------------------新增css----------------------- */
+
+/* 左侧抽屉 */
+.minicalendars{
+  height: 100%;
+  flex:1;
 }
 
+/* 左侧抽屉日历 样式修改 */
+.bootstrap-datetimepicker-widget table td.today:before{
+  /*display: none!important;*/
+}
 .bootstrap-datetimepicker-widget table td span.active{
   color: #323130;
   background-color: #C7E0F4;
@@ -2363,4 +2351,122 @@ h2.date.loading::after {
 .bootstrap-datetimepicker-widget table td.active, .bootstrap-datetimepicker-widget table td.active:hover{
   color: #323130;
   background-color: #C7E0F4;
+}
+
+.leftNav--DatepickerWrap{
+  width: 220px;
+  padding:12px;
+}
+
+/* 左侧抽屉展开样式 */
+.leftNav--large{
+  width: 228px;
+  height: 100%;
+  min-width: 228px;
+  border-right: 1px solid #edebe9;
+  background-color: #f3f2f1;
+}
+.leftNav--topbar{
+  display:-webkit-flex;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 1px solid #edebe9;
+}
+
+/*左侧抽屉收起样式 */
+.leftNav--small{
+  width: 48px;
+  height: 100%;
+  min-width: 48px;
+  border-right: 1px solid #edebe9;
+  background-color: #f3f2f1;
+  display: none;
+}
+.leftNav--small-topbar{
+  width: 136px;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+}
+
+/* 左侧抽屉 top-bar 公共样式*/
+.leftNav--topbar-iconbtn{
+  width: 40px;
+  height: 32px;
+  margin: 6px 4px;
+  outline: transparent;
+  border: none;
+}
+
+.leftNav--topbar-icon:hover{
+  background-color: #edebe9;
+}
+.leftNav--topbar-icon > span{
+  display: flex;
+  height: 100%;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.leftNav--topbar-newBtn{
+  height: 32px;
+  line-height: 32px;
+  background-color: #0078d4;
+  padding: 0 4px;
+  box-sizing: border-box;
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* 内容区，顶部区域 */
+.main_calendar{
+  height: 44px;
+}
+/* 左侧抽屉收起：内容区，顶部区域添加样式*/
+.main_calendar.leftNav--small-state{
+  position: relative;
+  left: 88px;
+  width: calc(100% - 88px);
+}
+
+/* login */
+.login--div{
+  box-sizing: content-box;
+  width: 320px;
+  height: 281px;
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  padding: 44px;
+  background-color: #fff;
+  -webkit-box-shadow: 0 2px 6px rgba(0,0,0,.2);
+  -moz-box-shadow: 0 2px 6px rgba(0,0,0,.2);
+  box-shadow: 0 2px 6px rgba(0,0,0,.2);
+}
+.login--input{
+  margin: 25px 0;
+}
+.login--input > input{
+  width: 100%;
+  padding: 6px 10px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(0,0,0,.6);
+  height: 36px;
+  outline: none;
+  background-color: transparent;
+  border-top-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+  padding-left: 0;
+}
+.login--submit-btn{
+  margin-top: 40px;
+  text-align: right;
+}
+.login--submit-btn .btn-primary{
+  width: 88px;
+  border-radius: 0;
 }
