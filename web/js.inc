@@ -122,7 +122,6 @@ if (in_array($page, array('admin', 'edit_users', 'pending', 'report', 'search'))
   ?>
 
   <script src="jquery/datatables/plugins.js"></script>
-
   <script src="js/datatables.js.php?<?php echo $escaped_standard_query_string ?>"></script>
 
   <?php
@@ -153,18 +152,22 @@ if (is_readable("js/$page.js.php"))
 
 // The day, week and month views do refresh by Ajax.
 // We need the resizable bookings for the day and week views
-if ($page == 'index')
-{
-  ?>
-  <script src="js/refresh.js.php?<?php echo $escaped_standard_query_string ?>"></script>
-  <script src="js/resizable.js.php?<?php echo $escaped_standard_query_string ?>"></script>
-
-  <script src="js/js_date/js/moment-with-locales.js"></script>
-  <script src="js/js_date/js/bootstrap.min.js"></script>
-  <script src="js/js_date/js/bootstrap-datetimepicker.min.js"></script>
-  <?php
-}
 ?>
+
+<?php
+  if (in_array($page, ['index']))
+  {
+    ?>
+    <script src="js/refresh.js.php?<?php echo $escaped_standard_query_string ?>"></script>
+    <script src="js/resizable.js.php?<?php echo $escaped_standard_query_string ?>"></script>
+    <script src="js/js_date/js/moment-with-locales.js"></script>
+    <script src="js/js_date/js/bootstrap.min.js"></script>
+    <script src="js/js_date/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="js/left_nav.js.php?<?php echo $escaped_standard_query_string ?>"></script>
+    <?php
+  }
+?>
+
 
 <!--[if lte IE 8]>
   <?php

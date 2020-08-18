@@ -439,39 +439,7 @@ if (($auth['type'] == 'db') && (count(authGetUsers()) == 0))
 print_header($view, $view_all, $year, $month, $day, $area, isset($room) ? $room : null);
 
 echo "<div class=\"minicalendars\">\n";
-echo <<<EOF
-<div class="leftNav--large">
-    <div class="leftNav--topbar">
-        <button type='button' class="leftNav--topbar-iconbtn" data-expanded="true">
-            <span>
-                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-list" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
-                </svg>
-            </span>
-        </button>
-        <div class="leftNav--topbar-newBtn">
-            <span>新建会议</span>
-        </div>
-    </div>
-    <div class="leftNav--DatepickerWrap">
-        <div id="leftNavDatepicker"></div>
-    </div>
-</div>
-<div class="leftNav--small">
-    <div class="leftNav--small-topbar">
-        <button type='button' class="leftNav--topbar-iconbtn" data-expanded="false">
-            <span>
-                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-list" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
-                </svg>
-            </span>
-        </button>
-        <div class="leftNav--topbar-newBtn">
-                <span>新建会议</span>
-        </div>
-    </div>
-</div>
-EOF;
+require_once "left_nav.inc";
 echo "</div>\n";
 
 echo "<div class=\"view_container js_hidden\">\n";
