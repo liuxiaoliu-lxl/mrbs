@@ -1577,7 +1577,7 @@ if (!getWritable($create_by, $room_id))
   exit;
 }
 
-print_header($view, $view_all, $year, $month, $day, $area, isset($room) ? $room : null);
+print_header($view, $view_all, $year, $month, $day, $area, isset($room) ? $room : null, false, false);
 
 // Get the details of all the enabled rooms
 $rooms = array();

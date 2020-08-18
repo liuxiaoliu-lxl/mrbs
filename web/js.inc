@@ -155,7 +155,7 @@ if (is_readable("js/$page.js.php"))
 ?>
 
 <?php
-  if (in_array($page, ['index']))
+  if (in_array($page, ['index', 'search']))
   {
     ?>
     <script src="js/refresh.js.php?<?php echo $escaped_standard_query_string ?>"></script>

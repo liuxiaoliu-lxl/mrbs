@@ -328,7 +328,7 @@ function print_unsupported_message()
 // Print the page header
 // If $simple is true, then just print a simple header that doesn't require any database
 // access or JavaScript (useful for fatal errors and database upgrades).
-function print_theme_header($view, $view_all, $year, $month, $day, $area, $room, $simple=false)
+function print_theme_header($view, $view_all, $year, $month, $day, $area, $room, $simple=false, $banner=true)
 {
   // Get the form token now, before any headers are sent, in case we are using the 'cookie'
   // session scheme.  Otherwise we won't be able to store the Form token.
@@ -390,11 +390,11 @@ function print_theme_header($view, $view_all, $year, $month, $day, $area, $room,
   }
   echo ">\n";
 
-
-
   print_unsupported_message();
 
-  print_banner($view, $year, $month, $day, $area, $room, $simple);
+  if($banner){
+    print_banner($view, $year, $month, $day, $area, $room, $simple);
+  }
 
   // This <div> should really be moved out of here so that we can always see
   // the matching closing </div>

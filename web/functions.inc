@@ -495,7 +495,7 @@ function print_simple_header()
 
 
 // Print the page header
-function print_header($view=null, $view_all=null, $year=null, $month=null, $day=null, $area=null, $room=null, $simple=false)
+function print_header($view=null, $view_all=null, $year=null, $month=null, $day=null, $area=null, $room=null, $simple=false, $banner=true)
 {
   global $theme, $default_view;
 
@@ -559,7 +559,7 @@ function print_header($view=null, $view_all=null, $year=null, $month=null, $day=
   }
 
   // Now go and do it
-  print_theme_header($view, $view_all, $year, $month, $day, $area, $room, $simple);
+  print_theme_header($view, $view_all, $year, $month, $day, $area, $room, $simple, $banner);
 
   $done_header = true;
 }
