@@ -174,10 +174,12 @@ function print_menu_items($query)
 {
   global $auth;
 
-  $menu_items = array('help'   => 'help.php',
-                      'report' => 'report.php',
-                      'import' => 'import.php',
-                      'rooms'  => 'admin.php');
+  $menu_items = array(
+//                      'help'   => 'help.php',
+//                      'report' => 'report.php',
+//                      'import' => 'import.php',
+                      'rooms'  => 'admin.php'
+  );
 
   if ($auth['type'] == 'db')
   {

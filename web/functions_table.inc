@@ -266,7 +266,7 @@ function cell_html(array $cell, array $query_vars, $is_invalid = false)
         $vars = ($enable_periods) ? $query_vars['new_periods'] : $query_vars['new_times'];
         $query = http_build_query($vars, '', '&');
 
-        $html .= '<a data-jumpUrl="edit_entry.php?' . htmlspecialchars($query) . '"' .
+        $html .= '<a class="new_booking" data-jumpUrl="edit_entry.php?' . htmlspecialchars($query) . '"' .
                  ' aria-label="' . htmlspecialchars(get_vocab('create_new_booking')) . "\">";
         if ($show_plus_link)
         {
@@ -314,7 +314,7 @@ function cell_html(array $cell, array $query_vars, $is_invalid = false)
         $html .= '<div class="' . implode(' ', $classes) . '">';
         $html .= '<a data-jumpUrl="view_entry.php?' . htmlspecialchars($query) . '"' .
                    ' title="' . htmlspecialchars($booking['description']) . '"' .
-                   ' class="' . $booking['type'] . '"' .
+                   ' class="' . $booking['type'] . ' edit_booking"' .
                    ' data-id="' . $booking['id'] . '"' .
                    ' data-type="' . $booking['type'] . '">';
         $html .= htmlspecialchars($booking['name']) . '</a>';
@@ -1847,7 +1847,7 @@ function month_room_table_innerhtml($view, $view_all, $year, $month, $day, $area
             $html .= "error: unknown parameter";
           }
         }
-        $html .= '<a data-jumpUrl="' . htmlspecialchars($booking_link) . '"' .
+        $html .= '<a class="edit_booking" data-jumpUrl="' . htmlspecialchars($booking_link) . '"' .
                  ' title="' . htmlspecialchars($full_text) . '">';
         $html .= htmlspecialchars($display_text) . '</a>';
         $html .= "</div>\n";
