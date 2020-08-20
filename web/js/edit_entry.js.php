@@ -54,54 +54,61 @@ var conflictTimer = function conflictTimer(set) {
 // Function to display the secondary repeat type fieldset appropriate
 // to the selected repeat type
 ?>
+
 var changeRepTypeDetails = function changeRepTypeDetails() {
-    var repType = parseInt($('input[name="rep_type"]:checked').val(), 10);
-    $('.rep_type_details').hide();
-    switch (repType)
-    {
-      case <?php echo REP_WEEKLY ?>:
-        $('#rep_weekly').show();
-        break;
-      case <?php echo REP_MONTHLY ?>:
-        $('#rep_monthly').show();
-        break;
-      default:
-        break;
-    }
-  };
+  // var repType = parseInt($('input[name="rep_type"]:checked').val(), 10);
 
+  var repType = parseInt($("#rep_type_select").select2("val"), 10);
 
-<?php
-// Function to change the units for the repeat interval to match the repeat type.
-?>
+  console.log(repType);
+
+  $('.rep_type_details').hide();
+  switch (repType) {
+    case 1:
+    case 4:
+      $('#rep_day_year').show();
+      break;
+    case 2:
+      $('#rep_weekly').show();
+      $('#rep_day_year').show();
+      break;
+    case 3:
+      $('#rep_monthly').show();
+      $('#rep_day_year').show();
+      break;
+    default:
+      break;
+  }
+};
+
 var changeRepIntervalUnits = function changeRepIntervalUnits() {
-    var repType = parseInt($('input[name="rep_type"]:checked').val(), 10);
-    var repInterval = parseInt($('input[name="rep_interval"]').val(), 10);
-    var units = $('#interval_units');
-    var text;
-    switch (repType)
-    {
-      case <?php echo REP_DAILY ?>:
-        text = (repInterval == 1) ? '<?php echo get_vocab('day') ?>' : '<?php echo get_vocab('days') ?>';
-        break;
-      case <?php echo REP_WEEKLY ?>:
-        text = (repInterval == 1) ? '<?php echo get_vocab('week') ?>' : '<?php echo get_vocab('weeks') ?>';
-        break;
-      case <?php echo REP_MONTHLY ?>:
-        text = (repInterval == 1) ? '<?php echo get_vocab('month') ?>' : '<?php echo get_vocab('months') ?>';
-        break;
-      case <?php echo REP_YEARLY ?>:
-        text = (repInterval == 1) ? '<?php echo get_vocab('year_lc') ?>' : '<?php echo get_vocab('years') ?>';
-        break;
-      default:
-        text = units.text();
-        break;
-    }
-    units.text(text);
-    
-    units.parent().toggle(repType !== <?php echo REP_NONE ?>);
-  };
+  // var repType = parseInt($('input[name="rep_type"]:checked').val(), 10);
+  var repType = parseInt($("#rep_type_select").select2("val"), 10);
 
+  var repInterval = parseInt($('input[name="rep_interval"]').val(), 10);
+  var units = $('#interval_units');
+  var text;
+  switch (repType) {
+    case 1:
+      text = (repInterval == 1) ? '天' : '天';
+      break;
+    case 2:
+      text = (repInterval == 1) ? '星期' : '星期';
+      break;
+    case 3:
+      text = (repInterval == 1) ? 'month' : 'months';
+      break;
+    case 4:
+      text = (repInterval == 1) ? '年' : '年';
+      break;
+    default:
+      text = units.text();
+      break;
+  }
+  units.text(text);
+
+  units.parent().toggle(repType !== 0);
+};
 
 // areaConfig returns the properties ('enable_periods', etc.) for an area,
 // by default the current area
@@ -116,12 +123,12 @@ var areaConfig = function areaConfig(property, areaId) {
     {
       throw new Error("areaConfig(): invalid property '" + property + "' passed to areaConfig");
     }
-    
+
     if (areaId === undefined)
     {
       areaId = $('#area').val();
     }
-    
+
     if (areaConfig.data === undefined)
     {
       areaConfig.data = [];
@@ -138,7 +145,7 @@ var areaConfig = function areaConfig(property, areaId) {
     }
     return areaConfig.data[areaId][property];
   };
-  
+
 
 <?php
 // Check to see whether any time slots should be removed from the time
@@ -181,8 +188,8 @@ function checkTimeSlots(jqDate)
   } <?php // if (!areaConfig('enable_periods')) ?>
 
 }
-  
-  
+
+
 <?php
 // Executed when the user clicks on the all_day checkbox.
 ?>
@@ -197,10 +204,10 @@ function onAllDayClick()
   var startSelect = form.find('#start_seconds'),
       endSelect = form.find('#end_seconds'),
       allDay = form.find('#all_day');
-      
+
   var startDatepicker = form.find('#start_date'),
       endDatepicker = form.find('#end_date');
-  
+
   var date, firstSlot, lastSlot;
 
   if (allDay.is(':checked')) // If checking the box...
@@ -218,7 +225,7 @@ function onAllDayClick()
     onAllDayClick.oldEnd = parseInt(endSelect.val(), 10);
     onAllDayClick.oldEndDatepicker = endDatepicker.val();
     endSelect.val(lastSlot);
-    if ((lastSlot < firstSlot) && 
+    if ((lastSlot < firstSlot) &&
         (onAllDayClick.oldStartDatepicker === onAllDayClick.oldEndDatepicker))
     {
       <?php
@@ -295,7 +302,7 @@ function validationMessages()
         validationMessages.vocab[key] = label.text();
         validationMessages.vocab[key] = '"' + validationMessages.vocab[key] + '" ';
         validationMessages.vocab[key] += '<?php echo escape_js(get_vocab("is_mandatory_field")) ?>';
-    
+
         field = document.getElementById(key);
         if (field.setCustomValidity && field.willValidate)
         {
@@ -350,7 +357,7 @@ function validate(form)
   var testInput = document.createElement("input");
   var testSelect = document.createElement("select");
   var validForm = true;
-  
+
   <?php
   // Mandatory fields (INPUT elements, except for checkboxes).
   // Only necessary if the browser doesn't support the HTML5 pattern or
@@ -375,7 +382,7 @@ function validate(form)
       return false;
     }
   }
-  
+
   <?php
   // Mandatory fields (INPUT elements, checkboxes only).
   // Only necessary if the browser doesn't support the HTML5 required attribute
@@ -399,7 +406,7 @@ function validate(form)
       return false;
     }
   }
-  
+
   <?php
   // Mandatory fields (TEXTAREA elements).
   // Note that the TEXTAREA element only supports the "required" attribute and not
@@ -422,7 +429,7 @@ function validate(form)
   {
     return false;
   }
-  
+
   <?php
   // Mandatory fields (SELECT elements).
   // Only necessary if the browser doesn't support the HTML5 required attribute
@@ -446,7 +453,7 @@ function validate(form)
       return false;
     }
   }
-  
+
   <?php // Check that the start date is not after the end date ?>
   var dateDiff = getDateDifference();
   if (dateDiff < 0)
@@ -454,7 +461,7 @@ function validate(form)
     window.alert("<?php echo escape_js(get_vocab('start_after_end_long'))?>");
     return false;
   }
-  
+
   <?php
   // Check that there's a sensible value for rep_interval.   Only necessary
   // if the browser doesn't support the HTML5 min and step attributes
@@ -462,14 +469,14 @@ function validate(form)
   if (!("min" in testInput) || !(("step" in testInput)))
   {
     var repType = form.find('input:radio[name=rep_type]:checked').val();
-    
+
     if ((repType !== <?php echo REP_NONE ?>) && (form.find('#rep_interval').val() < 1))
     {
       window.alert("<?php echo escape_js(get_vocab('invalid_rep_interval')) ?>");
       return false;
     }
   }
-    
+
   <?php
   // Form submit can take some time, especially if mails are enabled and
   // there are more than one recipient. To avoid users doing weird things
@@ -477,11 +484,11 @@ function validate(form)
   // it is clicked.
   ?>
   form.find('input[type=submit]').prop('disabled', true);
-  
+
   <?php
   // would be nice to also check date to not allow Feb 31, etc...
   ?>
-  
+
   return true;
 }
 
@@ -500,7 +507,7 @@ function checkConflicts(optional)
   function getFormValue(formInput)
   {
     var value;
-    <?php 
+    <?php
     // Scalar parameters (three types - checkboxes, radio buttons and the rest)
     ?>
     if (formInput.attr('name').indexOf('[]') === -1)
@@ -559,7 +566,7 @@ function checkConflicts(optional)
   {
     return;
   }
-  
+
   <?php
   // We set a small timeout on checking the booking in order to allow time for
   // the click handler on the Submit buttons to set the data in the form.  We then
@@ -581,7 +588,7 @@ function checkConflicts(optional)
     {
       return;
     }
-    
+
     <?php
     // Load the params object with the values of all the form fields that are not
     // disabled and are not submit buttons of one kind or another
@@ -599,7 +606,7 @@ function checkConflicts(optional)
           params[fieldName] = getFormValue(relevantFields.filter('[name=' + fieldName.replace('[', '\\[').replace(']', '\\]') + ']'));
         }
       });
-      
+
     <?php
     // For some reason I don't understand, posting an empty array will
     // give you a PHP array of ('') at the other end.    So to avoid
@@ -611,8 +618,8 @@ function checkConflicts(optional)
           delete params[i];
         }
       });
-    
-    checkConflicts.nOutstanding++; 
+
+    checkConflicts.nOutstanding++;
     $.post('edit_entry_handler.php', params, function(result) {
         if (result)
         {
@@ -639,7 +646,7 @@ function checkConflicts(optional)
           }
           conflictDiv.attr('title', titleText);
           scheduleDetails.html(detailsHTML);
-          
+
           <?php
           // Display the results of the policy check.   Set the class to "good" if there
           // are no policy violations at all.  To "notice" if there are no errors, but some
@@ -681,7 +688,7 @@ function checkConflicts(optional)
         }  <?php // if (result) ?>
       }, 'json');
   }, timeout);  <?php // setTimeout() ?>
-  
+
 } <?php // function checkConflicts()
 
 
@@ -717,10 +724,10 @@ function durFormat(r)
       r = r.substr(0, r.length - 1);
     }
   }
-    
+
   return r;
 }
-  
+
 <?php
 // Returns a string giving the duration having chosen sensible units,
 // translated into the user's language, and formatted the number, taking
@@ -739,16 +746,16 @@ function getDuration(from, to, days)
   var durDays;
   var minutesPerDay = <?php echo MINUTES_PER_DAY ?>;
 
-  
+
   durUnits = (enablePeriods) ? '<?php echo "periods" ?>' : '<?php echo "minutes" ?>';
   duration = to - from;
   duration = Math.floor((to - from) / 60);
-  
+
   if (enablePeriods)
   {
     duration++;  <?php // a period is a period rather than a point ?>
   }
-  
+
   <?php
   // Adjust the days and duration so that 0 <= duration < minutesPerDay.    If we're using
   // periods then if necessary add/subtract multiples of the number of periods in a day
@@ -759,7 +766,7 @@ function getDuration(from, to, days)
     days += durDays;
     duration -= durDays * ((enablePeriods) ? $('#start_seconds' + currentArea).find('option').length : minutesPerDay);
   }
-  
+
   if (!enablePeriods && (duration >= 60))
   {
     durUnits = "hours";
@@ -772,7 +779,7 @@ function getDuration(from, to, days)
   // know what we are dealing with
   ?>
   duration = duration.toString();
-  
+
   if (days !== 0)
   {
     text += days + ' ';
@@ -791,7 +798,7 @@ function getDuration(from, to, days)
 
   return text;
 }
-  
+
 <?php
 // Returns the number of days between the start and end dates
 ?>
@@ -800,13 +807,13 @@ function getDateDifference()
   var diff,
       secondsPerDay = <?php echo SECONDS_PER_DAY ?>,
       start = $('#start_date').val().split('-'),
-      startDate = new Date(parseInt(start[0], 10), 
+      startDate = new Date(parseInt(start[0], 10),
                            parseInt(start[1], 10) - 1,
                            parseInt(start[2], 10),
                            12),
       endDate = $('#end_date'),
       end;
-      
+
   if (endDate.length === 0)
   {
     <?php
@@ -817,8 +824,8 @@ function getDateDifference()
   }
   else
   {
-    end = endDate.val().split('-'); 
-    endDate = new Date(parseInt(end[0], 10), 
+    end = endDate.val().split('-');
+    endDate = new Date(parseInt(end[0], 10),
                        parseInt(end[1], 10) - 1,
                        parseInt(end[2], 10),
                        12);
@@ -826,21 +833,21 @@ function getDateDifference()
     diff = (endDate - startDate)/(secondsPerDay * 1000);
     diff = Math.round(diff);
   }
-    
+
   return diff;
 }
-  
+
 
 <?php
 // Make two jQuery objects the same width.
 ?>
 function adjustWidth(a, b)
 {
-  <?php 
+  <?php
   // Note that we set the widths of both objects, even though it would seem
   // that just setting the width of the smaller should be sufficient.
-  // But if you don't set both of them then you end up with a few 
-  // pixels difference.  In other words doing a get and then a set 
+  // But if you don't set both of them then you end up with a few
+  // pixels difference.  In other words doing a get and then a set
   // doesn't leave you where you started - not quite sure why.
   // The + 2 is a fudge factor to make sure that the option text in select
   // elements isn't truncated - not quite sure why it is necessary.
@@ -855,18 +862,18 @@ function adjustWidth(a, b)
   a.width(maxWidth);
   b.width(maxWidth);
 }
-  
-  
+
+
 var reloadSlotSelector = function reloadSlotSelector(select, area) {
     select.html($('#' + select.attr('id') + area).html())
           .val(select.data('current'));
   };
-  
-  
+
+
 var updateSelectorData = function updateSelectorData(){
     var selectors = ['area', 'start_seconds', 'end_seconds'];
     var i, select;
-    
+
     for (i=0; i<selectors.length; i++)
     {
       select = $('#' + selectors[i]);
@@ -874,7 +881,7 @@ var updateSelectorData = function updateSelectorData(){
       select.data('current', select.val());
     }
   };
-  
+
 
 function adjustSlotSelectors()
 {
@@ -896,26 +903,26 @@ function adjustSlotSelectors()
   var enablePeriods    = areaConfig('enable_periods'),
       oldEnablePeriods = areaConfig('enable_periods', oldArea),
       defaultDuration  = areaConfig('default_duration');
-  
+
   var startSelect = $('#start_seconds'),
       endSelect = $('#end_seconds'),
       allDay = $('#all_day');
-      
+
   var startKeepDisabled = startSelect.hasClass('keep_disabled'),
       endKeepDisabled = endSelect.hasClass('keep_disabled'),
       allDayKeepDisabled = allDay.hasClass('keep_disabled');
-      
+
   var oldStartValue = parseInt(startSelect.data('previous'), 10),
       oldEndValue = parseInt(endSelect.data('previous'), 10);
-      
+
   var nbsp = '\u00A0',
       startValue, endValue, optionClone;
-      
+
   if (startSelect.length === 0)
   {
     return;
   }
-  <?php 
+  <?php
   // If All Day is checked then just set the start and end values to the first
   // and last possible options.
   ?>
@@ -942,10 +949,10 @@ function adjustSlotSelectors()
   ?>
   else if (oldArea !== currentArea)
   {
-    <?php 
+    <?php
     // If we've changed areas and the modes are the same, we can try and match times/periods.
     // We will try and be conservative and find a start time that includes the previous start time
-    // and an end time that includes the previous end time.   This means that by default the 
+    // and an end time that includes the previous end time.   This means that by default the
     // booking period will include the old booking period (unless we've hit the start or
     // end of day).   But it does mean that as you switch between areas the booking period
     // tends to get bigger:  if you switch fromn Area 1 to Area 2 and then back again it's
@@ -995,11 +1002,11 @@ function adjustSlotSelectors()
       }
     }
   }
-  <?php 
+  <?php
   // We haven't changed areas.  In this case get the currently selected start and
   // end values
   ?>
-  else  
+  else
   {
     startValue = parseInt(startSelect.val(), 10);
     endValue = parseInt(endSelect.val(), 10);
@@ -1013,9 +1020,9 @@ function adjustSlotSelectors()
       endValue = endValue + (startValue - oldStartValue);
     }
   }
-    
+
   var dateDifference = getDateDifference();
-    
+
   <?php
   // If All Day isn't checked then we need to work out whether the start
   // and end dates are valid.   If the end date is before the start date
@@ -1060,9 +1067,9 @@ function adjustSlotSelectors()
   endSelect.empty();
 
   $('#end_time_error').text('');  <?php  // Clear the error message ?>
- 
+
   $('#end_seconds' + currentArea).find('option').each(function(i) {
-  
+
       var thisValue = parseInt($(this).val(), 10),
           nPeriods           = areaConfig('n_periods'),
           maxDurationEnabled = areaConfig('max_duration_enabled'),
@@ -1073,7 +1080,7 @@ function adjustSlotSelectors()
           secondsPerDay      = <?php echo SECONDS_PER_DAY ?>,
           duration,
           maxDuration;
-     
+
       <?php
       // Limit the end slots to the maximum duration if that is enabled, if the
       // user is not an admin
@@ -1139,13 +1146,13 @@ function adjustSlotSelectors()
         endSelect.append(optionClone);
       }
     });
-  
+
   endValue = Math.min(endValue, parseInt(endSelect.find('option').last().val(), 10));
   endSelect.val(endValue);
   endSelect.data('current', endValue);
-  
+
   adjustWidth(startSelect, endSelect);
-    
+
 } <?php // function adjustSlotSelectors() ?>
 
 
@@ -1160,15 +1167,40 @@ var editEntryVisChanged = function editEntryVisChanged() {
   };
 
 
-  
+
 $(document).on('page_ready', function() {
- 
+
   isAdmin = args.isAdmin;
-  
+
   <?php // Turn the create_by select into a fancy select box. ?>
   $('select#create_by').mrbsSelect();
-  
-  <?php
+
+  //新增
+  $('select#rooms').wrap('<div></div>').select2({
+    width:200,
+    multiple:true,
+    minimumResultsForSearch: -1
+  })
+
+  $('select#area').wrap('<div></div>').select2({
+    width:200,
+    minimumResultsForSearch: -1
+  })
+  $('select#start_seconds').wrap('<div></div>').select2({
+    width:100,
+    minimumResultsForSearch: -1
+  })
+  $('select#end_seconds').wrap('<div></div>').select2({
+    width:150,
+    minimumResultsForSearch: -1
+  })
+  $('select#rep_type_select').wrap('<div></div>').select2({
+    width:150,
+    minimumResultsForSearch: -1
+  })
+  //新增结束
+
+<?php
   // If there's only one enabled area in the database there won't be an area
   // select input, so we'll have to create a dummy input because the code
   // relies on it.
@@ -1177,14 +1209,14 @@ $(document).on('page_ready', function() {
   {
     $('#div_rooms').before('<input id="area" type="hidden" value="' + args.area + '">');
   }
-  
+
   var areaSelect = $('#area'),
       startSelect,
       endSelect,
       allDay;
 
   $('#div_areas').show();
-  
+
   $('#start_seconds, #end_seconds')
       .each(function() {
           $(this).data('current', $(this).val());
@@ -1196,8 +1228,8 @@ $(document).on('page_ready', function() {
           adjustSlotSelectors();
           updateSelectorData();
         });
-    
-  
+
+
   areaSelect
       .data('current', areaSelect.val())
       .data('previous', areaSelect.val())
@@ -1205,28 +1237,28 @@ $(document).on('page_ready', function() {
           var newArea = $(this).val();
 
           updateSelectorData();
-          
+
           <?php // Switch room selects ?>
           var roomSelect = $('#rooms');
           roomSelect.html($('#rooms' + newArea).html());
-          
+
           <?php // Switch start time select ?>
           reloadSlotSelector($('#start_seconds'), newArea);
-          
+
           <?php // Switch all day checkbox ?>
           var allDayCheckbox = $('#all_day');
           allDayCheckbox.html($('#all_day' + newArea).html());
-          
+
           <?php // Switch end time select ?>
           reloadSlotSelector($('#end_seconds'), newArea);
-          
-          adjustSlotSelectors(); 
+
+          adjustSlotSelectors();
         });
-        
+
   $('input[name="all_day"]').on('click', function() {
       onAllDayClick();
     });
-    
+
   <?php
   // (1) put the booking name field in focus (but only for new bookings,
   // ie when the field is empty:  if it's a new booking you have to
@@ -1239,16 +1271,16 @@ $(document).on('page_ready', function() {
   ?>
   var form = $('#main'),
       nameInput = form.find('#name');
-  
+
   if (nameInput.length && !(nameInput.prop('disabled') || nameInput.val().length))
   {
     nameInput.trigger('focus');
   }
-  
+
   adjustSlotSelectors();
-  
+
   <?php
-  // If this is an All Day booking then check the All Day box and disable the 
+  // If this is an All Day booking then check the All Day box and disable the
   // start and end time boxes
   ?>
   startSelect = form.find('#start_seconds');
@@ -1278,7 +1310,7 @@ $(document).on('page_ready', function() {
   {
     validationMessages();
   }
-  
+
   <?php
   // If anything like a submit button is pressed then add a data flag to the form so
   // that the function that checks for a valid booking can see if the change was
@@ -1303,7 +1335,7 @@ $(document).on('page_ready', function() {
       }
       return true;
     });
-      
+
   <?php
   // Add a change event handler to each of the form fields - except for those that
   // are disabled and anything that might be a submit button - so that when they change
@@ -1325,7 +1357,7 @@ $(document).on('page_ready', function() {
             .on('change', function() {
                 checkConflicts();
               });
-  
+
   <?php
   // and a div to hold the dialog box which gives more details.    The dialog
   // box contains a set of tabs.   And because we want the tabs to act as the
@@ -1347,13 +1379,13 @@ $(document).on('page_ready', function() {
             .css('display', 'none')
             .html(tabsHTML)
             .appendTo($('form#main'));
-  
+
   $('#conflict_check, #policy_check').on('click', function manageTabs() {
       var tabId,
           tabIndex,
           checkResults = $('#check_results'),
           checkTabs = $('#check_tabs');
-      <?php 
+      <?php
       // Work out which tab should be selected
       // (Slightly long-winded using a switch, but there may be more tabs in future)
       ?>
@@ -1391,9 +1423,9 @@ $(document).on('page_ready', function() {
       checkTabs.tabs();
       checkTabs.tabs('option', 'active', tabIndex);
       checkResults.dialog({'width': 400,
-                           'height': 200, 
+                           'height': 200,
                            'minWidth': 300,
-                           'minHeight': 150, 
+                           'minHeight': 150,
                            'draggable': true});
       <?php //steal the close button ?>
       $('#details_tabs').append($('button.ui-dialog-titlebar-close'));
@@ -1404,21 +1436,21 @@ $(document).on('page_ready', function() {
       <?php //switch the titlebar class ?>
       $('.ui-dialog-titlebar').remove();
       $('#details_tabs').addClass('ui-dialog-titlebar');
-      
+
       manageTabs.alreadyExists=true;
     });
-  
+
   <?php
   // Finally, set a timer so that conflicts are periodically checked for,
   // in case someone else books that slot before you press Save.
   ?>
   conflictTimer(true);
-  
+
   <?php
   // Actions to take when the start and end datepickers are closed
   ?>
   $('#start_date, #end_date').on('change', function() {
-    
+
     <?php
     // (1) If the end_datepicker isn't visible and we change the start_datepicker,
     //     then set the end date to be the same as the start date.  (This will be
@@ -1431,19 +1463,19 @@ $(document).on('page_ready', function() {
         $('#end_date').val($('#start_date').val());
       }
     }
-    
+
     <?php
     // (2) Go and adjust the start and end time/period select options, because
     //     they are dependent on the start and end dates
     ?>
     adjustSlotSelectors();
-    
+
     <?php
     // (3) If we're doing Ajax checking of the form then we have to check
     //     for conflicts when the datepicker is closed
     ?>
     checkConflicts();
-      
+
     <?php
     // (4) Check to see whether any time slots should be removed from the time
     //     select on the grounds that they don't exist due to a transition into DST.
@@ -1451,17 +1483,20 @@ $(document).on('page_ready', function() {
     checkTimeSlots($(this));
 
   });
-  
+
   $('#start_date, #end_date').each(function() {
       checkTimeSlots($(this));
     });
-    
-  $('input[name="rep_type"]').on('change', changeRepTypeDetails);
+
+  //$('input[name="rep_type"]').on('change', changeRepTypeDetails);
+  $('#rep_type_select').on('change', changeRepTypeDetails);
+
   changeRepTypeDetails();
-  
+
   $('input[name="rep_interval"]').on('change', changeRepIntervalUnits);
-  $('input[name="rep_type"]').on('change', changeRepIntervalUnits).trigger('change');
-  
+  //$('input[name="rep_type"]').on('change', changeRepIntervalUnits).trigger('change');
+  $('#rep_type_select').on('change', changeRepIntervalUnits).trigger('change');
+
   <?php
   // Add an event listener to detect a change in the visibility
   // state.  We can then suspend Ajax checking when the page is
@@ -1473,7 +1508,7 @@ $(document).on('page_ready', function() {
   {
     document.addEventListener(prefix + "visibilitychange", editEntryVisChanged);
   }
-  
+
   form.removeClass('js_hidden');
-  
+
 });

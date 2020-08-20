@@ -5,14 +5,16 @@ namespace MRBS\Form;
 
 class FieldSelect extends Field
 {
-  
+
   public function __construct()
+
+
   {
     parent::__construct();
     $this->addControl(new ElementSelect());
   }
-  
-  
+
+
   public function addSelectOptions(array $options, $selected=null, $associative=null)
   {
     $select = $this->getControl();
@@ -20,5 +22,5 @@ class FieldSelect extends Field
     $this->setControl($select);
     return $this;
   }
-  
+
 }

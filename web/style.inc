@@ -23,8 +23,17 @@ else
   <?php
 }
 ?>
-<link rel="stylesheet" href="js/js_date/css/bootstrap.min.css" type="text/css">
-<link rel="stylesheet" href="js/js_date/css/bootstrap-datetimepicker.min.css" type="text/css">
+
+<?php
+if (in_array($page, ['index', 'search']))
+{
+  ?>
+  <link rel="stylesheet" href="js/js_date/css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="js/js_date/css/bootstrap-datetimepicker.min.css" type="text/css">
+  <?php
+}
+?>
+
 <link rel="stylesheet" href="js/flatpickr/css/flatpickr.min.css" type="text/css">
 <link rel="stylesheet" href="jquery/select2/dist/css/select2.min.css" type="text/css">
 <link rel="stylesheet" href="css/mrbs.css.php" type="text/css">

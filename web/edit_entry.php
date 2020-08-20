@@ -10,6 +10,7 @@ use MRBS\Form\ElementInputHidden;
 use MRBS\Form\ElementInputNumber;
 use MRBS\Form\ElementInputRadio;
 use MRBS\Form\ElementInputSubmit;
+use MRBS\Form\ElementInputButton;
 use MRBS\Form\ElementLabel;
 use MRBS\Form\ElementSelect;
 use MRBS\Form\ElementSpan;
@@ -798,8 +799,13 @@ function get_field_rep_type($value, $disabled=false)
     $options[$i] = get_vocab("rep_type_$i");
   }
   $radio_group = new ElementDiv();
-  $radio_group->setAttribute('class', 'group long')
-              ->addRadioOptions($options, 'rep_type', $value, true);
+  $radio_group->setAttribute('class', 'group long');
+
+  $select = new ElementSelect();
+  $select->setAttributes(array('id'     => 'rep_type_select', 'name'     => 'rep_type', 'disabled' => $disabled))
+    ->addSelectOptions($options, 0, true);
+
+  $radio_group->addElement($select);
 
   $field->addControlElement($radio_group);
 
@@ -1049,10 +1055,20 @@ function get_fieldset_repeat()
   $fieldset = new ElementFieldset();
   $fieldset->setAttribute('id', 'rep_info');
 
-  $fieldset->addElement(get_field_rep_type($rep_type, $disabled))
-           ->addElement(get_field_rep_interval($rep_interval, $disabled))
-           ->addElement(get_field_rep_end_date($disabled))
-           ->addElement(get_field_skip_conflicts($disabled));
+  $rep_type_field = get_field_rep_type($rep_type, $disabled);
+
+
+  $rep_interval_field = new ElementFieldset();
+  $rep_interval_field->setAttribute('id', 'rep_day_year')
+                     ->setAttribute('class', 'rep_type_details js_none');
+
+  $rep_interval_field->addElement(get_field_rep_interval($rep_interval, $disabled))
+                     ->addElement(get_field_rep_end_date($disabled))
+                     ->addElement(get_field_skip_conflicts($disabled));
+
+  $rep_type_field->addControlElement($rep_interval_field);
+
+  $fieldset->addElement($rep_type_field);
 
   return $fieldset;
 }
@@ -1084,7 +1100,7 @@ function get_fieldset_submit_buttons()
   // The back and submit buttons
   $field = new FieldDiv();
 
-  $back = new ElementInputSubmit();
+  $back = new ElementInputButton();
   $back->setAttributes(array('name'           => 'back_button',
                              'value'          => get_vocab('back'),
                              'formnovalidate' => true));
@@ -1093,6 +1109,7 @@ function get_fieldset_submit_buttons()
   $submit->setAttributes(array('class' => 'default_action',
                                'name'  => 'save_button',
                                'value' => get_vocab('save')));
+
 
   // div to hold the results of the Ajax checking of the booking
   $div = new ElementDiv();

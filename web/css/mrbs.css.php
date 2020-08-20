@@ -19,14 +19,18 @@ http_headers(array("Content-type: text/css"),
 
 
 /* ------------ GENERAL -----------------------------*/
+html,body{
+  height: 100%;
+}
+
 
 body {
   font-size: small;
   margin: 0;
   padding: 0;
-  color: <?php echo $standard_font_color ?>;
-  font-family: <?php echo $standard_font_family ?>;
-  background-color: <?php echo $body_background_color ?>;
+  color: #0B263B;
+  font-family: Arial, 'Arial Unicode MS', Verdana, sans-serif;
+  background-color: #f9fbfc;
 }
 
 .unsupported_browser body > * {
@@ -42,17 +46,14 @@ body {
 }
 
 .current {
-  color: <?php echo $highlight_font_color ?>;  <?php // used to highlight the current item ?>
-}
+  color: #ff0066;  }
 
 .error {
-  color: <?php echo $highlight_font_color ?>;  <?php // for error messages ?>
-  font-weight: bold;
+  color: #ff0066;    font-weight: bold;
 }
 
 .warning {
-  color: <?php echo $highlight_font_color ?>;  <?php // for warning messages ?>
-}
+  color: #ff0066;  }
 
 .note {
   font-style: italic;
@@ -62,23 +63,12 @@ input, textarea {
   box-sizing: border-box;
 }
 
-<?php
-// <input> elements of type 'date' are converted by the JavaScript into datepickers.
-// In order to prevent the display shifting about during the conversion process we set
-// the widths of both to be the same.
-?>
 input.date,
 .js input[type="date"],
 input.form-control.input {
-  width: 6.5em;
+  width: 143px;
 }
 
-<?php
-// Flatpickr lets mobile devices use their own date inputs, because these are usually
-// superior.  In these cases set the width of the date input to 'auto' to allow the native
-// date input display properly.   For example on iPad Safari, the native date input is
-// displayed as dd-mmm-yyyy, eg 1 Jan 2019, which is wider than most date inputs.
-?>
 input.form-control.input.flatpickr-mobile {
   width: auto;
 }
@@ -106,10 +96,16 @@ button.image {
 }
 
 .contents {
-  float: left;
+   float: left;
   width: 100%;
   box-sizing: border-box;
   padding-bottom: 3rem;
+
+  /*width: 510px;*/
+  /*border: 1px solid gray;*/
+  /* margin-left: 50px; */
+  /*height: 390px;
+  overflow: hidden; */
 }
 
 h1 {
@@ -123,8 +119,10 @@ h2 {
 }
 
 .minicalendars {
-  margin-right: 2em;
-  padding-top: 0.8rem; <?php // same as margin-top on nav.main_calendar ?>
+  /* margin-right: 2em;
+  padding-top: 0.8rem;  */
+  height: 100%;
+  flex:1;
 }
 
 .minicalendars.formed {
@@ -137,10 +135,6 @@ h2 {
   }
 }
 
-<?php
-// Make the inline minicalendars smaller than the pop-up calendars.
-// The default width is 39px
-?>
 .flatpickr-calendar.inline {
   width: auto;
   font-size: 85%;
@@ -177,6 +171,8 @@ h2 {
   flex-grow: 1;
   width: 100%;
   overflow-x: auto;
+
+  height: 100%;
 }
 
 img {
@@ -184,36 +180,35 @@ img {
 }
 
 a:link {
-  color: <?php echo $anchor_link_color ?>;
+  color: #0B263B;
   text-decoration: none;
   font-weight: bold;
 }
 
 a:visited {
-  color: <?php echo $anchor_visited_color ?>;
+  color: #0B263B;
   text-decoration: none;
   font-weight: bold
 }
 
 a:hover {
-  color: <?php echo $anchor_hover_color ?>;
+  color: #0B263B;
   text-decoration: underline;
   font-weight: bold;
 }
 
 tr:nth-child(odd) td.new,
 .all_rooms tr:nth-child(odd) td {
-  background-color: <?php echo $row_odd_color ?>;
+  background-color: #efefef;
 }
 
 tr:nth-child(even) td.new,
 .all_rooms tr:nth-child(even) td {
-  background-color: <?php echo $row_even_color ?>;
+  background-color: #ffffff;
 }
 
 .all_rooms td {
-  height: 100%; <?php // for Firefox ?>
-}
+  height: 100%; }
 
 .dwm_main.all_rooms td a {
   display: flex;
@@ -221,35 +216,16 @@ tr:nth-child(even) td.new,
   padding: 0;
 }
 
-<?php
-/* We use border-box sizing to keep the border inside the div therefore allow the div to
- * be as thin as 1px (useful if there are lots of slots as it saves screen space).  But as
- * the border would then obscure the background colour, we make the border dotted to allow
- * the background colour to show through.  Note however that box-sizing doesn't work quite
- * properly with flexbox - the sizing calculations are a bit out - but it's probably good
- * enough.
- *
- * 'width: 0' is essential to keep the table columns equal width when there's a lot of
- * text in the bookings.
- */
-?>
 .all_rooms td a div {
   box-sizing: border-box;
   min-width: 1px;
   width: 0;
-  border-right: 1px dotted  <?php echo $main_table_body_v_border_color ?>;
+  border-right: 1px dotted  #e4e4e4;
   white-space: nowrap;
   overflow: hidden;
   padding: 0.2em 0;
 }
 
-<?php
-/* We can't use padding-left because that would add a fixed amount of width
- * to every div, thus distorting their relative widths.  So add a non-breaking
- * space before, which will just be treated in the same way as the rest of the
- * text.
- */
- ?>
 .all_rooms td a div:not(.free)::before {
   content: '\00a0';
 }
@@ -268,14 +244,13 @@ td, th {
 }
 
 td form {
-  margin: 0;  <?php // Prevent IE from displaying margins around forms in tables. ?>
-}
+  margin: 0;  }
 
 legend {
   font-weight: bold;
   font-size: large;
-  font-family: <?php echo $standard_font_family ?>;
-  color: <?php echo $standard_font_color ?>;
+  font-family: Arial, 'Arial Unicode MS', Verdana, sans-serif;
+  color: #0B263B;
 }
 
 fieldset {
@@ -289,7 +264,7 @@ fieldset {
 
 fieldset.admin {
   width: 100%; padding: 0 1.0em 1.0em 1.0em;
-  border: 1px solid <?php echo $admin_table_border_color ?>;
+  border: 1px solid #C3CCD3;
 }
 
 fieldset fieldset {
@@ -302,8 +277,7 @@ fieldset fieldset {
 }
 
 fieldset fieldset legend {
-  font-size: 0;  <?php // for IE: even if there is no legend text, IE allocates space ?>
-}
+  font-size: 0;  }
 
 label:not(.link)::after,
 label.link a::after,
@@ -314,8 +288,7 @@ label.link a::after,
 [lang="fr"] label:not(.link)::after,
 [lang="fr"] label.link a::after,
 [lang="fr"] .list td:first-child::after  {
-  content: '\0000a0:';  <?php // &nbsp; before the colon ?>
-}
+  content: '\0000a0:';  }
 
 label:empty::after, .group label::after {
   visibility: hidden;
@@ -328,16 +301,11 @@ label.no_suffix::after,
   content: '';
 }
 
-<?php
-// DataTables don't work well with border-collapse: collapse and scrollX: 100%.   In fact they
-// don't work well either with a border round the table.   So we put the left and right borders
-// on the table cells.
-?>
 
 table.admin_table {
   border-collapse: separate;
   border-spacing: 0;
-  border-color: <?php echo $admin_table_border_color ?>;
+  border-color: #C3CCD3;
 }
 
 .admin_table th, .admin_table td,
@@ -358,28 +326,28 @@ table.dataTable thead th:first-child, table.dataTable thead td:first-child {
 
 .admin_table td, .admin_table th,
 table.dataTable thead th, table.dataTable thead td {
-  border-color: <?php echo $admin_table_border_color ?>;
+  border-color: #C3CCD3;
 }
 
 .admin_table th:first-child,
 table.dataTable thead th:first-child, table.dataTable thead td:first-child {
-  border-left-color: <?php echo $admin_table_header_back_color ?>;
+  border-left-color: #1976D2;
 }
 
 .admin_table th:last-child {
-  border-right-color: <?php echo $admin_table_header_back_color ?>;
+  border-right-color: #1976D2;
 }
 
 .admin_table.DTFC_Cloned th:last-child {
-  border-right-color: <?php echo $admin_table_border_color ?>;
+  border-right-color: #C3CCD3;
 }
 
 .admin_table th,
 table.dataTable thead .sorting,
 table.dataTable thead .sorting_asc,
 table.dataTable thead .sorting_desc {
-  color: <?php echo $admin_table_header_font_color ?>;
-  background-color: <?php echo $admin_table_header_back_color ?>;
+  color: #ffffff;
+  background-color: #1976D2;
 }
 
 .admin_table td.action {
@@ -394,20 +362,16 @@ table.dataTable thead .sorting_desc {
   display: table-cell;
 }
 
-<?php
-// The width for JavaScript enabled browsers is set in js/datatables.js.php.  See the comment in that
-// file for an explanation.
-?>
 body:not(.js) table.display {
   width: 100%;
 }
 
 table.display tbody tr:nth-child(2n) {
-  background-color: <?php echo $zebra_even_color ?>;
+  background-color: white;
 }
 
 table.display tbody tr:nth-child(2n+1) {
-  background-color: <?php echo $zebra_odd_color ?>;
+  background-color: #E2E4FF;
 }
 
 table.display th, table.display td {
@@ -437,10 +401,6 @@ nav.location .select2-container {
   display: none;
 }
 
-<?php
-// Don't display anything with a class of js_none (used for example for hiding Submit
-// buttons when we're submitting onchange).  The .js class is added to the <body> by JavaScript
-?>
 .js .js_none {
   display: none;
 }
@@ -469,8 +429,7 @@ nav.main_calendar {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   width: 100%;
-  margin-top: 0.8rem;  <?php // same as padding-top on minicalendars ?>
-}
+  margin-top: 0.8rem;  }
 
 nav.main_calendar > nav {
   display: -ms-flexbox;
@@ -497,8 +456,8 @@ nav.view div.container {
 }
 
 nav.view a, nav.arrow a {
-  background: linear-gradient(<?php echo implode(', ', $button_color_stops)?>);
-  border-right: thin solid <?php echo $body_background_color ?>;
+  background: linear-gradient(#eeeeee, #cccccc);
+  border-right: thin solid #f9fbfc;
   cursor: pointer;
   line-height: 1.8em;
   font-weight: normal;
@@ -529,8 +488,8 @@ nav.view a:hover,
 nav.view a:focus,
 nav.arrow a:hover,
 nav.arrow a:focus {
-  background: <?php echo $banner_back_color ?>;
-  box-shadow: inset 1px 1px <?php echo $button_inset_color ?>;
+  background: #1976D2;
+  box-shadow: inset 1px 1px darkblue;
   color: #ffffff;
   text-decoration: none;
 }
@@ -547,7 +506,7 @@ nav a.next::after {
 /* ------------ ADMIN.PHP ---------------------------*/
 
 .form_admin fieldset {
-  border: 1px solid <?php echo $admin_table_border_color ?>;
+  border: 1px solid #C3CCD3;
 }
 
 .admin h2 {
@@ -639,46 +598,23 @@ div#div_custom_html {
 .table_container {
   overflow: auto;
   position: relative;
-  <?php
-  // A height is necessary to make sticky headers work. Set the maximum height to be the viewport's,
-  // less a fixed amount, which allows for a small space at the top and bottom, giving a little bit
-  // of context and making it easier to position the table container in the viewport.
-  ?>
   max-height: calc(100vh - 4em);
-  <?php
-  // For those browsers that support the max() function ensure that the maximum height is at least
-  // a certain height, otherwise the element becomes too small to be meaningful.
-  ?>
   max-height: max(calc(100vh - 4em), 8em);
   margin: 1em 0;
 }
 
 div.timeline {
-  background-color: <?php echo $timeline_color ?>;
+  background-color: #1976D2;
   position: absolute;
   width: 0;
-  <?php
-  // The JavaScript positions the top edge of the line at the current time, but intuitively we would expect
-  // the centre of the line to represent the current time, so we need to shift the line up by half of its height.
-  // Note that in some browsers, eg Firefox, translate(0, -50%) can make the line disappear completely if its height
-  // is only 1px - probably something to do with rounding - so make the line at least 2px high.
-  ?>
-  height: 2px; <?php // Do not set to less than 2px.  See above. ?>
-  transform: translate(0, -50%);
+  height: 2px;   transform: translate(0, -50%);
   z-index: 90;
   pointer-events: none;
 }
 
 div.timeline.times_along_top {
   height: 0;
-  <?php
-  // The JavaScript positions the left edge of the line at the current time, but intuitively we would expect
-  // the centre of the line to represent the current time, so we need to shift the line left by half of its width.
-  // Note that in some browsers, eg Firefox, translate(-50%, 0) can make the line disappear completely if its width
-  // is only 1px - probably something to do with rounding - so make the line at least 2px wide.
-  ?>
-  width: 2px; <?php // Do not set to less than 2px.  See above. ?>
-  transform: translate(-50%, 0);
+  width: 2px;   transform: translate(-50%, 0);
 }
 
 table.dwm_main {
@@ -688,15 +624,15 @@ table.dwm_main {
   height: 100%;
   border-spacing: 0;
   border-collapse: separate;
-  border-color: <?php echo $main_table_border_color ?>;
-  border-width: <?php echo $main_table_border_width ?>px;
+  border-color: #dddddd;
+  border-width: 0px;
   border-style: solid;
   border-radius: 5px;
 }
 
 .dwm_main th, .dwm_main td {
-  min-height: <?php echo $main_cell_height ?>;
-  line-height: <?php echo $main_cell_height ?>;
+  min-height: 1.5em;
+  line-height: 1.5em;
 }
 
 .dwm_main tbody th {
@@ -712,7 +648,7 @@ table.dwm_main {
 
 .dwm_main td,
 .dwm_main tbody td + th {
-  border-right: <?php echo $main_table_cell_border_width ?>px solid <?php echo $main_table_body_v_border_color ?>;
+  border-right: 1px solid #e4e4e4;
 }
 
 .series a::before {
@@ -758,53 +694,46 @@ table.dwm_main {
   display: none;
 }
 
-<?php
-// Note that it is important to have zero padding-left and padding-top on the th and td cells.
-// These elements are used to calculate the offset top and left of the position of bookings in
-// the grid when using resizable bookings.   jQuery.offset() measures to the content.  If you
-// need padding put it on the contained element.
-?>
 .dwm_main thead th,
 .dwm_main tfoot th {
   font-size: small;
   font-weight: normal;
   vertical-align: top;
   padding: 0.2em;
-  color: <?php echo $standard_font_color ?>;
+  color: #0B263B;
   background-color: #ffffff;
-  background-clip: padding-box; <?php // to keep Edge happy when using position: sticky ?>
-}
+  background-clip: padding-box; }
 
 .dwm_main th,
 .dwm_main td {
-  border-right: <?php echo $main_table_cell_border_width ?>px solid <?php echo $main_table_header_border_color ?>;
+  border-right: 1px solid #dddddd;
 }
 
 .dwm_main thead tr:last-child th {
-  border-bottom: 1px solid <?php echo $banner_back_color ?>;
+  border-bottom: 1px solid #1976D2;
 }
 
 .dwm_main tfoot tr:first-child th {
-  border-top: 1px solid <?php echo $banner_back_color ?>;
+  border-top: 1px solid #1976D2;
 }
 
 .dwm_main > *:last-child tr:last-child th,
 .dwm_main > *:last-child tr:last-child td {
-  border-bottom: 0 solid <?php echo $main_table_border_color ?>;
+  border-bottom: 0 solid #dddddd;
 }
 
 .dwm_main > *:last-child tr:last-child th {
-  border-top: 0 solid <?php echo $main_table_border_color ?>;
+  border-top: 0 solid #dddddd;
 }
 
 .dwm_main th:first-child,
- .dwm_main td:first-child {
-   border-left: 0 solid <?php echo $main_table_border_color ?>;
+.dwm_main td:first-child {
+  border-left: 0 solid #dddddd;
 }
 
 .dwm_main th:last-child,
 .dwm_main td:last-child {
-  border-right: 0 solid <?php echo $main_table_border_color ?>;
+  border-right: 0 solid #dddddd;
 }
 
 .dwm_main thead tr:first-child th:first-child {
@@ -815,10 +744,6 @@ table.dwm_main {
   border-top-right-radius: 5px;
 }
 
-<?php
-// Note that although tfoot appears at the bottom of the table, it is not the last child
-// of the table as the DOM is thead tfoot tbody.
- ?>
 .dwm_main tfoot tr:last-child th:first-child,
 .dwm_main thead + tbody tr:last-child th:first-child {
   border-bottom-left-radius: 5px;
@@ -837,8 +762,7 @@ table.dwm_main {
   width: 100%;
   min-height: inherit;
   word-break: break-all;
-  word-break: break-word; <?php // Better for those browsers, eg webkit, that support it ?>
-  hyphens: auto;
+  word-break: break-word;   hyphens: auto;
 }
 
 .dwm_main .booked a,
@@ -852,16 +776,10 @@ table.dwm_main {
 }
 
 .dwm_main.times-along-top .booked.multiply a {
-  max-height: <?php echo $main_cell_height ?>;
+  max-height: 1.5em;
   box-sizing: content-box;
 }
 
-<?php
-// Catch IE10 and IE11 only
-// IE10 and IE11 don't support position: relative on the <td> so we have to do it on
-// the wrapper.  The downside is that when resizing to make the booking larger the
-// table has to expand to accommodate the relative div.
-?>
 @media all and (-ms-high-contrast: none), all and (-ms-high-contrast: active)
 {
   .dwm_main .booking {
@@ -871,8 +789,7 @@ table.dwm_main {
 
 .dwm_main .booking {
   width: 100%;
-  height: 100%; <?php // overridden if .booked.multiply ?>
-  min-height: <?php echo $main_cell_height ?>;
+  height: 100%;   min-height: 1.5em;
 }
 
 .dwm_main .booked.multiply a,
@@ -881,8 +798,7 @@ table.dwm_main {
 }
 
 .dwm_main .booked.multiply .booking {
-  height: <?php echo $main_cell_height ?>; <?php // overrides .dwm_main .booking { height: 100%; } ?>
-}
+  height: 1.5em; }
 
 .dwm_main .booked a {
   box-sizing: border-box;
@@ -890,7 +806,7 @@ table.dwm_main {
 
 .dwm_main .booked a,
 .all_rooms td a div:not(.free) {
-  border-bottom: 1px solid <?php echo $main_table_body_v_border_color ?>;
+  border-bottom: 1px solid #e4e4e4;
 }
 
 .dwm_main .booked a.saving {
@@ -905,8 +821,7 @@ table.dwm_main {
 
 .dwm_main .booked span.saving::after,
 .loading::after {
-  content: '\002026'; <?php // HORIZONTAL ELLIPSIS ?>
-}
+  content: '\002026'; }
 
 .dwm_main .booked span.saving,
 .dwm_main .booked span.saving::after {
@@ -942,15 +857,15 @@ table.dwm_main {
 }
 
 .dwm_main th a:link {
-  color: <?php echo $anchor_link_color_header ?>;
+  color: #0B263B;
 }
 
 .dwm_main th a:visited {
-  color: <?php echo $anchor_visited_color_header ?>;
+  color: #0B263B;
 }
 
 .dwm_main th a:hover {
-  color: <?php echo $anchor_hover_color_header ?>;
+  color: #0B263B;
   text-decoration:underline;
 }
 
@@ -965,19 +880,19 @@ table.dwm_main {
 }
 
 .dwm_main td.invalid {
-  background-color: <?php echo $main_table_slot_invalid_color ?>;
+  background-color: #d1d9de;
 }
 
 .dwm_main#month_main:not(.all_rooms) tbody tr:not(:first-child) td {
-  border-top:  <?php echo $main_table_cell_border_width ?>px solid <?php echo $main_table_body_v_border_color ?>;
+  border-top:  1px solid #e4e4e4;
 }
 
 .dwm_main#month_main td.valid {
-  background-color: <?php echo $main_table_month_color ?>;
+  background-color: #ffffff;
 }
 
 .dwm_main#month_main td.invalid {
-  background-color: <?php echo $main_table_month_invalid_color ?>;
+  background-color: #d1d9de;
 }
 
 .dwm_main#month_main:not(.all_rooms) a {
@@ -996,11 +911,6 @@ td.new img, .new_booking img {
   padding: 4px 0 2px 0;
 }
 
-<?php
-// We use outline instead of border because jQuery UI Resizable has problems with border-box.
-// Note that on Chrome (at least up until Chrome 68.0.3416.0) outline position and width can
-// be 1px off when the browser zoom level is not 100%.
-?>
 .resizable-helper {
   outline: 2px solid #666666;
   outline-offset: -2px;
@@ -1011,41 +921,24 @@ td.new img, .new_booking img {
 }
 
 
-<?php
-// The following section deals with the contents of the table cells in the month view.    It is designed
-// to ensure that the new booking link is active anywhere in the cell that there isn't another link, for
-// example the link to the day in question at the top left and the bookings themselves.   It works by using
-// z-index levels and placing the new booking link at the bottom of the pile.
-//
-// [There is in fact one area where the new booking link is not active and that is to the right of the last
-// booking when there is an odd number of bookings and the mode is 'slot' or 'description' (ie not 'both').
-// This is because the list of bookings is in a div of its own which includes that bottom right hand corner.   One
-// could do without the container div, and then you could solve the problem, but the container div is there to
-// allow the bookings to scroll without moving the date and new booking space at the top of the cell.   Putting up
-// with the small gap at the end of odd rows is probably a small price worth paying to ensure that the date and the
-// new booking link remain visible when you scroll.]
-?>
 
-<?php // The containing div for a.new_booking. ?>
 div.cell_container {
   position: relative;
   float: left;
   width: 100%;
-  <?php echo ($month_cell_scrolling ? 'height:' : 'min-height:') ?> 100px;
+  height: 100px;
 }
 
 #month_main a.new_booking {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 10;  <?php // needs to be above the base, but below the date (monthday) ?>
-}
+  z-index: 10;  }
 
 div.cell_header {
   position: relative;
   width: 100%;
-  z-index: 20;  <?php // needs to be above the new booking anchor ?>
-  min-height: 20%;
+  z-index: 20;    min-height: 20%;
   height: 20%;
   max-height: 20%;
   overflow: hidden;
@@ -1057,7 +950,6 @@ div.cell_header {
   float: left;
 }
 
-<?php // the date in the top left corner ?>
 #month_main div.cell_header a.monthday {
   font-size: medium;
 }
@@ -1067,13 +959,11 @@ div.cell_header {
   padding: 2px 4px 0 4px;
 }
 
-<?php // contains the list of bookings ?>
 div.booking_list {
   position: relative;
-  z-index: 20;  <?php // needs to be above new_booking ?>
-  max-height: 80%;
+  z-index: 20;    max-height: 80%;
   font-size: x-small;
-  overflow: <?php echo ($month_cell_scrolling ? 'auto' : 'visible') ?>;
+  overflow: auto;
 }
 
 div.description, div.slot {
@@ -1091,17 +981,10 @@ div.both {
   overflow: hidden;
 }
 
-<?php
-if ($clipped_month)
-{
-  ?>
-  .booking_list div {
-    height: 1.3em;
-    max-height: 1.3em;
-  }
-  <?php
+.booking_list div {
+  height: 1.3em;
+  max-height: 1.3em;
 }
-?>
 
 
 .booking_list a {
@@ -1109,17 +992,19 @@ if ($clipped_month)
 }
 
 
-<?php
-// Generate the classes to give the colour coding by booking type in the day/week/month views
-foreach ($color_types as $type => $col)
-{
-  echo ".$type {background-color: $col}\n";
-}
-
-?>
+.A {background-color: #ffff99}
+.B {background-color: #99cccc}
+.C {background-color: #ffffcd}
+.D {background-color: #cde6e6}
+.E {background-color: #6dd9c4}
+.F {background-color: #82adad}
+.G {background-color: #ccffcc}
+.H {background-color: #d9d982}
+.I {background-color: #99cc66}
+.J {background-color: #e6ffe6}
 
 .private_type {
-  background-color: <?php echo $main_table_slot_private_type_color;?>;
+  background-color: #d1d9de;
 }
 
 .dwm_main thead th,
@@ -1141,19 +1026,18 @@ foreach ($color_types as $type => $col)
   z-index: 610;
 }
 
-<?php // hidden columns (eg weekends) in the week and month views ?>
 .hidden_day {
   display: none;
 }
 
 td.hidden_day {
-  background-color: <?php echo $column_hidden_color ?>;
+  background-color: #d1d9de;
   font-size: medium;
   font-weight: bold;
 }
 
 tr.row_highlight td.new {
-  background-color: <?php echo $row_highlight_color ?>;
+  background-color: #1976D2;
 }
 
 th {
@@ -1162,11 +1046,11 @@ th {
 }
 
 tbody tr:nth-child(odd) th {
-  background-color: <?php echo $row_odd_color ?>;
+  background-color: #efefef;
 }
 
 tbody tr:nth-child(even) th {
-  background-color: <?php echo $row_even_color ?>;
+  background-color: #ffffff;
 }
 
 tbody th a {
@@ -1176,27 +1060,24 @@ tbody th a {
 }
 
 tbody th a:link {
-  color: <?php echo $anchor_link_color_header ?>;
+  color: #0B263B;
 }
 
 tbody th a:visited {
-  color: <?php echo $anchor_visited_color_header ?>;
+  color: #0B263B;
 }
 
 tbody th a:hover {
-  color: <?php echo $anchor_hover_color_header ?>;
+  color: #0B263B;
   text-decoration: underline;
 }
 
-<?php
-// HIGHLIGHTING:  Set styles for the highlighted cells under the cursor (the time/period cell and the current cell)
-?>
 .dwm_main td:hover.new, .dwm_main td.new_hover {
-  background-color: <?php echo $row_highlight_color ?>;
+  background-color: #1976D2;
 }
 
 .dwm_main tbody tr:hover th {
-  background-color: <?php echo $row_highlight_color ?>;
+  background-color: #1976D2;
 }
 
 .dwm_main tbody tr:hover th a {
@@ -1205,21 +1086,20 @@ tbody th a:hover {
 
 .dwm_main#month_main td:hover.valid,
 .dwm_main#month_main td.valid_hover {
-  background-color: <?php echo $row_highlight_color ?>;
+  background-color: #1976D2;
 }
 
-<?php // Disable the highlighting when we're in resize mode ?>
 .dwm_main.resizing tbody tr:nth-child(odd) td:hover.new {
-  background-color: <?php echo $row_odd_color ?>;
+  background-color: #efefef;
 }
 
 .dwm_main.resizing tbody tr:nth-child(even) td:hover.new {
-  background-color: <?php echo $row_even_color ?>;
+  background-color: #ffffff;
 }
 
 .dwm_main.resizing tbody tr:hover th {
-  background-color: <?php echo $main_table_labels_back_color ?>;
-  color: <?php echo $anchor_link_color_header ?>;
+  background-color: #1976D2;
+  color: #0B263B;
 }
 
 .resizing tbody th a:hover {
@@ -1227,15 +1107,15 @@ tbody th a:hover {
 }
 
 .dwm_main.resizing tbody tr:hover th a:link {
-  color: <?php echo $anchor_link_color_header ?>;
+  color: #0B263B;
 }
 
 .dwm_main.resizing tbody tr:hover th a:visited {
-  color: <?php echo $anchor_link_color_header ?>;
+  color: #0B263B;
 }
 
 .dwm_main.resizing tbody tr th.selected {
-  background-color: <?php echo $row_highlight_color ?>;
+  background-color: #1976D2;
 }
 
 .dwm_main.resizing tbody tr:hover t.selected,
@@ -1286,7 +1166,7 @@ div.div_select {
   position: absolute;
   border: 0;
   opacity: 0.2;
-  background-color: <?php echo $main_table_labels_back_color ?>;
+  background-color: #1976D2;
 }
 
 div.div_select.outside {
@@ -1332,14 +1212,12 @@ div#div_custom_html {
 
 .js .delete_period {
   display: inline-block;
-  visibility: hidden; <?php // gets switched on by JavaScript ?>
-  padding: 0 1em;
+  visibility: hidden;   padding: 0 1em;
   opacity: 0.7;
 }
 
 .delete_period::after {
-  content: '\002718';  <?php // cross ?>
-  color: red;
+  content: '\002718';    color: red;
 }
 
 .delete_period:hover {
@@ -1354,25 +1232,33 @@ div#div_custom_html {
 }
 
 
-<?php // The standard form ?>
 
 .standard {
-  float:left;
+  /* float:left; */
   margin-top: 2.0em;
 }
 
 .standard fieldset {
   display: table;
-  float: left;
-  clear: left;
-  width: auto;
+  /* float: left;
+  clear: left; */
+  /* width: auto; */
   border-spacing: 0 0.75em;
   border-collapse: separate;
   padding: 1em 1em 1em 0;
+
+
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .standard fieldset > div {
   display: table-row;
+  /* display: -webkit-flex;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center; */
+
 }
 
 .standard fieldset > div > *:not(.none) {
@@ -1408,10 +1294,18 @@ div#div_custom_html {
 }
 
 .standard fieldset > div > label {
-  font-weight: bold;
+  width: 60px!important;
   padding-left: 2em;
   padding-right: 1em;
   text-align: right;
+
+  font-family: "Microsoft Yahei UI", Verdana, Simsun, "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  font-weight: 400;
+  color: #323130;
+  height: 20px;
+  line-height: 18px;
 }
 
 .standard fieldset > div > div {
@@ -1427,6 +1321,14 @@ div#div_custom_html {
   float: left;
   clear: left;
   margin-bottom: 0.5em;
+
+  font-family: "Microsoft Yahei UI", Verdana, Simsun, "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  font-weight: 400;
+  color: #323130;
+  height: 20px;
+  line-height: 18px;
 }
 
 .standard input[type="text"]:not(.date):not(.form-control),
@@ -1434,8 +1336,7 @@ div#div_custom_html {
 .standard input[type="password"],
 .standard input[type="search"],
 .standard textarea {
-  width: 17rem;  <?php // Use rem not em because fonts may be different ?>
-}
+  width: 17rem;  }
 
 .standard input[type="text"].short {
   width: 4em;
@@ -1466,10 +1367,6 @@ div#div_custom_html {
   margin-right: 0.5em;
 }
 
-<?php
-// The max number of bookings policy fieldset, where we want to display the
-// controls in tabular form
-?>
 
 #max_number div:first-of-type span, #max_number div div div {
   display: inline-block;
@@ -1493,7 +1390,7 @@ div#div_custom_html {
 
 
 div#rep_type div.long{
-  border-right: 1px solid <?php echo $site_faq_entry_border_color ?>;
+  border-right: 1px solid #C3CCD3;
   padding-right: 1em;
 }
 
@@ -1511,7 +1408,7 @@ fieldset.rep_type_details fieldset {
 }
 
 fieldset#rep_info, fieldset#booking_controls {
-  border-top: 1px solid <?php echo $site_faq_entry_border_color ?>;
+  border-top: 1px solid #C3CCD3;
   border-radius: 0;
   padding-top: 0.7em;
 }
@@ -1538,8 +1435,7 @@ div#checks span {
 }
 
 .good::after {
-  content: '\002714';  <?php // checkmark ?>
-  color: green;
+  content: '\002714';    color: green;
 }
 
 .notice::after {
@@ -1549,8 +1445,7 @@ div#checks span {
 }
 
 .bad::after {
-  content: '\002718';  <?php // cross ?>
-  color: red;
+  content: '\002718';    color: red;
 }
 
 
@@ -1596,10 +1491,10 @@ form#add_new_user {
   flex-direction: row;
   -ms-flex-pack: start;
   justify-content: flex-start;
-  background-color: <?php echo $banner_back_color ?>;
-  color: <?php echo $banner_font_color ?>;
-  border-color: <?php echo $banner_border_color ?>;
-  border-width: <?php echo $banner_border_width ?>px;
+  background-color: #1976D2;
+  color: #ffffff;
+  border-color: #f9fbfc;
+  border-width: 0px;
   border-style: solid;
 }
 
@@ -1641,15 +1536,15 @@ form#add_new_user {
 }
 
 .banner a:link, nav.logon input {
-  color: <?php echo $anchor_link_color_banner ?>;
+  color: #ffffff;
 }
 
 .banner a:visited {
-  color: <?php echo $anchor_visited_color_banner ?>;
+  color: #ffffff;
 }
 
 .banner a:hover {
-  color: <?php echo $anchor_hover_color_banner ?>;
+  color: #ffffff;
 }
 
 .banner nav.container {
@@ -1728,12 +1623,12 @@ nav.logon span {
 }
 
 .banner a.attention {
-  background-color: <?php echo $attention_color ?>;
+  background-color: darkorange;
 }
 
 .banner nav a:hover,
 nav.logon input:hover {
-  background-color: <?php echo $banner_nav_hover_color ?>;
+  background-color: darkblue;
   color: #ffffff;
 }
 
@@ -1752,22 +1647,11 @@ input.link[type="submit"] {
 }
 
 form#show_my_entries input.link[type="submit"] {
-  color: <?php echo $anchor_link_color_banner ?>;
+  color: #ffffff;
   padding: 0.3em 0;
   font-weight: normal;
 }
 
-<?php
-// THE COLOR KEY
-//
-// Displays as a grid for those browsers that support it, falling back to a flexbox.  The
-// differences between the two levels of support are:
-//
-//  Grid:             If there is some spare space, the divs expand so that the grid rows
-//                    nicely fill 100% of the container width.
-//  Flexbox:          As Grid, but the divs are of fixed width and won't expand, but will
-// (IE10 and IE11)    wrap onto the next row.
-?>
 
 .color_key {
   display: -ms-flexbox;
@@ -1785,13 +1669,11 @@ form#show_my_entries input.link[type="submit"] {
 
 .color_key > div {
   width: 12em;
-  color: <?php echo $color_key_font_color ?>;
+  color: #0B263B;
   word-wrap: break-word;
   padding: 0.3em;
-  margin: -1px 0 0 -1px; <?php // to collapse the borders ?>
-  font-weight: bold;
-  border: <?php echo $main_table_cell_border_width ?>px solid <?php echo $main_table_body_h_border_color ?>
-}
+  margin: -1px 0 0 -1px;   font-weight: bold;
+  border: 1px solid #ffffff}
 
 @supports (display: grid) {
   .color_key > div {
@@ -1806,7 +1688,7 @@ header input[type="search"] {
 }
 
 .banner .outstanding a {
-  color: <?php echo $outstanding_color ?>;
+  color: #FFF36C;
 }
 
 
@@ -1846,7 +1728,7 @@ table.details.has_caption {
 /* ------------ IMPORT.PHP ------------------------*/
 
 div.problem_report {
-  border-bottom: 1px solid <?php echo $site_faq_entry_border_color ?>;
+  border-bottom: 1px solid #C3CCD3;
   margin-top: 1em;
 }
 
@@ -1902,12 +1784,11 @@ table.minicalendar {
 
 .minicalendar td.today a,
 .minicalendar td a:hover {
-  background-color: <?php echo $minical_today_color ?>;
-  color: <?php echo $standard_font_color ?>
-}
+  background-color: #bdd4de;
+  color: #0B263B}
 
 .minicalendar .view {
-  background-color: <?php echo $minical_view_color ?>;
+  background-color: #2b3a42;
 }
 
 .minicalendar .hidden {
@@ -1916,7 +1797,7 @@ table.minicalendar {
 
 .minicalendar a.current {
   font-weight: bold;
-  color: <?php echo $highlight_font_color ?>;
+  color: #ff0066;
 }
 
 
@@ -1936,11 +1817,11 @@ table.minicalendar {
   padding-left: 0;
   padding-right: 0;
   text-align: center;
-  color: <?php echo $standard_font_color ?>;
+  color: #0B263B;
 }
 
 .js #pending_list td.control {
-  background-color: <?php echo $pending_control_color ?>;
+  background-color: #FFF36C;
 }
 
 #pending_list td:first-child {
@@ -1960,8 +1841,8 @@ table.sub th {
 }
 
 .js .admin_table table.sub th:first-child {
-  background-color: <?php echo $pending_control_color ?>;
-  border-left-color: <?php echo $admin_table_border_color ?>;
+  background-color: #FFF36C;
+  border-left-color: #C3CCD3;
 }
 
 #pending_list form {
@@ -1978,7 +1859,7 @@ div#div_summary {
 #div_summary table {
   border-spacing: 1px;
   border-collapse: collapse;
-  border-color: <?php echo $report_table_border_color ?>;
+  border-color: #0B263B;
   border-style: solid;
   border-top-width: 1px;
   border-right-width: 0;
@@ -1988,7 +1869,7 @@ div#div_summary {
 
 #div_summary td, #div_summary th {
   padding: 0.1em 0.2em 0.1em 0.2em;
-  border-color: <?php echo $report_table_border_color ?>;
+  border-color: #0B263B;
   border-style: solid;
   border-top-width: 0;
   border-right-width: 1px;
@@ -2095,7 +1976,7 @@ div#site_faq_body {
 }
 
 #site_faq_body h4 {
-  border-top: 1px solid <?php echo $site_faq_entry_border_color ?>;
+  border-top: 1px solid #C3CCD3;
   padding-top: 0.5em;
   margin-top: 0;
 }
@@ -2105,7 +1986,7 @@ div#site_faq_body {
 }
 
 #site_faq_body :target {
-  background-color: <?php echo $help_highlight_color ?>;
+  background-color: #ffe6f0;
 }
 
 
@@ -2285,9 +2166,6 @@ div#check_tabs {background-image: none}
 
 
 
-<?php
-// Modify the flatpickr blue
-?>
 .flatpickr-day.selected,
 .flatpickr-day.startRange,
 .flatpickr-day.endRange,
@@ -2306,20 +2184,20 @@ div#check_tabs {background-image: none}
 .flatpickr-day.selected.nextMonthDay,
 .flatpickr-day.startRange.nextMonthDay,
 .flatpickr-day.endRange.nextMonthDay {
-  background: <?php echo $flatpickr_highlight_color ?>;
-  border-color: <?php echo $flatpickr_highlight_color ?>;
+  background: #1976D2;
+  border-color: #1976D2;
 }
 
 .flatpickr-day.selected.startRange + .endRange,
 .flatpickr-day.startRange.startRange + .endRange,
 .flatpickr-day.endRange.startRange + .endRange {
-  -webkit-box-shadow: -10px 0 0 <?php echo $flatpickr_highlight_color ?>;
-  box-shadow: -10px 0 0 <?php echo $flatpickr_highlight_color ?>;
+  -webkit-box-shadow: -10px 0 0 #1976D2;
+  box-shadow: -10px 0 0 #1976D2;
 }
 
 .flatpickr-day.week.selected {
-  -webkit-box-shadow:-5px 0 0 <?php echo $flatpickr_highlight_color ?>, 5px 0 0 <?php echo $flatpickr_highlight_color ?>;
-  box-shadow:-5px 0 0 <?php echo $flatpickr_highlight_color ?>, 5px 0 0 <?php echo $flatpickr_highlight_color ?>;
+  -webkit-box-shadow:-5px 0 0 #1976D2, 5px 0 0 #1976D2;
+  box-shadow:-5px 0 0 #1976D2, 5px 0 0 #1976D2;
 }
 
 
