@@ -1718,7 +1718,9 @@ $form = new Form();
 $form->setAttributes(array('class'  => 'standard js_hidden',
                            'id'     => 'main',
                            'action' => 'edit_entry_handler.php',
-                           'method' => 'post'));
+                           'method' => 'post',
+                           'target' => 'iframe_display',
+));
 
 $hidden_inputs = array('returl'    => $returl,
                        'rep_id'    => $rep_id,
@@ -1832,6 +1834,8 @@ if (need_to_send_mail() &&
 $form->addElement(get_fieldset_submit_buttons());
 
 $form->render();
-
+echo <<<EOF
+<iframe id="iframe_display" name="iframe_display" style="display: none;"></iframe>
+EOF;
 
 print_footer();

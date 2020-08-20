@@ -1353,7 +1353,7 @@ $(document).on('page_ready', function() {
 
         setTimeout(function () {
           window.parent.location.replace(window.parent.location.href)//关闭iframe 并 刷新父级页面
-        }, 0);
+        }, 1500);
 
         return result;
       }
