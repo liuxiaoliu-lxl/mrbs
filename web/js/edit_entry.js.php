@@ -96,7 +96,7 @@ var changeRepIntervalUnits = function changeRepIntervalUnits() {
       text = (repInterval == 1) ? '星期' : '星期';
       break;
     case 3:
-      text = (repInterval == 1) ? 'month' : 'months';
+      text = (repInterval == 1) ? '月' : '月';
       break;
     case 4:
       text = (repInterval == 1) ? '年' : '年';
