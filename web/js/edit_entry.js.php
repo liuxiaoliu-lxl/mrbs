@@ -32,17 +32,17 @@ var conflictTimer = function conflictTimer(set) {
         // uses milliseconds)
         // Only set the timer if the page is visible
         ?>
-        if (!isHidden())
-        {
-          checkConflicts(true);
-          conflictTimer.id = window.setInterval(function() {
-              checkConflicts(true);
-            }, <?php echo $ajax_refresh_rate * 1000 ?>);
-        }
+        //if (!isHidden())
+        //{
+        //  checkConflicts(true);
+        //  conflictTimer.id = window.setInterval(function() {
+        //      checkConflicts(true);
+        //    }, <?php //echo $ajax_refresh_rate * 1000 ?>//);
+        //}
       }
       else if (typeof conflictTimer.id !== 'undefined')
       {
-        window.clearInterval(conflictTimer.id);
+        //window.clearInterval(conflictTimer.id);
       }
       <?php
     }
@@ -59,8 +59,6 @@ var changeRepTypeDetails = function changeRepTypeDetails() {
   // var repType = parseInt($('input[name="rep_type"]:checked').val(), 10);
 
   var repType = parseInt($("#rep_type_select").select2("val"), 10);
-
-  console.log(repType);
 
   $('.rep_type_details').hide();
   switch (repType) {
@@ -483,7 +481,7 @@ function validate(form)
   // like clicking more than one time on submit button, we hide it as soon
   // it is clicked.
   ?>
-  form.find('input[type=submit]').prop('disabled', true);
+  //form.find('input[type=submit]').prop('disabled', true);
 
   <?php
   // would be nice to also check date to not allow Feb 31, etc...
@@ -576,18 +574,18 @@ function checkConflicts(optional)
   // button - but how can you tell that it was the clicking of the submit button that
   // caused the change event?]
   ?>
-  var timeout = 200; <?php // ms ?>
-  window.setTimeout(function() {
+  //var timeout = 200; <?php //// ms ?>
+  //window.setTimeout(function() {
     var params = {};
     var form = $('form#main');
     <?php
     // Don't do anything if (a) the form doesn't exist (which it won't if the user
     // hasn't logged in) or (b) if the submit button has been pressed
     ?>
-    if ((form.length === 0) || form.data('submit'))
-    {
-      return;
-    }
+    //if ((form.length === 0) || form.data('submit'))
+    //{
+    //  return;
+    //}
 
     <?php
     // Load the params object with the values of all the form fields that are not
@@ -620,74 +618,87 @@ function checkConflicts(optional)
       });
 
     checkConflicts.nOutstanding++;
-    $.post('edit_entry_handler.php', params, function(result) {
-        if (result)
-        {
-          checkConflicts.nOutstanding--;
-          var conflictDiv = $('#conflict_check');
-          var scheduleDetails = $('#schedule_details');
-          var policyDetails = $('#policy_details');
-          var titleText, detailsHTML;
-          if (result.conflicts.length === 0)
-          {
-            conflictDiv.attr('class', 'good');
-            titleText = '<?php echo escape_js(html_entity_decode(get_vocab("no_conflicts"))) ?>';
-            detailsHTML = titleText;
-          }
-          else
-          {
-            conflictDiv.attr('class', 'bad');
-            detailsHTML = "<p>";
-            titleText = '<?php echo escape_js(html_entity_decode(get_vocab("conflict"))) ?>' + "\n\n";
-            detailsHTML += titleText + "<\/p>";
-            var conflictsList = getErrorList(result.conflicts);
-            detailsHTML += conflictsList.html;
-            titleText += conflictsList.text;
-          }
-          conflictDiv.attr('title', titleText);
-          scheduleDetails.html(detailsHTML);
 
+    var result;
+    $.ajax({
+      type : "post",
+      url : "edit_entry_handler.php",
+      data : params,
+      async : false,
+      success : function(data){
+        result = data;
+      }
+    });
+
+    return result;
+  //$.post('edit_entry_handler.php', params, function(result) {
+  //      if (result)
+  //      {
+          //checkConflicts.nOutstanding--;
+          //var conflictDiv = $('#conflict_check');
+          //var scheduleDetails = $('#schedule_details');
+          //var policyDetails = $('#policy_details');
+          //var titleText, detailsHTML;
+          //if (result.conflicts.length === 0)
+          //{
+          //  conflictDiv.attr('class', 'good');
+          //  titleText = '<?php //echo escape_js(html_entity_decode(get_vocab("no_conflicts"))) ?>//';
+          //  detailsHTML = titleText;
+          //}
+          //else
+          //{
+          //  conflictDiv.attr('class', 'bad');
+          //  detailsHTML = "<p>";
+          //  titleText = '<?php //echo escape_js(html_entity_decode(get_vocab("conflict"))) ?>//' + "\n\n";
+          //  detailsHTML += titleText + "<\/p>";
+          //  var conflictsList = getErrorList(result.conflicts);
+          //  detailsHTML += conflictsList.html;
+          //  titleText += conflictsList.text;
+          //}
+          //conflictDiv.attr('title', titleText);
+          //scheduleDetails.html(detailsHTML);
+          //
           <?php
-          // Display the results of the policy check.   Set the class to "good" if there
-          // are no policy violations at all.  To "notice" if there are no errors, but some
-          // notices (this happens when an admin user makes a booking that an ordinary user
-          // would not be allowed to.  Otherwise "bad".  Content and styling are supplied by CSS.
-          ?>
-          var policyDiv = $('#policy_check');
-          if (result.violations.errors.length === 0)
-          {
-            if (result.violations.notices.length === 0)
-            {
-              policyDiv.attr('class', 'good');
-              titleText = '<?php echo escape_js(html_entity_decode(get_vocab("no_rules_broken"))) ?>';
-              detailsHTML = titleText;
-            }
-            else
-            {
-              policyDiv.attr('class', 'notice');
-              detailsHTML = "<p>";
-              titleText = '<?php echo escape_js(html_entity_decode(get_vocab("rules_broken_notices"))) ?>' + "\n\n";
-              detailsHTML += titleText + "<\/p>";
-              var rulesList = getErrorList(result.violations.notices);
-              detailsHTML += rulesList.html;
-              titleText += rulesList.text;
-            }
-          }
-          else
-          {
-            policyDiv.attr('class', 'bad');
-            detailsHTML = "<p>";
-            titleText = '<?php echo escape_js(html_entity_decode(get_vocab("rules_broken"))) ?>' + "\n\n";
-            detailsHTML += titleText + "<\/p>";
-            var rulesList = getErrorList(result.violations.errors);
-            detailsHTML += rulesList.html;
-            titleText += rulesList.text;
-          }
-          policyDiv.attr('title', titleText);
-          policyDetails.html(detailsHTML);
-        }  <?php // if (result) ?>
-      }, 'json');
-  }, timeout);  <?php // setTimeout() ?>
+          //// Display the results of the policy check.   Set the class to "good" if there
+          //// are no policy violations at all.  To "notice" if there are no errors, but some
+          //// notices (this happens when an admin user makes a booking that an ordinary user
+          //// would not be allowed to.  Otherwise "bad".  Content and styling are supplied by CSS.
+          //?>
+          //var policyDiv = $('#policy_check');
+          //if (result.violations.errors.length === 0)
+          //{
+          //  if (result.violations.notices.length === 0)
+          //  {
+          //    policyDiv.attr('class', 'good');
+          //    titleText = '<?php //echo escape_js(html_entity_decode(get_vocab("no_rules_broken"))) ?>//';
+          //    detailsHTML = titleText;
+          //  }
+          //  else
+          //  {
+          //    policyDiv.attr('class', 'notice');
+          //    detailsHTML = "<p>";
+          //    titleText = '<?php //echo escape_js(html_entity_decode(get_vocab("rules_broken_notices"))) ?>//' + "\n\n";
+          //    detailsHTML += titleText + "<\/p>";
+          //    var rulesList = getErrorList(result.violations.notices);
+          //    detailsHTML += rulesList.html;
+          //    titleText += rulesList.text;
+          //  }
+          //}
+          //else
+          //{
+          //  policyDiv.attr('class', 'bad');
+          //  detailsHTML = "<p>";
+          //  titleText = '<?php //echo escape_js(html_entity_decode(get_vocab("rules_broken"))) ?>//' + "\n\n";
+          //  detailsHTML += titleText + "<\/p>";
+          //  var rulesList = getErrorList(result.violations.errors);
+          //  detailsHTML += rulesList.html;
+          //  titleText += rulesList.text;
+          //}
+          //policyDiv.attr('title', titleText);
+          //policyDetails.html(detailsHTML);
+        //}  <?php //// if (result) ?>
+      //}, 'json');
+  //}, timeout);  <?php //// setTimeout() ?>
 
 } <?php // function checkConflicts()
 
@@ -1325,12 +1336,25 @@ $(document).on('page_ready', function() {
       if ($(this).data('submit') === 'save_button')
       {
         <?php // Only validate the form if the Save button was pressed ?>
+
         var result = validate($(this));
         if (!result)
         {
           <?php // Clear the data flag if the validation failed ?>
           $(this).removeData('submit');
+          return  false;
         }
+
+        var res = checkConflicts();
+        if(res.valid_booking == false){
+          window.alert('时间冲突');
+          return false;
+        }
+
+        setTimeout(function () {
+          window.parent.location.replace(window.parent.location.href)//关闭iframe 并 刷新父级页面
+        }, 0);
+
         return result;
       }
       return true;
@@ -1348,15 +1372,16 @@ $(document).on('page_ready', function() {
   // Use a click event for checkboxes as it seems that in some browsers the event fires
   // before the value is changed.
   ?>
-  var formFields = $('form#main').find('input.date, [name]').not(':disabled, [type="submit"], [type="button"], [type="image"]');
-  formFields.filter(':checkbox')
-            .on('click', function() {
-                checkConflicts();
-              });
-  formFields.not(':checkbox')
-            .on('change', function() {
-                checkConflicts();
-              });
+
+  //var formFields = $('form#main').find('input.date, [name]').not(':disabled, [type="submit"], [type="button"], [type="image"]');
+  //formFields.filter(':checkbox')
+  //          .on('click', function() {
+  //              checkConflicts();
+  //            });
+  //formFields.not(':checkbox')
+  //          .on('change', function() {
+  //              checkConflicts();
+  //            });
 
   <?php
   // and a div to hold the dialog box which gives more details.    The dialog
@@ -1510,5 +1535,11 @@ $(document).on('page_ready', function() {
   }
 
   form.removeClass('js_hidden');
-
 });
+
+$(function(){
+  $('input[name="back_button"]').click(function(){
+    var res = checkConflicts();
+    console.log(res);
+  })
+})

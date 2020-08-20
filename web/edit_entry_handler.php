@@ -780,14 +780,12 @@ if ($is_ajax)
   echo json_encode($result);
   exit;
 }
-
 // Everything was OK.   Go back to where we came from
 if ($result['valid_booking'])
 {
   header("Location: $returl");
   exit;
 }
-
 else
 {
   print_header($view, $view_all, $year, $month, $day, $area, isset($room) ? $room : null);
