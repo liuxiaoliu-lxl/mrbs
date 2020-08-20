@@ -1063,8 +1063,8 @@ function get_fieldset_repeat()
                      ->setAttribute('class', 'rep_type_details js_none');
 
   $rep_interval_field->addElement(get_field_rep_interval($rep_interval, $disabled))
-                     ->addElement(get_field_rep_end_date($disabled))
-                     ->addElement(get_field_skip_conflicts($disabled));
+                     ->addElement(get_field_rep_end_date($disabled));
+//                     ->addElement(get_field_skip_conflicts($disabled));
 
   $rep_type_field->addControlElement($rep_interval_field);
 
@@ -1793,11 +1793,11 @@ foreach ($edit_entry_field_order as $key)
       break;
 
     case 'type':
-      $fieldset->addElement(get_field_type($type));
+//      $fieldset->addElement(get_field_type($type));
       break;
 
     case 'confirmation_status':
-      $fieldset->addElement(get_field_confirmation_status($tentative));
+//      $fieldset->addElement(get_field_confirmation_status($tentative));
       break;
 
     case 'privacy_status':

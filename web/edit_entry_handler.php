@@ -708,7 +708,8 @@ foreach ($rooms as $room_id)
   $booking['awaiting_approval'] = ($approval_enabled && !is_book_admin($room_id));
 
   // Confirmation status
-  $booking['tentative'] = ($confirmation_enabled && !$confirmed);
+//  $booking['tentative'] = ($confirmation_enabled && !$confirmed);
+  $booking['tentative'] = 0;
 
   $bookings[] = $booking;
 }
