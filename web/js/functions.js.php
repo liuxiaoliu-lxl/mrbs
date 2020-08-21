@@ -34,11 +34,11 @@ jQuery.fn.extend({
   // (c) adjusts the width of the select2 container because Select2 doesn't always get it right
   //     resilting in a '...'
   ?>
-  mrbsSelect: function() {
+  mrbsSelect: function(options) {
     if (!isMobile())
     {
       $(this).wrap('<div></div>')
-             .select2()
+             .select2(options)
              .next('.select2-container').each(function() {
                 var container = $(this);
                 container.width(container.width() + 5);

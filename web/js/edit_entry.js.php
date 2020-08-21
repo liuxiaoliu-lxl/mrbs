@@ -1184,29 +1184,31 @@ $(document).on('page_ready', function() {
   isAdmin = args.isAdmin;
 
   <?php // Turn the create_by select into a fancy select box. ?>
-  $('select#create_by').mrbsSelect();
+  $('select#create_by').mrbsSelect({
+    minimumResultsForSearch: -1
+  });
 
   //新增
-  $('select#rooms').wrap('<div></div>').select2({
-    width:200,
+  $('select#rooms').wrap('<div></div>').select2({ //房间
+    width:272,
     multiple:true,
     minimumResultsForSearch: -1
   })
 
-  $('select#area').wrap('<div></div>').select2({
-    width:200,
+  $('select#area').wrap('<div></div>').select2({ //标题
+    width:272,
     minimumResultsForSearch: -1
   })
-  $('select#start_seconds').wrap('<div></div>').select2({
-    width:100,
+  $('select#start_seconds').wrap('<div></div>').select2({// 开始时间段
+    width:130,
     minimumResultsForSearch: -1
   })
-  $('select#end_seconds').wrap('<div></div>').select2({
-    width:150,
+  $('select#end_seconds').wrap('<div></div>').select2({// 结束时间段
+    width:130,
     minimumResultsForSearch: -1
   })
-  $('select#rep_type_select').wrap('<div></div>').select2({
-    width:150,
+  $('select#rep_type_select').wrap('<div></div>').select2({// 重复类型
+    width:70,
     minimumResultsForSearch: -1
   })
   //新增结束
