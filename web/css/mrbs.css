@@ -630,7 +630,15 @@ table.dwm_main {
   min-height: 28px;
   line-height: 28px;
 }
+.dwm_main thead th a{
+  font-size:18px;
+  color:#605e5c;
+}
 
+.dwm_main#week_main thead th a span{
+  margin-left:4px;
+  font-size:14px;
+}
 .dwm_main tbody th {
   text-align: left;
 }
@@ -678,7 +686,9 @@ table.dwm_main {
 .tentative a {
   font-weight: normal;
 }
-
+.capacity{
+  font-size:14px;
+}
 .capacity::before {
   content: ' (';
 }
@@ -705,11 +715,25 @@ table.dwm_main {
 .dwm_main td {
   border-right: 1px solid #dddddd;
 }
+.dwm_main th:first-child,
+.dwm_main td:first-child {
+  border-left: 0 solid #dddddd;
+}
 
+.dwm_main th:last-child,
+.dwm_main td:last-child {
+  border-right: 0 solid #dddddd;
+}
 .dwm_main thead tr:last-child th {
   /* border-bottom: 1px solid #1976D2; */
-  /* border-bottom: 1px solid #edebe9; */
+  border-bottom: 1px solid #edebe9;
+  height: 48px;
+  line-height: 48px;
 }
+.dwm_main thead tr:last-child th.first_last{
+  border-bottom:none;
+}
+
 
 .dwm_main tfoot tr:first-child th {
   border-top: 1px solid #1976D2;
@@ -724,15 +748,7 @@ table.dwm_main {
   border-top: 0 solid #dddddd;
 }
 
-.dwm_main th:first-child,
-.dwm_main td:first-child {
-  border-left: 0 solid #dddddd;
-}
 
-.dwm_main th:last-child,
-.dwm_main td:last-child {
-  border-right: 0 solid #dddddd;
-}
 
 .dwm_main thead tr:first-child th:first-child {
   /* border-top-left-radius: 5px; */
@@ -740,8 +756,9 @@ table.dwm_main {
 
 .dwm_main thead tr:first-child th:last-child {
   /* border-top-right-radius: 5px; */
-  border-bottom: 1px solid #edebe9;
+  /* border-bottom: 1px solid #edebe9; */
 }
+
 
 .dwm_main tfoot tr:last-child th:first-child,
 .dwm_main thead + tbody tr:last-child th:first-child {
@@ -801,6 +818,10 @@ table.dwm_main {
 
 .dwm_main .booked a {
   box-sizing: border-box;
+  color: rgb(0,67,119);
+  fill: rgb(0,67,119);
+  padding: 0 4px;
+  text-decoration: none;
 }
 
 .dwm_main .booked a,
@@ -999,7 +1020,10 @@ div.both {
 .F {background-color: #82adad}
 .G {background-color: #ccffcc}
 .H {background-color: #d9d982}
-.I {background-color: #99cc66}
+.I {
+  /* background-color: #99cc66 */
+  background-color: rgba(0,120,212,0.24);
+}
 .J {background-color: #e6ffe6}
 
 .private_type {
@@ -1073,7 +1097,8 @@ tbody th a:hover {
 
 .dwm_main td:hover.new, .dwm_main td.new_hover {
   /* background-color: #1976D2; */
-  background: #C7E0F4;
+  /* background: #C7E0F4; */
+  background: #eee;
 }
 
 /* .dwm_main tbody tr:hover th {
