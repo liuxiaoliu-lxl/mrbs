@@ -145,11 +145,11 @@ function create_details_body($data, $as_html=false, $keep_private=false, $room_d
 
       case 'confirmation_status':
         // Confirmation status
-        if ($confirmation_enabled)
-        {
-          $value = ($data['tentative']) ? get_vocab("tentative") : get_vocab("confirmed");
-          $tbody .= create_details_row(get_vocab("confirmation_status"), $value, $as_html);
-        }
+//        if ($confirmation_enabled)
+//        {
+//          $value = ($data['tentative']) ? get_vocab("tentative") : get_vocab("confirmed");
+//          $tbody .= create_details_row(get_vocab("confirmation_status"), $value, $as_html);
+//        }
         break;
 
       case 'approval_status':
@@ -201,12 +201,12 @@ function create_details_body($data, $as_html=false, $keep_private=false, $room_d
 
       case 'type':
         // Type
-        if (isset($booking_types) && (count($booking_types) > 1))
-        {
-          $type = get_type_vocab($data['type']);
-          $value = (empty($type)) ? "?${data['type']}?" : $type;
-          $tbody .= create_details_row(get_vocab("type"), $value, $as_html);
-        }
+//        if (isset($booking_types) && (count($booking_types) > 1))
+//        {
+//          $type = get_type_vocab($data['type']);
+//          $value = (empty($type)) ? "?${data['type']}?" : $type;
+//          $tbody .= create_details_row(get_vocab("type"), $value, $as_html);
+//        }
         break;
 
       case 'create_by':

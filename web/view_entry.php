@@ -577,33 +577,33 @@ if ($approval_enabled && !$room_disabled && $awaiting_approval)
   }
 
   // Copy and Copy Series
-  echo "<div>\n";
-  if (!$series)
-  {
-    echo "<div>\n";
-    $params = array('action' => 'edit_entry.php',
-                    'value'  => get_vocab('copyentry'),
-                    'inputs' => array('id' => $id,
-                                      'copy' => 1,
-                                      'returl' => $returl)
-                   );
-    generate_button($params);
-    echo "</div>\n";
-  }
-  if ((!empty($repeat_id) || $series) && $repeats_allowed)
-  {
-    echo "<div>\n";
-    $params = array('action' => "edit_entry.php?day=$day&month=$month&year=$year",
-                    'value'  => get_vocab('copyseries'),
-                    'inputs' => array('id' => $id,
-                                      'edit_type' => 'series',
-                                      'copy' => 1,
-                                      'returl' => $returl)
-                   );
-    generate_button($params);
-    echo "</div>\n";
-  }
-  echo "</div>\n";
+//  echo "<div>\n";
+//  if (!$series)
+//  {
+//    echo "<div>\n";
+//    $params = array('action' => 'edit_entry.php',
+//                    'value'  => get_vocab('copyentry'),
+//                    'inputs' => array('id' => $id,
+//                                      'copy' => 1,
+//                                      'returl' => $returl)
+//                   );
+//    generate_button($params);
+//    echo "</div>\n";
+//  }
+//  if ((!empty($repeat_id) || $series) && $repeats_allowed)
+//  {
+//    echo "<div>\n";
+//    $params = array('action' => "edit_entry.php?day=$day&month=$month&year=$year",
+//                    'value'  => get_vocab('copyseries'),
+//                    'inputs' => array('id' => $id,
+//                                      'edit_type' => 'series',
+//                                      'copy' => 1,
+//                                      'returl' => $returl)
+//                   );
+//    generate_button($params);
+//    echo "</div>\n";
+//  }
+//  echo "</div>\n";
 
   // Export and Export Series
   if (!$keep_private && !$enable_periods)
@@ -611,33 +611,33 @@ if ($approval_enabled && !$room_disabled && $awaiting_approval)
     // The iCalendar information has the full booking details in it, so we will not allow
     // it to be exported if it is private and the user is not authorised to see it.
     // iCalendar information doesn't work with periods at the moment (no periods to times mapping)
-    echo "<div>\n";
-    if (!$series)
-    {
-      echo "<div>\n";
-      $params = array('action' => 'view_entry.php',
-                      'value'  => get_vocab('exportentry'),
-                      'inputs' => array('id' => $id,
-                                        'action' => 'export',
-                                        'returl' => $returl)
-                     );
-      generate_button($params);
-      echo "</div>\n";
-    }
-    if (!empty($repeat_id) || $series)
-    {
-      echo "<div>\n";
-      $params = array('action' => "view_entry.php?day=$day&month=$month&year=$year",
-                      'value'  => get_vocab('exportseries'),
-                      'inputs' => array('id' => $repeat_id,
-                                        'action' => 'export',
-                                        'series' => 1,
-                                        'returl' => $returl)
-                     );
-      generate_button($params);
-      echo "</div>\n";
-    }
-    echo "</div>\n";
+//    echo "<div>\n";
+//    if (!$series)
+//    {
+//      echo "<div>\n";
+//      $params = array('action' => 'view_entry.php',
+//                      'value'  => get_vocab('exportentry'),
+//                      'inputs' => array('id' => $id,
+//                                        'action' => 'export',
+//                                        'returl' => $returl)
+//                     );
+//      generate_button($params);
+//      echo "</div>\n";
+//    }
+//    if (!empty($repeat_id) || $series)
+//    {
+//      echo "<div>\n";
+//      $params = array('action' => "view_entry.php?day=$day&month=$month&year=$year",
+//                      'value'  => get_vocab('exportseries'),
+//                      'inputs' => array('id' => $repeat_id,
+//                                        'action' => 'export',
+//                                        'series' => 1,
+//                                        'returl' => $returl)
+//                     );
+//      generate_button($params);
+//      echo "</div>\n";
+//    }
+//    echo "</div>\n";
   }
 echo "</div>\n";
 
