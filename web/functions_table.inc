@@ -1743,11 +1743,6 @@ function month_room_table_innerhtml($view, $view_all, $year, $month, $day, $area
       }
       // then put in the day of the month
       $vars['view'] = 'day';
-      $query = http_build_query($vars, '', '&');
-      $html .= '<a class="monthday" href="index.php?' . htmlspecialchars($query) . "\">$d</a>\n";
-
-      $html .= "</div>\n";
-
       // then the link to make a new booking
       $vars['view'] = $view;
 
@@ -1760,6 +1755,10 @@ function month_room_table_innerhtml($view, $view_all, $year, $month, $day, $area
         $vars['hour'] = $morningstarts;
         $vars['minute'] = $morningstarts_minutes;
       }
+
+      $html .= '<a class="monthday" data-jumpurl="edit_entry.php?' . htmlspecialchars($query) . "\">$d</a>\n";
+
+      $html .= "</div>\n";
 
       $query = http_build_query($vars, '', '&');
 

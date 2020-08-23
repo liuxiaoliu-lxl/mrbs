@@ -1748,7 +1748,10 @@ if(isset($id) && !isset($copy))
 }
 
 $fieldset = new ElementFieldset();
-$fieldset->addLegend(get_vocab($token));
+
+$div = new ElementDiv();
+$div->setText(get_vocab($token));
+$fieldset->addElement($div);
 
 foreach ($edit_entry_field_order as $key)
 {
