@@ -12,6 +12,8 @@ require_once "functions_table.inc";
 // Display the entry-type color key.
 function get_color_key()
 {
+
+  return '';
   global $booking_types;
 
   $html = '';

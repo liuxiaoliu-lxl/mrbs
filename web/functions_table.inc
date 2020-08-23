@@ -351,15 +351,12 @@ function time_cell_html($s, $url, $isEmpty = false)
   global $enable_periods, $resolution;
 
   $html = '';
+  $url = 'javascript:void(0);';
 
-  if($isEmpty){
-    $html .= "<th data-seconds=\"$s\">";
-    $html .= "<a href=\"$url\"  title=\"" . get_vocab("highlight_line") . "\">";
-  }
-  else{
+  $html .= "<th data-seconds=\"$s\">";
+  $html .= "<a href=\"$url\"  title=\"" . get_vocab("highlight_line") . "\">";
 
-    $html .= "<th data-seconds=\"$s\">";
-    $html .= "<a href=\"$url\"  title=\"" . get_vocab("highlight_line") . "\">";
+  if(!$isEmpty){
 
     if ($enable_periods)
     {
@@ -788,12 +785,9 @@ function day_table_innerhtml($view, $year, $month, $day, $area_id, $room_id, $ti
         $tbody .= ' class="' . implode(' ', $classes) . '"';
       }
       $tbody .= ">\n";
-      if($index++ % 2 == 0){
-        $tbody .= time_cell_html($s, $url);
-      }
-      else{
-        $tbody .= time_cell_html($s, $url, true);
-      }
+
+      $tbody .= time_cell_html($s, $url, $index++ % 2 == 1);
+
       $is_invalid = $is_possibly_invalid && is_invalid_datetime(0, 0, $s, $month, $day, $year);
       // Loop through the list of rooms we have for this area
       foreach ($rooms as $room)
@@ -1443,6 +1437,7 @@ function week_room_table_innerhtml($view, $view_all, $year, $month, $day, $area_
 
   else
   {
+    $index = 0;
     // the standard view, with days of the week along the top and times down the side
     for ($s = $morning_slot_seconds;
          $s <= $evening_slot_seconds;
@@ -1477,8 +1472,7 @@ function week_room_table_innerhtml($view, $view_all, $year, $month, $day, $area_
       }
       $tbody .= ">\n";
 
-      $tbody .= time_cell_html($s, $url);
-
+      $tbody .= time_cell_html($s, $url, $index++ % 2 == 1);
 
       // See note above: weekday==0 is day $weekstarts, not necessarily Sunday.
       for ($thisday = 0; $thisday < DAYS_PER_WEEK; $thisday++)
