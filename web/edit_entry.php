@@ -1143,7 +1143,8 @@ function get_fieldset_submit_buttons()
         ->addControlElement($submit)
         ->addControlElement($div);
 
-  $fieldset->addElement($field);
+  $fieldset->addElement($field)
+           ->setAttribute('class', 'new_dialog_submit_buttons');
 
 
 
@@ -1766,10 +1767,13 @@ if(isset($id) && !isset($copy))
 $fieldset = new ElementFieldset();
 
 $div = new ElementDiv();
+$div->setAttribute('class', 'new_dialog_header');
 $close_div = new ElementDiv();
 $close_div->setAttribute('id', 'close_div_icon');
 $div->addElement($close_div);
 $form->addElement($div);
+
+$form->addElement(get_fieldset_submit_buttons());
 
 foreach ($edit_entry_field_order as $key)
 {
@@ -1793,9 +1797,9 @@ foreach ($edit_entry_field_order as $key)
       $fieldset->addElement(get_field_name($name));
       break;
 
-    case 'description':
-      $fieldset->addElement(get_field_description($description));
-      break;
+    // case 'description':
+    //   $fieldset->addElement(get_field_description($description));
+    //   break;
 
     case 'start_time':
       $fieldset->addElement(get_field_start_time($start_time));
@@ -1855,8 +1859,8 @@ if (need_to_send_mail() &&
 {
   $form->addElement(get_fieldset_booking_controls());
 }
-
-$form->addElement(get_fieldset_submit_buttons());
+$fieldset->addElement(get_field_description($description));
+// $form->addElement(get_fieldset_submit_buttons());
 
 $form->render();
 echo <<<EOF
