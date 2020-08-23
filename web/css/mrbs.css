@@ -408,6 +408,8 @@ nav.main_calendar {
   -ms-flex-align: center;
   align-items: center;
   width: 100%;
+  padding-right: 20px;
+  box-sizing: border-box;
    }
 
 nav.main_calendar > nav {
@@ -702,7 +704,8 @@ table.dwm_main {
 }
 
 .dwm_main thead tr:last-child th {
-  border-bottom: 1px solid #1976D2;
+  /* border-bottom: 1px solid #1976D2; */
+  /* border-bottom: 1px solid #edebe9; */
 }
 
 .dwm_main tfoot tr:first-child th {
@@ -729,11 +732,12 @@ table.dwm_main {
 }
 
 .dwm_main thead tr:first-child th:first-child {
-  border-top-left-radius: 5px;
+  /* border-top-left-radius: 5px; */
 }
 
 .dwm_main thead tr:first-child th:last-child {
-  border-top-right-radius: 5px;
+  /* border-top-right-radius: 5px; */
+  border-bottom: 1px solid #edebe9;
 }
 
 .dwm_main tfoot tr:last-child th:first-child,
@@ -839,7 +843,7 @@ table.dwm_main {
 }
 
 .dwm_main tbody a {
-  padding: 0.2em;
+  /* padding: 0.2em; */
   box-sizing: border-box;
 }
 
@@ -1065,7 +1069,8 @@ tbody th a:hover {
 } */
 
 .dwm_main td:hover.new, .dwm_main td.new_hover {
-  background-color: #1976D2;
+  /* background-color: #1976D2; */
+  background: #C7E0F4;
 }
 
 /* .dwm_main tbody tr:hover th {
