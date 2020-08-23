@@ -351,15 +351,12 @@ function time_cell_html($s, $url, $isEmpty = false)
   global $enable_periods, $resolution;
 
   $html = '';
+  $url = 'javascript:void(0);';
 
-  if($isEmpty){
-    $html .= "<th data-seconds=\"$s\">";
-    $html .= "<a href=\"$url\"  title=\"" . get_vocab("highlight_line") . "\">";
-  }
-  else{
+  $html .= "<th data-seconds=\"$s\">";
+  $html .= "<a href=\"$url\"  title=\"" . get_vocab("highlight_line") . "\">";
 
-    $html .= "<th data-seconds=\"$s\">";
-    $html .= "<a href=\"$url\"  title=\"" . get_vocab("highlight_line") . "\">";
+  if(!$isEmpty){
 
     if ($enable_periods)
     {
