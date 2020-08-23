@@ -23,6 +23,10 @@ window.onload = function () {
     showIframe(jumpurl,510,550);
   })
 
+  $(".monthday").on("click", function (e) {
+    var jumpurl = $(this).data('jumpurl');
+    showIframe(jumpurl,510,550);
+  })
 
   function closeIFrame() {
     console.log("关闭子页面");
