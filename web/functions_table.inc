@@ -654,7 +654,8 @@ function day_table_innerhtml($view, $year, $month, $day, $area_id, $room_id, $ti
     $tag = 'time';
   }
 
-  $first_last_html = '<th class="first_last">' . get_vocab($tag) . "</th>\n";
+//  $first_last_html = '<th class="first_last">' . get_vocab($tag) . "</th>\n";
+  $first_last_html = '<th class="first_last"></th>';
   $header_inner .= $first_last_html;
 
   // We can display the table in two ways

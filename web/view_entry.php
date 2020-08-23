@@ -641,12 +641,12 @@ if ($approval_enabled && !$room_disabled && $awaiting_approval)
   }
 echo "</div>\n";
 
-if (isset($server['HTTP_REFERER'])) //remove the link if displayed from an email
-{
-  echo "<div id=\"returl\">\n";
-  echo '<a href="' . htmlspecialchars($server['HTTP_REFERER']) . '">' . get_vocab('returnprev') . "</a>\n";
-  echo "</div>\n";
-}
+//if (isset($server['HTTP_REFERER'])) //remove the link if displayed from an email
+//{
+//  echo "<div id=\"returl\">\n";
+//  echo '<a href="' . htmlspecialchars($server['HTTP_REFERER']) . '">' . get_vocab('returnprev') . "</a>\n";
+//  echo "</div>\n";
+//}
 
 
 print_footer();
