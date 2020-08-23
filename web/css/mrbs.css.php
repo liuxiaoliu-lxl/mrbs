@@ -59,14 +59,22 @@ body {
   font-style: italic;
 }
 
-input, textarea {
+ textarea {
   box-sizing: border-box;
+}
+input{
+  box-sizing: border-box;
+  border:1px solid #aaa;
+  border-radius:4px;
+  outline:none;
+  height:28px;
+  padding:0 4px;
 }
 
 input.date,
 .js input[type="date"],
 input.form-control.input {
-  width: 143px;
+  width: 130px;
 }
 
 input.form-control.input.flatpickr-mobile {
@@ -91,21 +99,14 @@ button.image {
   padding: 0;
 }
 
-.contents, .banner {
+ .banner {
   padding: 0 1.5rem;
 }
 
 .contents {
-   float: left;
   width: 100%;
   box-sizing: border-box;
-  padding-bottom: 3rem;
-
-  /*width: 510px;*/
-  /*border: 1px solid gray;*/
-  /* margin-left: 50px; */
-  /*height: 390px;
-  overflow: hidden; */
+  display:table!important;
 }
 
 h1 {
@@ -119,20 +120,10 @@ h2 {
 }
 
 .minicalendars {
-  /* margin-right: 2em;
-  padding-top: 0.8rem;  */
+  display:table-cell;
+  background:#f3f2f1;
   height: 100%;
   flex:1;
-}
-
-.minicalendars.formed {
-  display: none;
-}
-
-@media screen and (min-width: 80rem) {
-  .minicalendars.formed {
-    display: block;
-  }
 }
 
 .flatpickr-calendar.inline {
@@ -161,12 +152,13 @@ h2 {
   height: 40px;
 }
 
-.index :not(.simple) + .contents {
+<!-- .index :not(.simple) + .contents {
   display: -ms-flexbox;
   display: flex;
-}
+} -->
 
 .view_container {
+  display:table-cell;
   -ms-flex-positive: 1;
   flex-grow: 1;
   width: 100%;
@@ -202,7 +194,7 @@ tr:nth-child(odd) td.new,
   background-color: #efefef;
 }
 
-tr:nth-child(even) td.new,
+.table_container table tr:nth-child(even) td.new,
 .all_rooms tr:nth-child(even) td {
   background-color: #ffffff;
 }
@@ -292,6 +284,11 @@ label.link a::after,
 
 label:empty::after, .group label::after {
   visibility: hidden;
+}
+
+label.no_suffix{
+  margin-left: 20px;
+  line-height: 28px;
 }
 
 label.no_suffix::after,
@@ -426,10 +423,11 @@ nav.main_calendar {
   display: flex;
   -ms-flex-align: center;
   align-items: center;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
+  <!-- -ms-flex-wrap: wrap;
+  flex-wrap: wrap; -->
   width: 100%;
-  margin-top: 0.8rem;  }
+  <!-- margin-top: 0.8rem;  -->
+   }
 
 nav.main_calendar > nav {
   display: -ms-flexbox;
@@ -450,12 +448,12 @@ nav.main_calendar > nav:last-child {
   justify-content: flex-end;
 }
 
-nav.view div.container {
-  display: inline-grid;
-  grid-template-columns: 1fr 1fr 1fr;
+nav.view div.container_date {
+  height:28px;
+  line-height: 28px;
 }
 
-nav.view a, nav.arrow a {
+ nav.arrow a {
   background: linear-gradient(#eeeeee, #cccccc);
   border-right: thin solid #f9fbfc;
   cursor: pointer;
@@ -464,19 +462,27 @@ nav.view a, nav.arrow a {
   text-align: center;
 }
 
+nav.view a {
+  background: linear-gradient(#eeeeee, #cccccc);
+  cursor: pointer;
+  display:inline-block;
+  font-weight: normal;
+  text-align: center;
+}
+
 nav.view a:first-child, nav.arrow a:first-child {
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
 }
 
 nav.view a:last-child, nav.arrow a:last-child {
   border-right: 0;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
 }
 
 nav.view a {
-  padding: 0.2em 0.5em;
+  padding: 0px 10px;
 }
 
 nav.arrow a {
@@ -488,10 +494,13 @@ nav.view a:hover,
 nav.view a:focus,
 nav.arrow a:hover,
 nav.arrow a:focus {
-  background: #1976D2;
-  box-shadow: inset 1px 1px darkblue;
+  background: #0078d4;
   color: #ffffff;
   text-decoration: none;
+}
+
+nav.view a:hover{
+
 }
 
 nav a.prev::before {
@@ -1331,12 +1340,18 @@ div#div_custom_html {
   line-height: 18px;
 }
 
+
 .standard input[type="text"]:not(.date):not(.form-control),
 .standard input[type="email"],
 .standard input[type="password"],
 .standard input[type="search"],
 .standard textarea {
-  width: 17rem;  }
+  width: 17rem;
+  border:1px solid #aaa;
+  outline:none;
+  height:28px;
+  border-radius:4px;
+    }
 
 .standard input[type="text"].short {
   width: 4em;
@@ -2218,83 +2233,108 @@ h2.date.loading::after {
 }
 
 /* 左侧抽屉日历 样式修改 */
-.bootstrap-datetimepicker-widget table td.today:before{
-  /*display: none!important;*/
-}
+
+
 .bootstrap-datetimepicker-widget table td span.active{
-  color: #323130;
-  background-color: #C7E0F4;
-  font-weight: 600;
+    color: #323130!important;
+    background-color: #C7E0F4!important;
+    font-weight: 600;
 }
 .bootstrap-datetimepicker-widget table td.active, .bootstrap-datetimepicker-widget table td.active:hover{
-  color: #323130;
-  background-color: #C7E0F4;
+    color: #323130!important;
+    background-color: #C7E0F4!important;
 }
 
-.leftNav--DatepickerWrap{
-  width: 220px;
-  padding:12px;
+.bootstrap-datetimepicker-widget table td.today{
+    background-color: #0078d4 !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    /* border-radius: 100%; */
 }
+.bootstrap-datetimepicker-widget table td.today:before{
+    display: none!important;
+}
+.leftNav--DatepickerWrap{
+    width: 220px;
+    padding:12px;
+}
+
+.bootstrap-datetimepicker-widget table{
+    font-size: 12px;
+    font-family: 'PingFang SC';
+}
+.bootstrap-datetimepicker-widget table thead tr:nth-child(1){
+    font-size: 14px;
+} 
+ tr:nth-child(even) td.new{
+ background-color: none!important;   
+}
+
+
 
 /* 左侧抽屉展开样式 */
 .leftNav--large{
-  width: 228px;
-  height: 100%;
-  min-width: 228px;
-  border-right: 1px solid #edebe9;
-  background-color: #f3f2f1;
+    width: 228px;
+    height: 100%;
+    min-width: 228px;
+    border-right: 1px solid #edebe9;
+    background-color: #f3f2f1;
 }
 .leftNav--topbar{
-  display:-webkit-flex;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  border-bottom: 1px solid #edebe9;
+    display:-webkit-flex;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px solid #edebe9;
 }
 
 /*左侧抽屉收起样式 */
 .leftNav--small{
-  width: 48px;
-  height: 100%;
-  min-width: 48px;
-  border-right: 1px solid #edebe9;
-  background-color: #f3f2f1;
-  display: none;
+    width: 48px;
+    height: 100%;
+    min-width: 48px;
+    border-right: 1px solid #edebe9;
+    background-color: #f3f2f1;
+    display: none;
 }
 .leftNav--small-topbar{
-  width: 136px;
-  display: flex;
-  display: -webkit-flex;
-  align-items: center;
+    width: 136px;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
 }
 
 /* 左侧抽屉 top-bar 公共样式*/
 .leftNav--topbar-iconbtn{
-  width: 40px;
-  height: 32px;
-  margin: 6px 4px;
-  outline: transparent;
-  border: none;
+    width: 40px;
+    height: 32px;
+    margin: 6px 4px;
+    outline: transparent;
+    border: none;
 }
 
-.leftNav--topbar-icon:hover{
-  background-color: #edebe9;
+.leftNav--topbar-iconbtn:hover{
+    background-color: #edebe9;
 }
-.leftNav--topbar-icon > span{
-  display: flex;
-  height: 100%;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
+.leftNav--topbar-iconbtn > span{
+    display: flex;
+    height: 100%;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
 }
 .leftNav--topbar-newBtn{
-  height: 32px;
-  line-height: 32px;
-  background-color: #0078d4;
-  padding: 0 4px;
-  box-sizing: border-box;
-  color: #fff;
-  border-radius: 2px;
+    height: 32px;
+    line-height: 32px;
+    background-color: #0078d4;
+    padding: 0 10px;
+    box-sizing: border-box;
+    color: #fff;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.leftNav--topbar-newBtn:hover{
+    background-color: #005a9e;
 }
 
 /* 内容区，顶部区域 */

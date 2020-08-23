@@ -219,7 +219,7 @@ function get_view_nav($current_view, $view_all, $year, $month, $day, $area, $roo
   $html = '';
 
   $html .= '<nav class="view">';
-  $html .= '<div class="container">';  // helps the CSS
+  $html .= '<div class="container_date">';  // helps the CSS
 
   $views = array('day' => 'nav_day',
                  'week' => 'nav_week',
