@@ -1756,11 +1756,11 @@ function month_room_table_innerhtml($view, $view_all, $year, $month, $day, $area
         $vars['minute'] = $morningstarts_minutes;
       }
 
+      $query = http_build_query($vars, '', '&');
+
       $html .= '<a class="monthday" data-jumpurl="edit_entry.php?' . htmlspecialchars($query) . "\">$d</a>\n";
 
       $html .= "</div>\n";
-
-      $query = http_build_query($vars, '', '&');
 
       $html .= '<a class="new_booking" data-jumpurl="edit_entry.php?' . htmlspecialchars($query) . '"' .
                ' aria-label="' . htmlspecialchars(get_vocab('create_new_booking')) . "\">\n";

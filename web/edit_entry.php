@@ -809,25 +809,6 @@ function get_field_rep_type($value, $disabled=false)
 
   $field->addControlElement($radio_group);
 
-  // No point in showing anything more if the repeat fields are disabled
-  // and the repeat type is None
-  if (!$disabled || ($value != REP_NONE))
-  {
-    // And no point in showing the weekly repeat details if the repeat
-    // fields are disabled and the repeat type is not a weekly repeat
-    if (!$disabled || ($value == REP_WEEKLY))
-    {
-      $field->addControlElement(get_fieldset_rep_weekly_details($disabled));
-    }
-
-    // And no point in showing the monthly repeat details if the repeat
-    // fields are disabled and the repeat type is not a monthly repeat
-    if (!$disabled || ($value == REP_MONTHLY))
-    {
-      $field->addControlElement(get_fieldset_rep_monthly_details($disabled));
-    }
-  }
-
   return $field;
 }
 
@@ -849,7 +830,7 @@ function get_field_rep_day($disabled=false)
   $field = new FieldInputCheckboxGroup();
 
   $field->setAttribute('id', 'rep_day')
-        ->setLabel(get_vocab('rep_rep_day'))
+//        ->setLabel(get_vocab('rep_rep_day'))
         ->addCheckboxOptions($options, 'rep_day[]', $rep_day, true, $disabled);
 
   return $field;
@@ -1055,21 +1036,56 @@ function get_fieldset_repeat()
   $fieldset = new ElementFieldset();
   $fieldset->setAttribute('id', 'rep_info');
 
-  $rep_type_field = get_field_rep_type($rep_type, $disabled);
+  $fieldset->addElement(get_field_rep_type($rep_type, $disabled))
+    ->addElement(get_fieldset_rep_wm())
+    ->addElement(get_fieldset_rep_wm(true))
+    ->addElement(get_fieldset_interval())
+  ;
 
+  return $fieldset;
+}
 
-  $rep_interval_field = new ElementFieldset();
-  $rep_interval_field->setAttribute('id', 'rep_day_year')
-                     ->setAttribute('class', 'rep_type_details js_none');
+function get_fieldset_rep_wm($isWeek = false){
+  global $edit_type, $repeats_allowed;
+  global $rep_type, $rep_interval;
 
-  $rep_interval_field->addElement(get_field_rep_interval($rep_interval, $disabled))
-                     ->addElement(get_field_rep_end_date($disabled));
+  $disabled = ($edit_type != "series") || !$repeats_allowed;
+
+  // No point in showing anything more if the repeat fields are disabled
+  // and the repeat type is None
+  if (!$disabled || ($rep_type != REP_NONE))
+  {
+    // And no point in showing the weekly repeat details if the repeat
+    // fields are disabled and the repeat type is not a weekly repeat
+    if ((!$disabled || ($rep_type == REP_WEEKLY)) && $isWeek)
+    {
+      return get_fieldset_rep_weekly_details($disabled);
+    }
+
+    // And no point in showing the monthly repeat details if the repeat
+    // fields are disabled and the repeat type is not a monthly repeat
+    if ((!$disabled || ($rep_type == REP_MONTHLY)) && !$isWeek)
+    {
+      return get_fieldset_rep_monthly_details($disabled);
+    }
+  }
+}
+
+function get_fieldset_interval(){
+
+  global $edit_type, $repeats_allowed;
+  global $rep_type, $rep_interval;
+
+  $disabled = ($edit_type != "series") || !$repeats_allowed;
+
+  $fieldset = new ElementFieldset();
+
+  $fieldset->setAttribute('id', 'rep_day_year')
+    ->setAttribute('class', 'rep_type_details js_none');
+
+  $fieldset->addElement(get_field_rep_interval($rep_interval, $disabled))
+           ->addElement(get_field_rep_end_date($disabled));
 //                     ->addElement(get_field_skip_conflicts($disabled));
-
-  $rep_type_field->addControlElement($rep_interval_field);
-
-  $fieldset->addElement($rep_type_field);
-
   return $fieldset;
 }
 
@@ -1750,8 +1766,10 @@ if(isset($id) && !isset($copy))
 $fieldset = new ElementFieldset();
 
 $div = new ElementDiv();
-$div->setText(get_vocab($token));
-$fieldset->addElement($div);
+$close_div = new ElementDiv();
+$close_div->setAttribute('id', 'close_div_icon');
+$div->addElement($close_div);
+$form->addElement($div);
 
 foreach ($edit_entry_field_order as $key)
 {
@@ -1825,6 +1843,10 @@ $form->addElement($fieldset);
 if (($edit_type == "series") && $repeats_allowed)
 {
   $form->addElement(get_fieldset_repeat());
+
+//  $form->addElement(get_fieldset_rep_wm());
+//  $form->addElement(get_fieldset_rep_wm(true));
+//  $form->addElement(get_fieldset_interval());
 }
 
 // Checkbox for no email
