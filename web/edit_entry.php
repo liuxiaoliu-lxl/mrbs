@@ -1773,7 +1773,7 @@ $close_div->setAttribute('id', 'close_div_icon');
 $div->addElement($close_div);
 $form->addElement($div);
 
-$form->addElement(get_fieldset_submit_buttons());
+// $form->addElement(get_fieldset_submit_buttons());
 
 foreach ($edit_entry_field_order as $key)
 {
@@ -1860,7 +1860,7 @@ if (need_to_send_mail() &&
   $form->addElement(get_fieldset_booking_controls());
 }
 $fieldset->addElement(get_field_description($description));
-// $form->addElement(get_fieldset_submit_buttons());
+$form->addElement(get_fieldset_submit_buttons());
 
 $form->render();
 echo <<<EOF

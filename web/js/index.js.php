@@ -204,4 +204,5 @@ $(document).on('page_ready', function() {
   // Pre-fetch some pages to improve performance
   ?>
   prefetch();
+
 });

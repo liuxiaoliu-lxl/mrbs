@@ -64,6 +64,4 @@ window.onload = function () {
       $("#iFrameWrapBg").remove();
     });
   }
-
-
 }
