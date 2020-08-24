@@ -371,7 +371,7 @@ if (isset($action) && ($action == "export"))
 // ------------------------
 
 print_header($view, $view_all, $year, $month, $day, $area, isset($room) ? $room : null, false, false);
-
+echo "<div class='view_entry_div'>\n";
 if (empty($series))
 {
   $series = 0;
@@ -639,6 +639,7 @@ if ($approval_enabled && !$room_disabled && $awaiting_approval)
 //    }
 //    echo "</div>\n";
   }
+echo "</div>\n";
 echo "</div>\n";
 
 //if (isset($server['HTTP_REFERER'])) //remove the link if displayed from an email
