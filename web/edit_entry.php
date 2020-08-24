@@ -1138,8 +1138,10 @@ function get_fieldset_submit_buttons()
       ->addElement($span_policy);
 
   $field->setAttribute('class', 'submit_buttons')
-        ->addLabelClass('no_suffix')
-        ->addLabelElement($back)
+        // ->addLabelClass('no_suffix')
+        // ->addLabelElement($back)
+        ->addControlElement($back)
+       
         ->addControlElement($submit)
         ->addControlElement($div);
 
@@ -1769,7 +1771,7 @@ $fieldset = new ElementFieldset();
 $div = new ElementDiv();
 $div->setAttribute('class', 'new_dialog_header');
 $close_div = new ElementDiv();
-$close_div->setAttribute('id', 'close_div_icon');
+$close_div->setAttribute('class', 'new_dialog_close_icon');
 $div->addElement($close_div);
 $form->addElement($div);
 

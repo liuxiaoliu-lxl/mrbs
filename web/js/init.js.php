@@ -20,7 +20,7 @@ window.onload = function () {
   })
   $(".edit_booking").on("click", function (e) {
     var jumpurl = $(this).data('jumpurl');
-    showIframe(jumpurl,510,550);
+    showIframe(jumpurl,510,438);
   })
 
   $(".monthday").on("click", function (e) {
@@ -28,11 +28,20 @@ window.onload = function () {
     showIframe(jumpurl,510,550);
   })
 
+  $('.view_entry_close_icon').on('click',function(e){
+    window.parent.closeIFrame();
+  })
+
+  $('.new_dialog_close_icon').on('click',function(e){
+    window.parent.closeIFrame();
+  })
+  
   function closeIFrame() {
     console.log("关闭子页面");
     $("#iFrameWrap").remove();
     $("#iFrameWrapBg").remove();
   }
+  window.closeIFrame = closeIFrame;
   function showIframe(url, w, h) {
     //添加iframe
     var if_w = w;

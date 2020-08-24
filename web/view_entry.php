@@ -382,15 +382,21 @@ else
 }
 
 // Now that we know all the data we start drawing it
-
-echo "<h3" . (($keep_private && $is_private_field['entry.name']) ? " class=\"private\"" : "") . ">\n";
+echo "<div  class=\"view_entry_header\">\n";
+echo "<span" . (($keep_private && $is_private_field['entry.name']) ? " class=\"private\"" : "") . ">\n";
 echo ($keep_private && $is_private_field['entry.name']) ? "[" . get_vocab("unavailable") . "]" : htmlspecialchars($row['name']);
 if (is_private_event($private) && $writeable)
 {
   echo ' ('.get_vocab("unavailable").')';
 }
-echo "</h3>\n";
-
+echo "</span>\n";
+echo "<i class=\"view_entry_close_icon\">\n";
+// echo "<svg width='28' height='28' viewBox='0 0 16 16' class='bi bi-x' fill='currentColor' xmlns='http://www.w3.org/2000/svg'>
+// <path fill-rule='evenodd' d='M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z'/>
+// <path fill-rule='evenodd' d='M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z'/>
+// </svg>";
+echo "</i>\n";
+echo "</div>\n";
 
 echo "<table id=\"entry\" class=\"list\">\n";
 
