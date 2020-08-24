@@ -2247,3 +2247,13 @@ function get_bookings_in_series($repeat_id)
 
   return $bookings;
 }
+
+
+function get_entry_by_user($user){
+  global $tbl_entry;
+
+  $sql = "SELECT * FROM $tbl_entry WHERE create_by = ?";
+  $res = db()->query($sql, array($user));
+
+  return $res->all_rows_keyed();
+}
