@@ -398,12 +398,13 @@ function room_cell_html(array $room, array $vars)
       break;
   }
 
+
   $title = get_vocab($tag) . "\n\n" . $room['description'];
   $html = '';
   $html .= '<th data-room="' . htmlspecialchars($room['id']) . '">';
   $html .= '<a href="' . htmlspecialchars($link) . '"' .
            ' title = "' . htmlspecialchars($title) . '">';
-  $html .= htmlspecialchars($room['room_name']);
+  $html .= '<span>' . $vars['month'] . '月' . $vars['day'] . '日' . '</span>-<span>' . htmlspecialchars($room['room_name']) . '</span>';
   // Put the capacity in a span to give flexibility in styling
   $html .= '<span class="capacity';
   if ($room['capacity'] == 0)
