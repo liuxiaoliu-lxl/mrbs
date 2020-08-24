@@ -102,7 +102,7 @@ function makeDataTable(id, specificOptions, fixedColumnsOptions)
     pageLength: 25,
     pagingType: 'full_numbers',
     processing: true,
-    scrollCollapse: true,
+    scrollCollapse:true,
     stateSave: true,
     dom: 'B<"clear">lfrtip',
     scrollX: '100%',
