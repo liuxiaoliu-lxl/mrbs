@@ -470,4 +470,23 @@ echo "</div>\n";
 echo get_color_key();
 echo "</div>\n";
 
+echo <<<EOF
+<div class="user_container">
+  <div class="user_container_title">
+    <span>我的账户</span>
+    <span></span>
+  </div>
+  <div class="user_container_infos">
+    <div class="user_info_icon">
+        <i></i>
+    </div>
+    <div class="user_infos_info">
+        <p>{$_SESSION['UserName']}</p>
+        <p></p>
+        <p></p>
+    </div>
+  </div>
+</div>
+EOF;
+
 print_footer();
