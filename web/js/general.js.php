@@ -35,9 +35,6 @@ var args;
 
 $(document).on('page_ready', function() {
 
-  form.on('submit', function() {
-    console.log(1)
-  })
 
   <?php // Retrieve the data that the JavaScript files need. ?>
   args = $('body').data();
