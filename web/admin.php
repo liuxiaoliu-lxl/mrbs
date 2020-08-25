@@ -68,15 +68,15 @@ function generate_area_change_form($enabled_areas, $disabled_areas)
   $fieldset->addLegend('');
 
   // The area select
-  if (is_admin())
-  {
-    $options = array(get_vocab("enabled") => $enabled_areas,
-                     get_vocab("disabled") => $disabled_areas);
-  }
-  else
-  {
+//  if (is_admin())
+//  {
+//    $options = array(get_vocab("enabled") => $enabled_areas,
+//                     get_vocab("disabled") => $disabled_areas);
+//  }
+//  else
+//  {
     $options = $enabled_areas;
-  }
+//  }
 
   $field = new FieldSelect();
   $field->setLabel(get_vocab('area'))
@@ -259,7 +259,7 @@ if (isset($area))
 }
 
 
-echo "<h2>" . get_vocab("administration") . "</h2>\n";
+echo "<h2>区域列表</h2>\n";
 if (!empty($error))
 {
   echo "<p class=\"error\">" . htmlspecialchars(get_vocab($error)) . "</p>\n";
@@ -331,10 +331,10 @@ if ($auth['allow_custom_html'])
 if (is_admin() || !empty($enabled_areas))
 {
   echo "<h2>\n";
-  echo get_vocab("rooms");
+
   if(isset($area_name))
   {
-    echo " " . get_vocab("in") . " " . htmlspecialchars($area_name);
+    echo htmlspecialchars($area_name) . '的' . get_vocab("rooms");
   }
   echo "</h2>\n";
 
