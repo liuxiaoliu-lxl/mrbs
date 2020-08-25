@@ -5,7 +5,7 @@ html,body{
 }
 
 body {
-  overflow:hidden;
+  /* overflow:hidden; */
   font-size: small;
   margin: 0;
   padding: 0;
@@ -86,7 +86,7 @@ button.image {
 
 .contents {
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 60px);
   box-sizing: border-box;
   display: table;
   background:#f3f2f1;
@@ -95,10 +95,17 @@ button.image {
   display:flex;
   display:-webkit-flex;
 }
+
+.edit_users.logged_in .contents,.admin.logged_in .contents{
+  padding:0 20px;
+}
+
+
+
 #iFrameWrap document html body .contents{
 flex-direction: column !important;
 }
-/* 
+
 h1 {
   font-size: x-large;
   clear: both;
@@ -107,7 +114,7 @@ h1 {
 h2 {
   font-size: large;
   clear: both;
-} */
+}
 
 .minicalendars {
   height: 100%;
@@ -362,6 +369,13 @@ table.dataTable thead .sorting_desc {
   display: table-cell;
 }
 
+.admin_table input[type="image"]{
+  width: 16px;
+  height: 16px;
+  border: none;
+  box-sizing: unset;
+}
+
 body:not(.js) table.display {
   width: 100%;
 }
@@ -539,8 +553,8 @@ div#div_custom_html {
 }
 
 #area_form form {
-  width: 100%;
-  float: left;
+  /* width: 100%;
+  float: left; */
   margin-right: 1em
 }
 
@@ -1325,13 +1339,17 @@ div#div_custom_html {
 }
 
 
+.standard{
+  float: left;
+}
 
-.standard {
+.standard#main {
   width: 100%;
   height: 100%;
   background: #fff;
   position: relative;
 }
+
 .standard .new_dialog_header{
   
   padding:0 20px;
@@ -1622,7 +1640,7 @@ div#checks span {
 /* ------------ EDIT_USERS.PHP ------------------*/
 
 div#user_list {
-  padding: 2em 0;
+  padding: 20px 0;
 }
 
 form#add_new_user {
@@ -2278,10 +2296,11 @@ div#returl {
 /*-------------DataTables-------------------------*/
 
 div.datatable_container {
-  /* float: left;
-  width: 100%; */
-  width:95%;
-  margin:0 auto;
+  /* float: left; */
+  width: 100%;
+  padding:20px 0;
+  /* width:95%;
+  margin:0 auto; */
 }
 
 .js .datatable_container {
