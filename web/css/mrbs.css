@@ -92,7 +92,7 @@ button.image {
   display: table;
 
 }
-.index.logged_in .contents{
+.index .contents{
   display:flex;
   display:-webkit-flex;
   height: calc(100vh - 60px);
