@@ -32,6 +32,14 @@ function generate_button(array $params, array $button_attributes=array())
   $attributes = array('action' => $params['action'],
                       'method' => 'post');
 
+  if(isset($params['target'])){
+    $attributes['target'] = $params['target'];
+  }
+
+  if(isset($params['id'])){
+    $attributes['id'] = $params['id'];
+  }
+
   $form->setAttributes($attributes);
 
   // Hidden inputs
@@ -559,7 +567,9 @@ if ($approval_enabled && !$room_disabled && $awaiting_approval)
           'value' => get_vocab('deleteentry'),
           'inputs' => array('id' => $id,
             'series' => 0,
-            'returl' => $returl)
+            'returl' => $returl),
+          'target' => 'view_iframe_display',
+          'id' => 'view_del_form'
         );
 
         generate_button($params, $button_attributes);
@@ -572,7 +582,9 @@ if ($approval_enabled && !$room_disabled && $awaiting_approval)
           'value' => get_vocab('deleteseries'),
           'inputs' => array('id' => $id,
             'series' => 1,
-            'returl' => $returl)
+            'returl' => $returl),
+          'target' => 'view_iframe_display',
+          'id' => 'view_del_form'
         );
 
         generate_button($params, $button_attributes);
@@ -655,5 +667,8 @@ echo "</div>\n";
 //  echo "</div>\n";
 //}
 
+echo <<<EOF
+<iframe id="view_iframe_display" name="view_iframe_display" style="display: none;"></iframe>
+EOF;
 
 print_footer();
