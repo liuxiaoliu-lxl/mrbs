@@ -16,6 +16,11 @@ $(document).on('page_ready', function() {
   
   var fixedColumnsOptions = {leftColumns: 1};
 
+    $('select#area_select').wrap('<div></div>').select2({ //房间
+    width:150,
+    minimumResultsForSearch: -1
+  })
+
   <?php
   // Turn the list of rooms into a dataTable
   // If we're an admin, then fix the right hand column

@@ -87,20 +87,22 @@ button.image {
 
 .contents {
   width: 100%;
-  height: calc(100vh - 60px);
+  height: 100%;
   box-sizing: border-box;
   display: table;
-  background:#f3f2f1;
+
 }
 .index.logged_in .contents{
   display:flex;
   display:-webkit-flex;
+  height: calc(100vh - 60px);
+  background:#f3f2f1;
 }
 
 .edit_users.logged_in .contents,.admin.logged_in .contents{
   padding:0 20px;
+  background-color: #fff;
 }
-
 
 
 #iFrameWrap document html body .contents{
@@ -357,7 +359,8 @@ table.dataTable thead .sorting_desc {
   /* color: #ffffff;
   background-color: #1976D2; */
   color:#333;
-  background-color: #fff;
+  /* background-color: #fff; */
+  background-color: #E2E4FF;
 
 }
 
@@ -561,12 +564,16 @@ div#div_custom_html {
   float: left; */
   margin-right: 1em
 }
+#area_form form.areaChangeForm{
+  margin-top:10px;
+  margin-bottom:20px;
+}
 
 #area_form label[for="area_select"] {
   display: block;
   float: left;
-  font-weight: bold;
-  margin-right: 1em;
+  /* font-weight: bold;
+  margin-right: 1em; */
 }
 
 .areaChangeForm div {
@@ -1344,7 +1351,7 @@ div#div_custom_html {
 
 
 .standard{
-  float: left;
+  /* float: left; */
 }
 
 .standard#main {
@@ -1406,6 +1413,7 @@ div#div_custom_html {
 }
 .standard fieldset .field_text_area textarea{
   resize: none;
+  width: 272px;
 }
   
 .standard fieldset > div > div > * {
@@ -1425,9 +1433,9 @@ div#div_custom_html {
 .standard fieldset fieldset fieldset legend {
   padding-left: 2em;
 }
-
+fieldset > div > label,
 .standard fieldset > div > label {
-  width: 60px!important;
+  width: 80px!important;
   padding-left: 2em;
   padding-right: 1em;
   text-align: right;
@@ -1439,6 +1447,13 @@ div#div_custom_html {
   color: #323130;
   height: 28px;
   line-height: 28px;
+}
+
+.edit_entry.logged_in .standard fieldset > div > label{
+  width: 60px!important;
+}
+.edit_entry.logged_in .standard input[type="text"]:not(.date):not(.form-control){
+  width: 272px;
 }
 
 .standard fieldset > div > div {
@@ -1485,7 +1500,8 @@ div#div_custom_html {
 .standard input[type="password"],
 .standard input[type="search"],
 .standard textarea {
-  width: 17rem;
+  /* width: 17rem; */
+  width: 272px;
   border:1px solid #aaa;
   outline:none;
   height:28px;
@@ -2343,7 +2359,8 @@ span.ColVis_title {
 }
 
 table.dataTable.display tbody tr.odd {
-  background-color: #E2E4FF;
+  /* background-color: #E2E4FF; */
+  background-color: #FFF!important;
 }
 
 table.dataTable.display tbody tr.even {
@@ -2353,7 +2370,8 @@ table.dataTable.display tbody tr.even {
 table.dataTable.display tbody tr.odd > .sorting_1,
 table.dataTable.order-column.stripe tbody tr.odd > .sorting_1 {
   /* background-color: #D3D6FF; */
-  background-color: #E2E4FF!important;
+  /* background-color: #E2E4FF!important; */
+  background-color: #FFF!important;
 }
 
 table.dataTable.display tbody tr.odd > .sorting_2,
@@ -2578,7 +2596,7 @@ h2.date.loading::after {
 
 /* 内容区，顶部区域 */
 .main_calendar{
-  height: 44px;
+  height: 56px;
 }
 /* 左侧抽屉收起：内容区，顶部区域添加样式*/
 .main_calendar.leftNav--small-state{
