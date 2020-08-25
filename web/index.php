@@ -465,7 +465,7 @@ echo "</table>\n";
 echo "</div>\n";
 
 // The bottom navigation bar is controlled by JavaScript
-echo get_calendar_nav($view, $view_all, $year, $month, $day, $area, $room, true);
+//echo get_calendar_nav($view, $view_all, $year, $month, $day, $area, $room, true);
 
 echo get_color_key();
 echo "</div>\n";
