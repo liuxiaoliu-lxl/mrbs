@@ -88,11 +88,13 @@ button.image {
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  display:flex;
-  display:-webkit-flex;
+  display: table;
   background:#f3f2f1;
 }
-
+.index.logged_in .contents{
+  display:flex;
+  display:-webkit-flex;
+}
 #iFrameWrap document html body .contents{
 flex-direction: column !important;
 }
@@ -152,21 +154,22 @@ img {
 }
 
 a:link {
-  color: #0B263B;
+  /* color: #0B263B; */
+  color: #323130;
   text-decoration: none;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 a:visited {
   color: #0B263B;
   text-decoration: none;
-  font-weight: bold
+  /* font-weight: bold */
 }
 
 a:hover {
   color: #0B263B;
   text-decoration: underline;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 .all_rooms tr td{
@@ -308,9 +311,9 @@ table.dataTable tbody th, table.dataTable tbody td {
   box-sizing: border-box;
   vertical-align: middle;
   text-align: left;
-  padding: 0.1em 24px 0.1em 0.6em;
-  border-style: solid;
-  border-width: 0 1px 0 0;
+  /* padding: 0.1em 24px 0.1em 0.6em; */
+  /* border-style: solid;
+  border-width: 0 1px 0 0; */
 }
 
 .admin_table th:first-child, .admin_table td:first-child,
@@ -340,8 +343,11 @@ table.dataTable thead th:first-child, table.dataTable thead td:first-child {
 table.dataTable thead .sorting,
 table.dataTable thead .sorting_asc,
 table.dataTable thead .sorting_desc {
-  color: #ffffff;
-  background-color: #1976D2;
+  /* color: #ffffff;
+  background-color: #1976D2; */
+  color:#333;
+  background-color: #fff;
+
 }
 
 .admin_table td.action {
@@ -854,7 +860,8 @@ table.dwm_main#day_main,table.dwm_main#week_main{
 
 .dwm_main .booking {
   width: 100%;
-  height: 100%;   min-height: 1.5em;
+  height: 100%;   
+  min-height: 1.5em;
 }
 
 .dwm_main .booked.multiply a,
@@ -1013,7 +1020,8 @@ div.cell_container {
 div.cell_header {
   position: relative;
   width: 100%;
-  z-index: 20;    min-height: 20%;
+  z-index: 20;   
+   min-height: 20%;
   height: 20%;
   max-height: 20%;
   overflow: hidden;
@@ -1356,7 +1364,7 @@ div#div_custom_html {
 .standard > fieldset:nth-of-type(1){
   margin-top:10px;
 }
-.standard > fieldset:nth-of-type(1) > div:nth-of-type(1){ /*新建：预订人隐藏*/
+.edit_entry.logged_in .standard > fieldset:nth-of-type(1) > div:nth-of-type(1){ /*新建：预订人隐藏*/
   display: none;
 }
 
@@ -1622,13 +1630,16 @@ form#add_new_user {
 }
 
 #users_table td {
-  text-align: right;
+  /* text-align: right; */
+  color: #323130;
 }
 
 #users_table td div.string {
   text-align: left;
 }
-
+#users_table td div.string a{
+  color: #323130;
+}
 
 /* ------------ FUNCTIONS.INC -------------------*/
 
@@ -1792,8 +1803,9 @@ input.link[type="submit"] {
   border: none;
   background: none;
   cursor: pointer;
-  font-weight: bold;
+  /* font-weight: bold; */
   padding: 0;
+  color: #323130;
 }
 
 form#show_my_entries input.link[type="submit"] {
@@ -1835,6 +1847,7 @@ form#show_my_entries input.link[type="submit"] {
 
 header input[type="search"] {
   width: 10em;
+  color:#333;
 }
 
 .banner .outstanding a {
@@ -2265,8 +2278,10 @@ div#returl {
 /*-------------DataTables-------------------------*/
 
 div.datatable_container {
-  float: left;
-  width: 100%;
+  /* float: left;
+  width: 100%; */
+  width:95%;
+  margin:0 auto;
 }
 
 .js .datatable_container {
@@ -2314,7 +2329,8 @@ table.dataTable.display tbody tr.even {
 
 table.dataTable.display tbody tr.odd > .sorting_1,
 table.dataTable.order-column.stripe tbody tr.odd > .sorting_1 {
-  background-color: #D3D6FF;
+  /* background-color: #D3D6FF; */
+  background-color: #E2E4FF!important;
 }
 
 table.dataTable.display tbody tr.odd > .sorting_2,
@@ -2329,7 +2345,8 @@ table.dataTable.order-column.stripe tbody tr.odd > .sorting_3 {
 
 table.dataTable.display tbody tr.even > .sorting_1,
 table.dataTable.order-column.stripe tbody tr.even > .sorting_1  {
-  background-color: #EAEBFF;
+  /* background-color: #EAEBFF; */
+  background-color: #FFFFFF!important;
 }
 
 table.dataTable.display tbody tr.even > .sorting_2,
@@ -2345,8 +2362,14 @@ table.dataTable.order-column.stripe tbody tr.even > .sorting_3 {
 .dataTables_wrapper.no-footer .dataTables_scrollBody {
   border-bottom-width: 0;
 }
+.dataTables_length select{
+  height: 25px;
+  border:1px solid #aaa;
+  border-radius: 4px;
+}
 
 div.dt-buttons {
+  display: none;
   float: right;
   margin-bottom: 0.4em;
 }
