@@ -13,7 +13,7 @@ if ($use_strict)
 ?>
 
 $(document).on('page_ready', function() {
-  
+
   var fixedColumnsOptions = {leftColumns: 1};
 
   <?php
@@ -24,7 +24,13 @@ $(document).on('page_ready', function() {
   {
     fixedColumnsOptions.rightColumns = 1;
   }
-  
+
   makeDataTable('#rooms_table', {}, fixedColumnsOptions);
+
+  $('.del_room_btn').click(function(){
+    if(confirm('该操作会删除房间内所有的会议，确定删除？')){
+      $(this).parent('form').submit();
+    }
+  })
 });
 

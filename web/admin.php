@@ -1,6 +1,8 @@
 <?php
 namespace MRBS;
 
+use MRBS\Form\ElementInputButton;
+use MRBS\Form\ElementInputSubmit;
 use MRBS\Form\Form;
 use MRBS\Form\ElementButton;
 use MRBS\Form\ElementFieldset;
@@ -28,17 +30,19 @@ function generate_room_delete_form($room, $area)
   // Hidden inputs
   $hidden_inputs = array('type' => 'room',
                          'area' => $area,
-                         'room' => $room);
+                         'room' => $room,
+                         'confirm' => '1');
   $form->addHiddenInputs($hidden_inputs);
 
   // The button
-  $element = new ElementInputImage();
-  $element->setAttributes(array('class'  => 'button',
-                                'src'    => 'images/delete.png',
-                                'width'  => '16',
-                                'height' => '16',
-                                'title'  => get_vocab('delete'),
-                                'alt'    => get_vocab('delete')));
+  $element = new ElementInputButton();
+  $element->setAttributes(array('class'  => 'del_room_btn',
+                                'value'  => '删除房间',
+//                                'width'  => '16',
+//                                'height' => '16',
+//                                'title'  => get_vocab('delete'),
+//                                'alt'    => get_vocab('delete')
+  ));
   $form->addElement($element);
 
   $form->render();
@@ -384,7 +388,7 @@ if (is_admin() || !empty($enabled_areas))
         if (is_admin())
         {
           // Don't show ordinary users the disabled status:  they are only going to see enabled rooms
-          echo "<th>" . get_vocab("enabled") . "</th>\n";
+//          echo "<th>" . get_vocab("enabled") . "</th>\n";
         }
         // ignore these columns, either because we don't want to display them,
         // or because we have already displayed them in the header column
@@ -414,7 +418,7 @@ if (is_admin() || !empty($enabled_areas))
 
         if (is_admin())
         {
-          echo "<th>&nbsp;</th>\n";
+          echo "<th>操作</th>\n";
         }
 
         echo "</tr>\n";
@@ -441,7 +445,7 @@ if (is_admin() || !empty($enabled_areas))
             if (is_admin())
             {
               // Don't show ordinary users the disabled status:  they are only going to see enabled rooms
-              echo "<td class=\"boolean\"><div>" . ((!$r['disabled']) ? "<img src=\"images/check.png\" alt=\"check mark\" width=\"16\" height=\"16\">" : "&nbsp;") . "</div></td>\n";
+//              echo "<td class=\"boolean\"><div>" . ((!$r['disabled']) ? "<img src=\"images/check.png\" alt=\"check mark\" width=\"16\" height=\"16\">" : "&nbsp;") . "</div></td>\n";
             }
             foreach($fields as $field)
             {
