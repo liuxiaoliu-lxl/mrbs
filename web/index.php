@@ -483,17 +483,12 @@ echo <<<EOF
   </div>
   <div class="user_container_infos">
     <div class="user_info_icon">
-        <img src="images/user_icon.png" />
+        <img src="images/user-filling.png" />
     </div>
     <div class="user_infos_info">
         <p>{$_SESSION['UserName']}</p>
-<<<<<<< HEAD
-        <p>yuandongju@158.com</p>
-        <p>注销</p>
-=======
         <p></p>
         <p>$logoff</p>
->>>>>>> 8ac7e7b3ca07acf58fa35eede49974eb0e64a157
     </div>
   </div>
 </div>

@@ -168,6 +168,11 @@ var prefetch = function() {
 
 
 $(document).on('page_ready', function() {
+
+  $(".user_container_close").on("click",function(){
+    $('.user_container').hide();
+  })
+
   <!-- 新增会议 -->
   $(".new_booking").on("click", function (e) {
     var jumpurl = $(this).data('jumpurl');
