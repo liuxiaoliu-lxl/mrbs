@@ -14,7 +14,6 @@ $escaped_standard_query_string = 'area=' . htmlspecialchars($area);
 
 // Load the init file now so that it gets executed as soon as possible.  The init
 // file can't use jQuery.
-echo "<script src=\"js/init.js.php\"></script>\n";
 
 if ($debug)
 {
@@ -28,6 +27,8 @@ else
   <script src="jquery/jquery-3.4.1.min.js"></script>
   <?php
 }
+
+echo "<script src=\"js/init.js.php\"></script>\n";
 
 // We need the migration script now that we are running jQuery 3.0+, or at least
 // until we are confident that our JavaScript is not using any features that have
