@@ -460,6 +460,7 @@ nav.main_calendar > nav {
   flex: 1;
   -ms-flex-pack: center;
   justify-content: center;
+  padding:8px 0;
 }
 
 nav.main_calendar > nav:first-child {
@@ -1746,7 +1747,7 @@ form#add_new_user {
   color: #ffffff;
 }
 
-.banner nav.container {
+.banner nav.nav_container {
   width: 50%;
   -ms-flex-positive: 1;
   flex-grow: 1;
@@ -1761,7 +1762,7 @@ form#add_new_user {
   padding: 0.75em 0;
 }
 
-.banner nav.container > nav {
+.banner nav.nav_container > nav {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: row;
@@ -1772,17 +1773,17 @@ form#add_new_user {
   padding: 0.3em 0;
 }
 
-.banner nav.container > nav > nav {
+.banner nav.nav_container > nav > nav {
   -ms-flex-align: center;
   align-items: center;
 }
 
-.banner nav.container > nav:first-child {
+.banner nav.nav_container > nav:first-child {
   -ms-flex-wrap: wrap-reverse;
   flex-wrap: wrap-reverse;
 }
 
-.banner nav.container > nav:last-child > * {
+.banner nav.nav_container > nav:last-child > * {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;
@@ -2605,6 +2606,56 @@ h2.date.loading::after {
   width: calc(100% - 88px);
 }
 
+
+/* 右侧抽屉 */
+.user_container{
+  width:320px;
+  background-color: #FAF9F8;
+}
+.user_container_title{
+  height: 65px;
+  line-height: 65px;
+  padding: 0 16px;
+  font-size:20px;
+  font-weight: 600;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user_container_close{
+  display: block;
+  width: 40px;
+  height: 40px;
+}
+.user_container_close:hover{
+  background-color:  #E1DFDD;
+}
+.user_container_infos{
+  padding: 14px 16px 15px;
+  box-sizing: border-box;
+  display:flex;
+  display:-webkit-flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #fff;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.1);
+  box-shadow: 0 1px 2px rgba(0,0,0,.1)
+}
+.user_info_icon{
+  width: 88px;
+  height: 88px;
+}
+.user_info_icon img {
+  width: 100%;
+  height: 100%;
+  
+}
+.user_infos_info{
+  padding-left:10px;
+}
+
 /* login */
 .login--div{
   box-sizing: content-box;
@@ -2645,3 +2696,5 @@ h2.date.loading::after {
   width: 88px;
   border-radius: 0;
 }
+
+

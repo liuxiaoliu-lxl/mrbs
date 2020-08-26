@@ -168,34 +168,33 @@ var prefetch = function() {
 
 
 $(document).on('page_ready', function() {
+  <!-- 新增会议 -->
   $(".new_booking").on("click", function (e) {
     var jumpurl = $(this).data('jumpurl');
     showIframe(jumpurl,510,550);
   })
+  <!-- 编辑会议 -->
   $(".edit_booking").on("click", function (e) {
     var jumpurl = $(this).data('jumpurl');
     showIframe(jumpurl,510,438);
   })
-
+  <!-- 月新增会议 -->
   $(".monthday").on("click", function (e) {
     var jumpurl = $(this).data('jumpurl');
     showIframe(jumpurl,510,550);
   })
-
-  $('.view_entry_close_icon').on('click',function(e){
-    window.parent.closeIFrame();
-  })
-
+  <!-- 新增关闭按钮 -->
   $('.new_dialog_close_icon').on('click',function(e){
     window.parent.closeIFrame();
   })
-  
+  <!-- 父页面关闭iframe方法 -->
   function closeIFrame() {
     console.log("关闭子页面");
     $("#iFrameWrap").remove();
     $("#iFrameWrapBg").remove();
   }
   window.closeIFrame = closeIFrame;
+  <!-- js动态创建iframe -->
   function showIframe(url, w, h) {
     //添加iframe
     var if_w = w;

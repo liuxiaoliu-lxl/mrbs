@@ -271,7 +271,7 @@ function print_banner($view, $year, $month, $day, $area, $room, $simple=false)
 
   if (!$simple)
   {
-    echo "<nav class=\"container\">\n";
+    echo "<nav class=\"nav_container\">\n";
 
     echo "<nav>\n";
 

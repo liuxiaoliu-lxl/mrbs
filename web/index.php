@@ -474,16 +474,16 @@ echo <<<EOF
 <div class="user_container">
   <div class="user_container_title">
     <span>我的账户</span>
-    <span></span>
+    <img class="user_container_close" src="images/close_icon.png"/>
   </div>
   <div class="user_container_infos">
     <div class="user_info_icon">
-        <i></i>
+        <img src="images/user_icon.png" />
     </div>
     <div class="user_infos_info">
         <p>{$_SESSION['UserName']}</p>
-        <p></p>
-        <p></p>
+        <p>yuandongju@158.com</p>
+        <p>注销</p>
     </div>
   </div>
 </div>
