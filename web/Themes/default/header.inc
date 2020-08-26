@@ -276,27 +276,40 @@ function print_banner($view, $year, $month, $day, $area, $room, $simple=false)
     echo "<nav>\n";
 
     echo "<nav class=\"menu\">\n";
-    print_menu_items($query);
+//    print_menu_items($query);
     echo "</nav>\n";
 
     echo "<nav class=\"logon\">\n";
-    print_outstanding($query);
+//    print_outstanding($query);
     // For session protocols that define their own logon box...
     // (Note: This really needs to be sorted out so that the HTML
     // is taken out of the session code)
-    if (function_exists(__NAMESPACE__ . "\\print_logon_box"))
-    {
-      print_logon_box();
+
+    $user = getUserName();
+    if(isset($user)){
+echo <<<EOF
+  <div class="header_user_info">
+    <img />
+  </div>
+EOF;
+
     }
-    else
-    {
-      $user = getUserName();
-      if (isset($user))
-      {
-        require_once MRBS_ROOT . '/session/functions_session.inc';
-        print_report_link($user);
-      }
+    else{
+      print_to_login();
     }
+//    if (function_exists(__NAMESPACE__ . "\\print_logon_box"))
+//    {
+//      print_logon_box();
+//    }
+//    else
+//    {
+//      $user = getUserName();
+//      if (isset($user))
+//      {
+//        require_once MRBS_ROOT . '/session/functions_session.inc';
+//        print_report_link($user);
+//      }
+//    }
     echo "</nav>\n";
 
     echo "</nav>\n";

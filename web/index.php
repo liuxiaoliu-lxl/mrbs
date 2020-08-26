@@ -470,6 +470,8 @@ echo "</div>\n";
 echo get_color_key();
 echo "</div>\n";
 
+$logoff = print_logoff();
+
 echo <<<EOF
 <div class="user_container">
   <div class="user_container_title">
@@ -483,7 +485,7 @@ echo <<<EOF
     <div class="user_infos_info">
         <p>{$_SESSION['UserName']}</p>
         <p></p>
-        <p></p>
+        <p>$logoff</p>
     </div>
   </div>
 </div>
