@@ -170,9 +170,19 @@ var prefetch = function() {
 $(document).on('page_ready', function() {
 
   $(".user_container_close").on("click",function(){
-    $('.user_container').hide();
+    $(this).parent().parent().hide();
   })
-
+ 
+  $('.header_user_info').on("click",function(){
+    $('.user_container').eq(0).show(100);
+  })
+  $(".user_container_close").on("click",function(){
+    $(this).parent().parent().hide();
+  })
+ 
+  $('.header_set_info').on("click",function(){
+    $('.user_container').eq(1).show(100);
+  })
   <!-- 新增会议 -->
   $(".new_booking").on("click", function (e) {
     var jumpurl = $(this).data('jumpurl');

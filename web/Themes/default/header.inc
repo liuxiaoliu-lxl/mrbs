@@ -277,6 +277,12 @@ function print_banner($view, $year, $month, $day, $area, $room, $simple=false)
 
     echo "<nav class=\"menu\">\n";
 //    print_menu_items($query);
+
+    echo <<<EOF
+      <div class="header_set_info">
+        <img src="images/setting.png"/>
+      </div>
+    EOF;
     echo "</nav>\n";
 
     echo "<nav class=\"logon\">\n";
@@ -289,7 +295,7 @@ function print_banner($view, $year, $month, $day, $area, $room, $simple=false)
     if(isset($user)){
 echo <<<EOF
   <div class="header_user_info">
-    <img />
+    <img src="images/user-filling.png"/>
   </div>
 EOF;
 

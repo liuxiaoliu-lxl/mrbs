@@ -1735,6 +1735,10 @@ form#add_new_user {
   font-weight: normal;
 }
 
+.banner nav.logon .header_user_info img,.banner nav.menu .header_set_info img{
+  width: 20px;
+  height: 20px;
+}
 .banner a:link, nav.logon input {
   color: #ffffff;
 }
@@ -2611,6 +2615,7 @@ h2.date.loading::after {
 .user_container{
   width:320px;
   background-color: #FAF9F8;
+  display: none;
 }
 .user_container_title{
   height: 65px;
@@ -2663,6 +2668,9 @@ h2.date.loading::after {
   padding-left:10px;
 }
 
+.user_container_navs a{
+display: block;
+}
 /* login */
 .login--div{
   box-sizing: content-box;
