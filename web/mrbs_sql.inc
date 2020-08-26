@@ -2248,7 +2248,6 @@ function get_bookings_in_series($repeat_id)
   return $bookings;
 }
 
-
 function get_entry_by_user($user){
   global $tbl_entry;
 
@@ -2257,3 +2256,24 @@ function get_entry_by_user($user){
 
   return $res->all_rows_keyed();
 }
+
+function get_user_info($user){
+  global $tbl_users;
+
+  $sql_params = [];
+
+  $sql = "SELECT *
+            FROM $tbl_users
+           WHERE " .
+    db()->syntax_casesensitive_equals('name', utf8_strtolower($user), $sql_params) .
+    "
+           LIMIT 1";
+
+  $res = db()->query($sql, $sql_params);
+
+  $row = $res->next_row_keyed();
+
+  return $row;
+}
+
+
