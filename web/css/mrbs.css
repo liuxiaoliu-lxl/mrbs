@@ -2625,9 +2625,13 @@ h2.date.loading::after {
 }
 
 .user_container_close{
-  display: block;
   width: 40px;
   height: 40px;
+  padding:5px;
+}
+.user_container_close img{
+  width: 12px;
+  height: 12px;
 }
 .user_container_close:hover{
   background-color:  #E1DFDD;

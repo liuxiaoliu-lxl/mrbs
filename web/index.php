@@ -474,7 +474,10 @@ echo <<<EOF
 <div class="user_container">
   <div class="user_container_title">
     <span>我的账户</span>
-    <img class="user_container_close" src="images/close_icon.png"/>
+    <div class="user_container_close">
+    <img src="images/close_icon.png"/>
+    </div>
+    
   </div>
   <div class="user_container_infos">
     <div class="user_info_icon">
