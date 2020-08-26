@@ -467,11 +467,12 @@ echo "</div>\n";
 // The bottom navigation bar is controlled by JavaScript
 //echo get_calendar_nav($view, $view_all, $year, $month, $day, $area, $room, true);
 
+$username = $_SESSION['UserName'];
+$userinfo = get_user_info($username);
+$email    = $userinfo['email'];
+
 echo get_color_key();
 echo "</div>\n";
-
-$logoff = print_logoff();
-
 echo <<<EOF
 <div class="user_container">
   <div class="user_container_title">
@@ -483,9 +484,11 @@ echo <<<EOF
         <i></i>
     </div>
     <div class="user_infos_info">
-        <p>{$_SESSION['UserName']}</p>
-        <p></p>
-        <p>$logoff</p>
+        <p>$username</p>
+        <p>$email</p>
+EOF;
+print_logoff();
+echo <<<EOF
     </div>
   </div>
 </div>
