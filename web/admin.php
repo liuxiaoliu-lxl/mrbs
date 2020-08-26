@@ -249,6 +249,8 @@ $error = get_form_var('error', 'string');
 
 print_header($view, $view_all, $year, $month, $day, isset($area) ? $area : null, isset($room) ? $room : null);
 
+echo '<div class="main_div">';
+
 // Get the details we need for this area
 if (isset($area))
 {
@@ -526,5 +528,9 @@ if (is_admin() || !empty($enabled_areas))
   }
   echo "</div>\n";
 }
+
+echo "</div>\n";
+
+require_once 'user_menu.php';
 
 print_footer();
