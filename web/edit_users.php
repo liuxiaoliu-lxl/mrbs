@@ -647,8 +647,6 @@ if (isset($action) && ( ($action == "edit") or ($action == "add") ))
 
   print_header($view, $view_all, $year, $month, $day, isset($area) ? $area : null, isset($room) ? $room : null);
 
-  echo "<div class='main_div'>";
-
   echo "<h2>";
   if ($initial_user_creation)
   {
@@ -1134,6 +1132,8 @@ if (!$is_ajax)
 {
   print_header($view, $view_all, $year, $month, $day, isset($area) ? $area : null, isset($room) ? $room : null);
 
+  echo "<div class='main_div'>";
+
   echo "<h2>" . get_vocab("user_list") . "</h2>\n";
 
   if (is_user_admin()) /* Administrators get the right to add new users */
@@ -1152,6 +1152,7 @@ if (!$is_ajax)
 
     $form->render();
   }
+
 }
 
 if ($initial_user_creation != 1)   // don't print the user table if there are no users
@@ -1234,9 +1235,9 @@ if ($is_ajax)
 }
 else
 {
-  echo '</div>';
+  echo "</div>";
 
-  require_once 'edit_users.php';
+  require_once 'user_menu.php';
 
   print_footer();
 }
