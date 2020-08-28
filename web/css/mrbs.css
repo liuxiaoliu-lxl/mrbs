@@ -100,8 +100,14 @@ button.image {
 }
 
 .edit_users.logged_in .contents,.admin.logged_in .contents{
-  padding:0 20px;
   background-color: #fff;
+  display:flex;
+  display:-webkit-flex;
+  height: calc(100vh - 60px);
+}
+.edit_users.logged_in .contents .main_div,.admin.logged_in .contents .main_div{
+  padding:0 20px;
+  flex:1;
 }
 
 
