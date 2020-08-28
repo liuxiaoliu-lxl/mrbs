@@ -105,7 +105,7 @@ function makeDataTable(id, specificOptions, fixedColumnsOptions)
     scrollCollapse:true,
     stateSave: true,
     dom: 'B<"clear">lfrtip',
-    scrollX: '100%',
+    <!-- scrollX: '100%', -->
     colReorder: {}
   };
 
