@@ -1181,6 +1181,7 @@ var editEntryVisChanged = function editEntryVisChanged() {
 
 $(document).on('page_ready', function() {
 
+
   isAdmin = args.isAdmin;
 
   <?php // Turn the create_by select into a fancy select box. ?>
@@ -1211,6 +1212,17 @@ $(document).on('page_ready', function() {
     width:70,
     minimumResultsForSearch: -1
   })
+
+  <!-- 新增后退/放弃按钮 -->
+  $('input[name="back_button"]').click(function(){
+    window.parent.closeIFrame();
+  })
+
+  <!-- 新增关闭按钮 -->
+  $('.new_dialog_close_icon').on('click',function(e){
+    window.parent.closeIFrame();
+  });
+
   //新增结束
 
 <?php
@@ -1539,9 +1551,4 @@ $(document).on('page_ready', function() {
   form.removeClass('js_hidden');
 });
 
-$(function(){
-  $('input[name="back_button"]').click(function(){
-    var res = checkConflicts();
-    console.log(res);
-  })
-})
+

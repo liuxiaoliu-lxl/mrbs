@@ -32,7 +32,7 @@ EOF;
 echo <<<EOF
 <div class="user_container">
   <div class="user_container_title">
-    <span>我的账户</span>
+    <span>设置</span>
     <div class="user_container_close">
       <img src="images/close_icon.png"/>
     </div>
