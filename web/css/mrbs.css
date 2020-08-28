@@ -1223,7 +1223,8 @@ tbody th a:hover {
 }
 
 .dwm_main.resizing tbody tr:hover th {
-  background-color: #1976D2;
+  /* background-color: #1976D2; */
+  background-color: #ffffff;
   color: #0B263B;
 }
 
