@@ -178,6 +178,8 @@ if (!$is_ajax)
 {
   print_header($view, $view_all, $year, $month, $day, $area, isset($room) ? $room : null);
 
+  echo "<div class='main_div'>";
+
   $form = new Form();
   $form->setAttributes(array('class'  => 'standard',
                              'id'     => 'search_form',
@@ -418,6 +420,10 @@ else
   echo "</tbody>\n";
   echo "</table>\n";
   echo "</div>\n";
+  echo "</div>\n";
+
+  require_once 'user_menu.php';
+
   print_footer();
 }
 
