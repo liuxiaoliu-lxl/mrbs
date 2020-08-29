@@ -10,7 +10,7 @@ echo <<<EOF
             </span>
         </button>
         <div class="leftNav--topbar-newBtn">
-            <span>新建会议</span>
+            <a class="new_booking" data-jumpurl="">新建会议</a>
         </div>
     </div>
     <div class="leftNav--DatepickerWrap">

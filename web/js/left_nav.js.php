@@ -15,6 +15,29 @@ if ($use_strict)
 
 $(document).on('page_ready', function() {
 
+  <!-- 给“新建会议”按钮封装url -->
+  var joinUrl = function(){
+    var hour = new Date().getHours();
+    var minute = new Date().getMinutes();
+    var dateArr = args.pageDate.split("-");
+    var href = 'edit_entry.php';
+    href += '?view=' + args.view;
+    href += '&year=' + dateArr[0];
+    href += '&month=' + dateArr[1];
+    href += '&day=' + dateArr[2];
+    href += '&area=' + args.area;
+    href += '&room=' + args.room;
+    href += '&hour=' + hour;
+    href += '&minute=' + (minute > 30 ? 30 :0);
+    if (args.site)
+    {
+      href += '&site=' + encodeURIComponent(args.site);
+    }
+    $('.leftNav--topbar-newBtn').find("a").attr('data-jumpurl',href);
+  }
+  joinUrl();
+
+  
   //js date begin
   //url拼接，跳转
   var onMinicalChange = function(dateStr) {
@@ -39,6 +62,7 @@ $(document).on('page_ready', function() {
   };
   //初始化日期
   if(args.pageDate){
+    console.log(args);
     config.defaultDate = args.pageDate
   }
   var picker = $('#leftNavDatepicker').datetimepicker(config);

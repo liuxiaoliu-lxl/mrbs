@@ -1023,7 +1023,8 @@ table.dwm_main#day_main,table.dwm_main#week_main{
 }
 
 td.new a, a.new_booking {
-  font-size: medium;
+  font-size: 14px;
+  font-weight: 600;
   text-align: center;
 }
 
@@ -2647,14 +2648,20 @@ h2.date.loading::after {
     height: 32px;
     line-height: 32px;
     background-color: #0078d4;
-    padding: 0 10px;
+    padding: 0 8px;
     box-sizing: border-box;
     color: #fff;
     border-radius: 2px;
     cursor: pointer;
 }
+
 .leftNav--topbar-newBtn:hover{
     background-color: #005a9e;
+    color:#fff;
+}
+.leftNav--topbar-newBtn a{
+  text-decoration: none;
+  color:#fff;
 }
 
 /* 内容区，顶部区域 */
