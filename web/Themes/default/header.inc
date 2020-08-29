@@ -88,7 +88,7 @@ function print_header_site_info()
   {
     echo '<a href="' . htmlspecialchars($mrbs_company_url) . '">';
   }
-  echo '<span>' . htmlspecialchars($mrbs_company) . '</span>';
+//  echo '<span>' . htmlspecialchars($mrbs_company) . '</span>';
   if (!empty($mrbs_company_url))
   {
     echo "</a>\n";
@@ -97,7 +97,7 @@ function print_header_site_info()
   {
     echo '<span id="more_info">' . htmlspecialchars($mrbs_company_more_info) . "</span>\n";
   }
-  echo '<a href="index.php">' . get_vocab('mrbs') . "</a>\n";
+  echo '<a href="index.php">' . htmlspecialchars($mrbs_company) . "</a>\n";
   echo "</div>\n";
 }
 
