@@ -168,29 +168,34 @@ var prefetch = function() {
 
 
 $(document).on('page_ready', function() {
-
+  <!-- 新建：天 -->
   $('table#day_main').on('click',function(e){
-    showDialog(e);
+    showDialog(e || window.event);
   })
 
+  <!-- 新建：周 -->
   $('table#week_main').on('click',function(e){
-    showDialog(e);
+    showDialog(e || window.event);
   })
 
+  <!-- 新建：月 -->
   $('table#month_main').on('click',function(e){
-    showDialog(e);
+    showDialog(e || window.event);
+  })
+
+  <!-- 新建：新建按钮 -->
+  $('.leftNav--topbar-newBtn').on('click',function(e){
+    showDialog(e || window.event);
   })
 
   function showDialog(e){
     var target = e.target;
       var $target = $(target);
-      if($target.data('jumpurl') != ""){
+      if(target.nodeName == "A" && $target.data('jumpurl') != ""){
         var jumpurl = $target.data('jumpurl');
         showIframe(jumpurl,510,550);
       }
   }
-
-
 
   <!-- 父页面关闭iframe方法 -->
   function closeIFrame() {
