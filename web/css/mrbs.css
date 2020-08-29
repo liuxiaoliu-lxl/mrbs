@@ -266,9 +266,11 @@ td form {
 
 legend {
   font-weight: bold;
-  font-size: large;
+  /* font-size: large; */
   font-family: Arial, 'Arial Unicode MS', Verdana, sans-serif;
-  color: #0B263B;
+  /* color: #0B263B; */
+  color: #323130;
+  font-size: 16px;
 }
 
 fieldset {
@@ -2176,6 +2178,10 @@ button#delete_button {
 
 
 /* ------------ SEARCH.PHP ----------------------*/
+
+#search_form fieldset{
+  border: 1px solid #C3CCD3;
+}
 
 h3.search_results {
   clear: left;
