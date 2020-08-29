@@ -99,9 +99,21 @@ button.image {
   background:#f3f2f1;
 }
 
-.edit_users.logged_in .contents,.admin.logged_in .contents{
-  padding:0 20px;
+.edit_users.logged_in .contents,
+.admin.logged_in .contents,
+.search.logged_in .contents
+{
   background-color: #fff;
+  display:flex;
+  display:-webkit-flex;
+  height: calc(100vh - 60px);
+}
+.edit_users.logged_in .contents .main_div,
+.admin.logged_in .contents .main_div,
+.search.logged_in .contents .main_div
+{
+  padding:0 20px;
+  flex:1;
 }
 
 
@@ -1217,7 +1229,8 @@ tbody th a:hover {
 }
 
 .dwm_main.resizing tbody tr:hover th {
-  background-color: #1976D2;
+  /* background-color: #1976D2; */
+  background-color: #ffffff;
   color: #0B263B;
 }
 
@@ -1360,6 +1373,7 @@ div#div_custom_html {
   height: 100%;
   background: #fff;
   position: relative;
+  overflow: hidden;
 }
 
 .standard .new_dialog_header{
@@ -2667,9 +2681,22 @@ h2.date.loading::after {
 .user_infos_info{
   padding-left:10px;
 }
-
+.user_container_navs{
+  padding: 14px 0px 15px;
+  box-sizing: border-box;
+  background-color: #fff;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.1);
+  box-shadow: 0 1px 2px rgba(0,0,0,.1)
+}
 .user_container_navs a{
-display: block;
+  display: block;
+  line-height: 40px;
+  height: 40px;
+text-decoration: none;
+padding-left: 10px;
+}
+.user_container_navs a:hover{
+  background-color: #edebe9;
 }
 /* login */
 .login--div{

@@ -187,10 +187,6 @@ $(document).on('page_ready', function() {
     showIframe(jumpurl,510,550);
   });
 
-  <!-- 新增关闭按钮 -->
-  $('.new_dialog_close_icon').on('click',function(e){
-    window.parent.closeIFrame();
-  });
 
   <!-- 父页面关闭iframe方法 -->
   function closeIFrame() {
