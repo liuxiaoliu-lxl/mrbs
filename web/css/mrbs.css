@@ -81,9 +81,9 @@ button.image {
   padding: 0;
 }
 
- .banner {
+ /* .banner {
   padding: 0 15px;
-}
+} */
 
 .contents {
   width: 100%;
@@ -95,7 +95,7 @@ button.image {
 .index .contents{
   display:flex;
   display:-webkit-flex;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 48px);
   background:#f3f2f1;
 }
 
@@ -106,7 +106,7 @@ button.image {
   background-color: #fff;
   display:flex;
   display:-webkit-flex;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 48px);
 }
 .edit_users.logged_in .contents .main_div,
 .admin.logged_in .contents .main_div,
@@ -1711,6 +1711,7 @@ form#add_new_user {
   border-color: #f9fbfc;
   border-width: 0px;
   border-style: solid;
+  height: 48px;
 }
 
 .banner .logo {
@@ -1727,7 +1728,7 @@ form#add_new_user {
 }
 
 .banner .company {
-  display: -ms-flexbox;
+  /* display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -1738,7 +1739,12 @@ form#add_new_user {
   font-size: large;
   padding: 0.5rem 2rem 0.5rem 0;
   margin-right: 2rem;
-  white-space: nowrap;
+  white-space: nowrap; */
+  width: 229px;
+  font-size: 16px;
+  box-sizing: border-box;
+  line-height: 48px;
+  padding-left: 20px;
 }
 
 .banner .company > * {
@@ -1750,10 +1756,7 @@ form#add_new_user {
   font-weight: normal;
 }
 
-.banner nav.logon .header_user_info img,.banner nav.menu .header_set_info img{
-  width: 20px;
-  height: 20px;
-}
+
 .banner a:link, nav.logon input {
   color: #ffffff;
 }
@@ -1778,7 +1781,8 @@ form#add_new_user {
   align-items: stretch;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  padding: 0.75em 0;
+  /* padding: 0.75em 0; */
+  padding-right: 20px;
 }
 
 .banner nav.nav_container > nav {
@@ -1789,7 +1793,7 @@ form#add_new_user {
   -ms-flex-align: stretch;
   align-items: stretch;
   justify-content: flex-end;
-  padding: 0.3em 0;
+  /* padding: 0.3em 0; */
 }
 
 .banner nav.nav_container > nav > nav {
@@ -1810,8 +1814,30 @@ form#add_new_user {
 }
 
 nav.menu, nav.logon {
-  margin-left: 1rem;
-  padding-left: 1rem;
+  /* margin-left: 1rem;
+  padding-left: 1rem; */
+}
+
+nav.menu:hover, nav.logon:hover{
+  color:#fff;
+  background-color: #005a9e;
+}
+nav.menu > div, nav.logon > div{
+  height: 48px;
+    line-height: 48px;
+    width: 50px;
+    text-align: center;
+}
+nav.menu > div.displayed, nav.logon > div.displayed{
+  color:#252423;
+  background-color: #f3f2f1;
+}
+.banner nav.logon .header_user_info span,.banner nav.menu .header_set_info span{
+  display: flex;
+  height: 100%;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
 }
 
 nav.menu {
@@ -1830,6 +1856,7 @@ nav.logon input {
   background: none;
   border: none;
 }
+
 
 .banner nav a,
 nav.logon input,
@@ -1904,8 +1931,13 @@ form#show_my_entries input.link[type="submit"] {
 
 
 header input[type="search"] {
-  width: 10em;
+  width: 220px;
   color:#333;
+}
+header input[type="submit"] {
+  display: inline-block!important;
+  color:#323130;
+  padding:0 10px;
 }
 
 .banner .outstanding a {
@@ -2674,10 +2706,12 @@ h2.date.loading::after {
   width: 88px;
   height: 88px;
 }
-.user_info_icon img {
-  width: 100%;
+.user_info_icon span {
+  display: flex;
   height: 100%;
-  
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
 }
 .user_infos_info{
   padding-left:10px;

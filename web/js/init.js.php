@@ -20,6 +20,8 @@ $(document).on('page_ready', function() {
   <!-- 右侧抽屉关闭icon -->
   $(".user_container_close").on("click",function(){
     $(this).parent().parent().hide(100);
+    $('.header_user_info').removeClass("displayed");
+    $('.header_set_info').removeClass("displayed");
   })
   <!-- header 用户icon控制右侧用户抽屉展示/隐藏 -->
   $('.header_user_info').on("click",function(){
