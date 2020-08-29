@@ -82,7 +82,7 @@ button.image {
 }
 
  .banner {
-  padding: 0 1.5rem;
+  padding: 0 15px;
 }
 
 .contents {
@@ -1705,7 +1705,8 @@ form#add_new_user {
   flex-direction: row;
   -ms-flex-pack: start;
   justify-content: flex-start;
-  background-color: #1976D2;
+  /* background-color: #1976D2; */
+  background-color: #0078d4;
   color: #ffffff;
   border-color: #f9fbfc;
   border-width: 0px;

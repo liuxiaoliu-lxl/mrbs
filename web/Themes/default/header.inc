@@ -295,7 +295,7 @@ function print_banner($view, $year, $month, $day, $area, $room, $simple=false)
     if(isset($user)){
 echo <<<EOF
   <div class="header_user_info">
-    <img src="images/user-filling.png"/>
+    <img src="images/user-filling_white.png"/>
   </div>
 EOF;
 

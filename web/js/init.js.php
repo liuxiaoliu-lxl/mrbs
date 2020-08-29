@@ -47,7 +47,6 @@ $(document).on('page_ready', function() {
       $(this).addClass("displayed");
       $('.user_container').eq(1).show(100);
     }
-
   })
 
 });
