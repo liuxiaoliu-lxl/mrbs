@@ -169,23 +169,27 @@ var prefetch = function() {
 
 $(document).on('page_ready', function() {
 
-  <!-- 新增会议 -->
-  $(".new_booking").on("click", function (e) {
-    var jumpurl = $(this).data('jumpurl');
-    showIframe(jumpurl,510,550);
-  });
+  $('table#day_main').on('click',function(e){
+    showDialog(e);
+  })
 
-  <!-- 编辑会议 -->
-  $(".edit_booking").on("click", function (e) {
-    var jumpurl = $(this).data('jumpurl');
-    showIframe(jumpurl,510,438);
-  });
+  $('table#week_main').on('click',function(e){
+    showDialog(e);
+  })
 
-  <!-- 月新增会议 -->
-  $(".monthday").on("click", function (e) {
-    var jumpurl = $(this).data('jumpurl');
-    showIframe(jumpurl,510,550);
-  });
+  $('table#month_main').on('click',function(e){
+    showDialog(e);
+  })
+
+  function showDialog(e){
+    var target = e.target;
+      var $target = $(target);
+      if($target.data('jumpurl') != ""){
+        var jumpurl = $target.data('jumpurl');
+        showIframe(jumpurl,510,550);
+      }
+  }
+
 
 
   <!-- 父页面关闭iframe方法 -->
