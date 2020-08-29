@@ -114,6 +114,7 @@ button.image {
 {
   padding:0 20px;
   flex:1;
+  overflow-y: auto;
 }
 
 
@@ -1859,8 +1860,7 @@ nav.logon input {
 
 
 .banner nav a,
-nav.logon input,
-nav.logon span {
+nav.logon input {
   display: inline-block;
   text-align: center;
   padding: 0.3rem 1rem;
