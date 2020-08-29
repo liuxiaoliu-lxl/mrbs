@@ -226,11 +226,11 @@ if (!$is_ajax)
     exit;
   }
 
-  echo '<h3 class="search_results">';
+  echo '<h2 class="search_results">';
   echo get_vocab("search_results",
                  htmlspecialchars($search_str),
                  htmlspecialchars(utf8_strftime($strftime_format['date_short'], $search_start_time)));
-  echo "</h3>\n";
+  echo "</h2>\n";
 }  // if (!$is_ajax)
 
 

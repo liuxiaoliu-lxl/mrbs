@@ -1935,11 +1935,13 @@ form#show_my_entries input.link[type="submit"] {
 header input[type="search"] {
   width: 220px;
   color:#333;
+  border:none;
 }
 header input[type="submit"] {
   display: inline-block!important;
   color:#323130;
   padding:0 10px;
+  border:none;
 }
 
 .banner .outstanding a {
@@ -2179,6 +2181,9 @@ button#delete_button {
 
 /* ------------ SEARCH.PHP ----------------------*/
 
+#search_form{
+  padding-bottom: 26px;
+}
 #search_form fieldset{
   border: 1px solid #C3CCD3;
 }
