@@ -218,6 +218,10 @@ if (!$is_ajax)
   if (!isset($search_str) || ($search_str === ''))
   {
     echo "<p class=\"error\">" . get_vocab("invalid_search") . "</p>";
+    echo "</div>";
+
+    require_once 'user_menu.php';
+
     print_footer();
     exit;
   }
@@ -334,6 +338,8 @@ if (!isset($total))
 if (($total <= 0) && !$is_ajax)
 {
   echo "<p id=\"nothing_found\">" . get_vocab("nothing_found") . "</p>\n";
+  echo "</div>";
+  require_once 'user_menu.php';
   print_footer();
   exit;
 }
