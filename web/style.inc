@@ -25,7 +25,7 @@ else
 ?>
 
 <?php
-if (in_array($page, ['index', 'search']))
+if (in_array($page, ['index']))
 {
   ?>
   <link rel="stylesheet" href="js/js_date/css/bootstrap.min.css" type="text/css">
