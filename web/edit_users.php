@@ -1138,19 +1138,19 @@ if (!$is_ajax)
 
   if (is_user_admin()) /* Administrators get the right to add new users */
   {
-    $form = new Form();
-
-    $form->setAttributes(array('id'     => 'add_new_user',
-                               'method' => 'post',
-                               'action' => this_page()));
-
-    $form->addHiddenInput('action', 'add');
-
-    $submit = new ElementInputSubmit();
-    $submit->setAttribute('value', get_vocab('add_new_user'));
-    $form->addElement($submit);
-
-    $form->render();
+//    $form = new Form();
+//
+//    $form->setAttributes(array('id'     => 'add_new_user',
+//                               'method' => 'post',
+//                               'action' => this_page()));
+//
+//    $form->addHiddenInput('action', 'add');
+//
+//    $submit = new ElementInputSubmit();
+//    $submit->setAttribute('value', get_vocab('add_new_user'));
+//    $form->addElement($submit);
+//
+//    $form->render();
   }
 
 }
