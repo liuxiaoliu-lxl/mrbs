@@ -406,12 +406,7 @@ function room_cell_html(array $room, array $vars)
     ' title = "' . htmlspecialchars($title) . '">';
   $html .= '<span>' . $vars['month'] . '月' . $vars['day'] . '日' . '</span>-<span>' . htmlspecialchars($room['room_name']) . '</span>';
   // Put the capacity in a span to give flexibility in styling
-  $html .= '<span class="capacity';
-  if ($room['capacity'] == 0)
-  {
-    $html .= ' zero';
-  }
-  $html .= '">' . htmlspecialchars($room['capacity']);
+
   $html .= '</span>';
   $html .= '</a>';
   $html .= "</th>\n";
