@@ -111,7 +111,8 @@ button.image {
 }
 .edit_users.logged_in .contents .main_div,
 .admin.logged_in .contents .main_div,
-.search.logged_in .contents .main_div
+.search.logged_in .contents .main_div,
+.edit_room.logged_in .contents .main_div
 {
   padding:0 20px;
   flex:1;
