@@ -186,37 +186,126 @@ $(document).on('page_ready', function() {
     var $parent = $target.parents('td.valid');
 
     if(target.nodeName == "A"){
-      if($target.hasClass('edit_booking')){
+      if($target.hasClass('edit_booking')){//如果点击的是已有会议，则直接弹出查看窗
         showDialog(e || window.event); 
-      }else{
-        if($parent.hasClass('active')){
+      }else{//点击的不是已有会议
+        if($parent.hasClass('active')){ //如果是选中状态，则再次点击弹出新建窗
           showDialog(e || window.event);
-        }else{
+        }else{//如果不是选中状态，则修改为选中状态
           var $table = $('table#month_main');
           var $tdChild = $table.find("td");
           $tdChild.each(function(index,ele){
             $(ele).removeClass("active");
           })
+          $parent.addClass('active');
 
-          $parent.addClass('active')
+          modifyMonthBookList($parent);
         }
       }
     }
   })
   <!-- 动态计算月表格的高度，使其不出现滚动条 -->
-function resizeTrHeight(){
+function initMonthTRHeight(){
   if(args.view == 'month'){
     var $table = $('table#month_main > tbody');
     var $tr = $table.find('tr');
     var trLen = $tr.length;
     var h = $('.table_container').height() - 50;
-    $('table#month_main > tbody').find('div.cell_container').css({
-     height: h / trLen -2
+    $('table#month_main > tbody').find('div.cell_container').css({ //3:边线和一位向下取整
+     height: h / trLen -3
     });
+    <!-- 月表格才展示某天的会议详情 -->
+    $('div.booking--list').css({
+      display:"block"
+    })
   }
 }
 
-resizeTrHeight();
+initMonthTRHeight();
+
+  <!-- 初始切换到month表格，显示默认天会议 -->
+function initMonthBookList(){
+  if(args.view == 'month'){
+    var day = args.pageDate.split("-")[2];
+    day = parseInt(day);
+    var $selectedTd = $('table#month_main > tbody').find('td[data-day="' + day + '"]');
+ 
+    var $booking_list = $selectedTd.find('div.booking_list div'); //copy 会议列表
+    if($booking_list.length == 0){
+      $("div.booking--list-content").empty();
+      $("div.booking--list-content").append('<div>暂无会议</div>');
+    }else{
+      $("div.booking--list-content").empty();
+      $("div.booking--list-content").append($booking_list.clone(true));
+    }
+
+    //会议列表详情title
+    var title = genBookListTitle(args.pageDate);
+    $('div.booking--list-title').html(title);
+
+  }
+}
+
+initMonthBookList();
+
+  <!-- 点击表格时，展示选择的天的会议 -->
+function modifyMonthBookList(ele){
+  if(args.view == 'month'){
+    var $selectedTd = ele;
+    var $booking_list = $selectedTd.find('div.booking_list div');
+    if($booking_list.length == 0){
+      $("div.booking--list-content").empty();
+      $("div.booking--list-content").append('<div>暂无会议</div>');
+    }else{
+      $("div.booking--list-content").empty();
+      $("div.booking--list-content").append($booking_list.clone(true));
+    }
+
+
+    var dateStr = $selectedTd.data('date');
+    var title = genBookListTitle(dateStr);
+    $('div.booking--list-title').html(title);
+  }
+}
+
+  <!-- 月表格，选中天，会议详情列表title -->
+function genBookListTitle(str){
+  var strArr = str.split("-");
+  var dateStr = strArr[1] + "月" + strArr[2] + "日";
+  var day = new Date(str).getDay();
+  var week = "";
+  switch(day){
+    case 1:
+      week = "周一";
+      break;
+    case 2:
+      week = "周二";
+      break;
+    case 3:
+      week = "周三";
+      break;
+    case 4:
+      week = "周四";
+      break;
+    case 5:
+      week = "周五";
+      break;
+    case 6:
+      week = "周六";
+      break;
+    case 0:
+      week = "周日";
+      break;
+  } 
+  dateStr += week;
+  return dateStr;
+}
+
+  <!-- 月表格，选中天会议详情列表 查看/修改 -->
+  $('div.booking--list-content').on('click',function(e){
+    showDialog(e || window.event);
+  })
+
 
   <!-- 新建：新建按钮 -->
   $('.leftNav--topbar-newBtn').on('click',function(e){
