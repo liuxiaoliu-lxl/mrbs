@@ -203,9 +203,20 @@ $(document).on('page_ready', function() {
       }
     }
   })
+  <!-- 动态计算月表格的高度，使其不出现滚动条 -->
+function resizeTrHeight(){
+  if(args.view == 'month'){
+    var $table = $('table#month_main > tbody');
+    var $tr = $table.find('tr');
+    var trLen = $tr.length;
+    var h = $('.table_container').height() - 50;
+    $('table#month_main > tbody').find('div.cell_container').css({
+     height: h / trLen -2
+    });
+  }
+}
 
-
-
+resizeTrHeight();
 
   <!-- 新建：新建按钮 -->
   $('.leftNav--topbar-newBtn').on('click',function(e){

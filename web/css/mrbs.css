@@ -658,6 +658,7 @@ div#div_custom_html {
 .table_container {
   overflow: auto;
   position: relative;
+  flex:1;
   /* max-height: calc(100vh - 4em);
   max-height: max(calc(100vh - 4em), 8em); */
   /* margin-left: 1em; */
@@ -1104,7 +1105,7 @@ div.booking_list {
   position: relative;
   z-index: 20;  
   /* max-height: 80%; */
-  margin-right: -17px;/*隐藏滚动条*/
+  margin-right: -18px;/*隐藏滚动条*/
   font-size: x-small;
   max-height: 100%;
   overflow: scroll;
