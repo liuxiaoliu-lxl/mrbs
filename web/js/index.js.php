@@ -213,10 +213,14 @@ function resizeTrHeight(){
     $('table#month_main > tbody').find('div.cell_container').css({
      height: h / trLen -2
     });
+    $('div.booking--list').css({
+      display:"block"
+    })
   }
 }
 
 resizeTrHeight();
+
 
   <!-- 新建：新建按钮 -->
   $('.leftNav--topbar-newBtn').on('click',function(e){

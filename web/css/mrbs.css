@@ -659,6 +659,9 @@ div#div_custom_html {
   overflow: auto;
   position: relative;
   flex:1;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: flex-start;
   /* max-height: calc(100vh - 4em);
   max-height: max(calc(100vh - 4em), 8em); */
   /* margin-left: 1em; */
@@ -1061,6 +1064,11 @@ div.cell_container {
   overflow: hidden;
 }
 
+
+.booking--list{
+  width: 150px;
+  display: none;
+}
 #month_main a.new_booking {
   position: absolute;
   top: 0;
