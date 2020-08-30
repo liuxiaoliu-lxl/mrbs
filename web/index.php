@@ -462,6 +462,10 @@ echo "<div class=\"table_container\">\n";
 echo '<table class="' . implode(' ', $classes) . "\" id=\"${view}_main\" data-resolution=\"$resolution\">\n";
 echo $inner_html;
 echo "</table>\n";
+echo <<<EOF
+<div class="booking--list"></div>
+EOF;
+
 echo "</div>\n";
 
 // The bottom navigation bar is controlled by JavaScript
