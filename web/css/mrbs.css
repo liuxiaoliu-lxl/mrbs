@@ -610,7 +610,9 @@ div#div_custom_html {
 .roomChangeForm input.button, .areaChangeForm button.image {
   display: block;
   float: left;
-  margin: 0 0.7em;
+  margin:5px 10px;
+  cursor: pointer;
+  outline:none;
 }
 
 
@@ -1011,6 +1013,9 @@ table.dwm_main#day_main,table.dwm_main#week_main{
   background-color: #ffffff;
   box-sizing: border-box;
   padding:0 3px;
+}
+.dwm_main#month_main td.valid.active{
+  background-color: #deecf9;
 }
 
 .dwm_main#month_main td.invalid {

@@ -180,14 +180,37 @@ $(document).on('page_ready', function() {
 
   <!-- 新建：月 -->
   $('table#month_main').on('click',function(e){
-    showDialog(e || window.event);
+    var e = e || window.event;
+    var target = e.target;
+    var $target = $(target);
+    var $parent = $target.parents('td.valid');
+
+    if(target.nodeName == "A"){
+      if($target.hasClass('edit_booking')){
+        showDialog(e || window.event); 
+      }else{
+        if($parent.hasClass('active')){
+          showDialog(e || window.event);
+        }else{
+          var $table = $('table#month_main');
+          var $tdChild = $table.find("td");
+          $tdChild.each(function(index,ele){
+            $(ele).removeClass("active");
+          })
+
+          $parent.addClass('active')
+        }
+      }
+    }
   })
+
+
 
   <!-- 新建：新建按钮 -->
   $('.leftNav--topbar-newBtn').on('click',function(e){
     showDialog(e || window.event);
   })
-  
+
   <?php
   // Turn the room and area selects into fancy select boxes and then
   // show the location menu (it's hidden to avoid screen jiggling).
