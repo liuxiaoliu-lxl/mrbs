@@ -16,6 +16,11 @@ if ($use_strict)
 
 $(document).on('page_ready', function() {
 
+  $('select#f_level').wrap('<div></div>').select2({// 开始时间段
+    width:130,
+    minimumResultsForSearch: -1
+  })
+
   <?php // Turn the list of users into a dataTable ?>
   
   var tableOptions = {};
