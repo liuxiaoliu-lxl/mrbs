@@ -463,7 +463,7 @@ echo '<table class="' . implode(' ', $classes) . "\" id=\"${view}_main\" data-re
 echo $inner_html;
 echo "</table>\n";
 echo <<<EOF
-<div class="booking--list"></div>
+<div class="booking--list"><div class="booking--list-title">8月19</div><div class="booking--list-content"></div></div>
 EOF;
 
 echo "</div>\n";

@@ -722,6 +722,10 @@ table.dwm_main#day_main,table.dwm_main#week_main{
   box-sizing: border-box;
   padding-left: 10px;
 }
+table.dwm_main#month_main{
+  flex:1;
+  width:auto;
+}
 
 .dwm_main th, .dwm_main td {
   min-height: 28px;
@@ -1066,8 +1070,53 @@ div.cell_container {
 
 
 .booking--list{
-  width: 150px;
+  width: 200px;
   display: none;
+}
+.booking--list > .booking--list-title{
+  font-size: 17px;
+  font-weight: 600;
+  height: 50px;
+  line-height: 50px;
+  padding-left:15px;
+  box-sizing: border-box;
+  border-bottom:2px solid #edebe9;
+
+}
+.booking--list > .booking--list-content > div{
+  padding:5px 10px;
+  height: 50px;
+  line-height: 50px;
+  background: #fff;
+  cursor: pointer;
+}
+.booking--list > .booking--list-content > div:hover{
+  background: #edebe9;
+}
+.booking--list > .booking--list-content > div:first-child{
+  /* background: #edebe9; */
+}
+.booking--list > .booking--list-content a{
+  height: 40px;
+  line-height: 40px;
+  display: block;
+  position: relative;
+  text-decoration: none;
+  color:#323130;
+  padding-left:12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.booking--list-content  a::before{
+  content: "";
+  position: absolute;
+  top:0;
+  left:0;
+  bottom:0;
+  width: 5px;
+  background-color: rgb(0, 120, 212);
+  border-radius: 4px;
 }
 #month_main a.new_booking {
   position: absolute;
@@ -2805,8 +2854,17 @@ padding-left: 10px;
   text-align: right;
 }
 .login--submit-btn .btn-primary{
+  cursor: pointer;
+  padding: 8px 12px;
+    outline: none;
+    color: #FFF;
+    border: none;
   width: 88px;
   border-radius: 0;
+  background-color: #0067b8;
+}
+.login--submit-btn .btn-primary:hover{
+  background-color:#005a9e;
 }
 
 
