@@ -453,10 +453,6 @@ if ($times_along_top)
 {
   $classes[] .= 'times-along-top';
 }
-if ($view_all)
-{
-  $classes[] = 'all_rooms';
-}
 
 echo "<div class=\"table_container\">\n";
 echo '<table class="' . implode(' ', $classes) . "\" id=\"${view}_main\" data-resolution=\"$resolution\">\n";
