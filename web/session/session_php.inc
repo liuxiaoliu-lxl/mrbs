@@ -28,7 +28,7 @@ function authGet()
 {
   global $returl;
 
-  print_header();
+  print_header($view=null, $view_all=null, $year=null, $month=null, $day=null, $area=null, $room=null, $simple=false, $banner=false);
   $target_url = this_page(true);
   print_login_form(this_page(), $target_url, $returl);
 
