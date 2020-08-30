@@ -2672,10 +2672,7 @@ h2.date.loading::after {
   color:#fff;
 }
 
-/* 内容区，顶部区域 */
-.main_calendar{
-  height: 56px;
-}
+
 /* 左侧抽屉收起：内容区，顶部区域添加样式*/
 .main_calendar.leftNav--small-state{
   position: relative;
