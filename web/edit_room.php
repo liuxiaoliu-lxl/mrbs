@@ -304,7 +304,7 @@ if ($auth['allow_custom_html'])
   echo "</div>\n";
 }
 
-echo '</d0iv>';
+echo '</div>';
 
 require_once 'user_menu.php';
 
