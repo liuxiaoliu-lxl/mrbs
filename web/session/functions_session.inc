@@ -190,7 +190,7 @@ function print_logoff_button($target_url)
                              'action' => 'admin.php'));
 
   // Add the hidden fields
-  $hidden_inputs = array('target_url' => 'admin.php',
+  $hidden_inputs = array('target_url' => $target_url,
                          'action'     => 'SetName',
                          'username'   => '',
                          'password'   => '');
