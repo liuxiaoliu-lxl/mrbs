@@ -58,5 +58,10 @@ $(document).on('page_ready', function() {
     makeDataTable('#search_results', tableOptions, {"leftColumns": 1});
   }
     
+    <!-- 搜索页面，打开查看/编辑弹窗 -->
+  $('table#search_results').on('click',function(e){
+    showDialog(e || window.event);
+  })
+
 });
 
