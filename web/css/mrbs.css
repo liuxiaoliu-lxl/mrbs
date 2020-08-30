@@ -499,7 +499,8 @@ nav.view div.container_date {
   background: linear-gradient(#eeeeee, #cccccc);
   border-right: thin solid #f9fbfc;
   cursor: pointer;
-  line-height: 1.8em;
+  line-height: 28px;
+  height: 28px;
   font-weight: normal;
   text-align: center;
 }
@@ -529,7 +530,7 @@ nav.view a {
 }
 
 nav.arrow a {
-  padding: 0.2em 1.1em;
+  padding: 0 1.1em;
 }
 
 nav a.selected,
