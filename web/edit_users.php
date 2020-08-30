@@ -237,7 +237,7 @@ function output_row(&$row)
           // we don't want to truncate the email address
           $escaped_email = htmlspecialchars($col_value);
           $values[] = "<div class=\"string\">\n" .
-                      "<a href=\"mailto:$escaped_email\">$escaped_email</a>\n" .
+                      "<a href='javascript:void(0);'>$escaped_email</a>\n" .
                       "</div>\n";
           break;
         case 'timestamp':
@@ -646,6 +646,7 @@ if (isset($action) && ( ($action == "edit") or ($action == "add") ))
   }
 
   print_header($view, $view_all, $year, $month, $day, isset($area) ? $area : null, isset($room) ? $room : null);
+  echo "<div class='main_div'>";
 
   echo "<h2>";
   if ($initial_user_creation)
@@ -792,6 +793,8 @@ if (isset($action) && ( ($action == "edit") or ($action == "add") ))
   $form->addElement(get_fieldset_submit_buttons($delete, $button_disabled, $editing_last_admin));
 
   $form->render();
+  echo '</div>';
+  require_once 'user_menu.php';
 
   // Print footer and exit
   print_footer();
