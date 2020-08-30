@@ -101,7 +101,8 @@ button.image {
 
 .edit_users.logged_in .contents,
 .admin.logged_in .contents,
-.search.logged_in .contents
+.search.logged_in .contents,
+.edit_room.logged_in .contents
 {
   background-color: #fff;
   display:flex;
