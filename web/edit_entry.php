@@ -1118,7 +1118,7 @@ function get_fieldset_submit_buttons()
 
   $back = new ElementInputButton();
   $back->setAttributes(array('name'           => 'back_button',
-                             'value'          => get_vocab('back'),
+                             'value'          => '放弃',
                              'formnovalidate' => true));
 
   $submit = new ElementInputSubmit();
@@ -1141,7 +1141,7 @@ function get_fieldset_submit_buttons()
         // ->addLabelClass('no_suffix')
         // ->addLabelElement($back)
         ->addControlElement($back)
-       
+
         ->addControlElement($submit)
         ->addControlElement($div);
 
