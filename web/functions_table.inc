@@ -1724,7 +1724,7 @@ function month_room_table_innerhtml($view, $view_all, $year, $month, $day, $area
     }
     else
     {
-      $html .= "<td class=\"valid\">\n";
+      $html .= "<td class=\"valid\" data-date='$d'>\n";
       $html .= "<div class=\"cell_container\">\n";
 
       $html .= "<div class=\"cell_header\">\n";
