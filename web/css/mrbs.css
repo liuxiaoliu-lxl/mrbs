@@ -47,7 +47,7 @@ body {
 input{
   box-sizing: border-box;
   border:1px solid #aaa;
-  border-radius:4px;
+  border-radius:2px;
   outline:none;
   height:28px;
   padding:0 4px;
@@ -375,10 +375,14 @@ table.dataTable thead .sorting_asc,
 table.dataTable thead .sorting_desc {
   /* color: #ffffff;
   background-color: #1976D2; */
-  color:#333;
+  /* color:#333; */
   /* background-color: #fff; */
-  background-color: #E2E4FF;
-
+  /* background-color: #E2E4FF; */
+  color:#fff;
+  background-color: rgb(0, 120, 212)
+}
+table.dataTable.no-footer{
+  border-bottom:1px solid #C3CCD3;
 }
 
 .admin_table td.action {
@@ -496,7 +500,8 @@ nav.view div.container_date {
 }
 
  nav.arrow a {
-  background: linear-gradient(#eeeeee, #cccccc);
+  /* background: linear-gradient(#eeeeee, #cccccc); */
+  background-color: #fff;
   border-right: thin solid #f9fbfc;
   cursor: pointer;
   line-height: 28px;
@@ -506,7 +511,8 @@ nav.view div.container_date {
 }
 
 nav.view a {
-  background: linear-gradient(#eeeeee, #cccccc);
+  /* background: linear-gradient(#eeeeee, #cccccc); */
+  background-color: #fff;
   border-right: thin solid #f9fbfc;
   cursor: pointer;
   display:inline-block;
@@ -515,14 +521,14 @@ nav.view a {
 }
 
 nav.view a:first-child, nav.arrow a:first-child {
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
 }
 
 nav.view a:last-child, nav.arrow a:last-child {
   border-right: 0;
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
 }
 
 nav.view a {
@@ -715,7 +721,7 @@ table.dwm_main {
   border-color: #dddddd;
   border-width: 0px;
   border-style: solid;
-  border-radius: 5px;
+  border-radius: 2px;
   box-sizing: border-box;
 }
 table.dwm_main#day_main,table.dwm_main#week_main{
@@ -871,12 +877,12 @@ table.dwm_main#month_main{
 
 .dwm_main tfoot tr:last-child th:first-child,
 .dwm_main thead + tbody tr:last-child th:first-child {
-  border-bottom-left-radius: 5px;
+  border-bottom-left-radius: 2px;
 }
 
 .dwm_main tfoot tr:last-child th:last-child,
 .dwm_main thead + tbody tr:last-child > *:last-child {
-  border-bottom-right-radius: 5px;
+  border-bottom-right-radius: 2px;
 }
 
 
@@ -1464,6 +1470,7 @@ div#div_custom_html {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+  cursor: pointer;
 }
 
 
@@ -1593,7 +1600,7 @@ fieldset > div > label,
   border:1px solid #aaa;
   outline:none;
   height:28px;
-  border-radius:4px;
+  border-radius:2px;
     }
 
 .standard input[type="text"].short {
@@ -1938,7 +1945,7 @@ nav.logon input {
   text-align: center;
   padding: 0.3rem 1rem;
   line-height: 1.5em;
-  border-radius: 0.8em;
+  border-radius: 2px;
 }
 
 .banner a.attention {
@@ -2010,6 +2017,7 @@ header input[type="search"] {
 }
 header input[type="submit"] {
   display: inline-block!important;
+  background-color: #fff;
   color:#323130;
   padding:0 10px;
   border:none;
@@ -2409,6 +2417,10 @@ div#view_entry_nav > div > div {
   border-radius: 2px;
   padding:0 8px;
 }
+#view_entry_nav input[type="submit"]:hover{
+  background: #005a9e;
+  border-color: #005a9e;
+}
 
 .view_entry #approve_buttons form {
   float: left;
@@ -2540,7 +2552,7 @@ table.dataTable.order-column.stripe tbody tr.even > .sorting_3 {
 .dataTables_length select{
   height: 25px;
   border:1px solid #aaa;
-  border-radius: 4px;
+  border-radius: 2px;
 }
 
 div.dt-buttons {
@@ -2861,7 +2873,7 @@ padding-left: 10px;
     color: #FFF;
     border: none;
   width: 88px;
-  border-radius: 0;
+  border-radius: 2px;
   background-color: #0067b8;
 }
 .login--submit-btn .btn-primary:hover{
@@ -2869,3 +2881,32 @@ padding-left: 10px;
 }
 
 
+
+
+.select2-container--default .select2-selection--single{
+  border-radius: 2px!important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current{
+  color: #fff!important;
+  background: #0078d4;
+  border-color: #0078d4;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{
+  color: #fff!important;
+  background: #005a9e;
+  border-color:#005a9e;
+}
+input[type="button"]{
+  cursor: pointer;
+  color: #fff;
+  background: #0078d4;
+  border-color: #0078d4;
+  outline: none;
+  border-radius: 2px;
+  padding: 0 15px;
+}
+input[type="button"]:hover{
+  background: #005a9e;
+  border-color:#005a9e;
+}
