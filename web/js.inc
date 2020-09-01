@@ -4,6 +4,10 @@ namespace MRBS;
 global $view, $year, $month, $day, $area, $room;
 global $debug;
 
+if($view == 'day'){
+  $view = 'week';
+}
+
 $page = this_page(false, '.php');
 
 // We need to construct a standard query string that can be passed to the *.js.php

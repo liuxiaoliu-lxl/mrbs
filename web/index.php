@@ -383,7 +383,9 @@ function get_date_heading($view, $year, $month, $day)
   return $html;
 }
 
-
+if($view == 'day'){
+  $view = 'week';
+}
 
 // Get non-standard form variables
 $refresh = get_form_var('refresh', 'int');
