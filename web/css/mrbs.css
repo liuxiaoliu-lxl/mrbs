@@ -814,13 +814,15 @@ table.dwm_main#month_main{
 }
 
 .dwm_main thead th a{
-  font-size:16px;
-  color:#605e5c;
+  color:#323130;
+  font-size:20px;
 }
+
 
 .dwm_main#week_main thead th a span{
   margin-left:8px;
   font-size:14px;
+  color:#605e5c;
 }
 
 .dwm_main th,
@@ -938,6 +940,11 @@ table.dwm_main#month_main{
   fill: rgb(0,67,119);
   padding: 0 4px;
   text-decoration: none;
+  font-size:14px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 600;
+  font-family: "Microsoft Yaheri UI", Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .dwm_main .booked a,
@@ -1113,6 +1120,8 @@ div.cell_container {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  font-family: "Microsoft Yahei UI",Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 14px;
 }
 .booking--list-content  a::before{
   content: "";
@@ -1192,7 +1201,9 @@ div.both {
 }
 
 .booking_list a {
-  font-size: x-small;
+  font-size: 12px;
+  font-family:"Microsoft Yahei UI", Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 600;
 }
 
 
