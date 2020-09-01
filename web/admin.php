@@ -37,7 +37,7 @@ function generate_room_delete_form($room, $area)
   // The button
   $element = new ElementInputButton();
   $element->setAttributes(array('class'  => 'del_room_btn',
-                                'value'  => '删除房间',
+                                'value'  => '删除会议室',
 //                                'width'  => '16',
 //                                'height' => '16',
 //                                'title'  => get_vocab('delete'),
@@ -265,7 +265,7 @@ if (isset($area))
 }
 
 
-echo "<h2>区域列表</h2>\n";
+echo "<h2>办公室列表</h2>\n";
 if (!empty($error))
 {
   echo "<p class=\"error\">" . htmlspecialchars(get_vocab($error)) . "</p>\n";

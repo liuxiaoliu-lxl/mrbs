@@ -16,7 +16,7 @@ $(document).on('page_ready', function() {
 
   var fixedColumnsOptions = {leftColumns: 1};
 
-    $('select#area_select').wrap('<div></div>').select2({ //房间
+    $('select#area_select').wrap('<div></div>').select2({ //会议室
     width:150,
     minimumResultsForSearch: -1
   })
@@ -33,7 +33,7 @@ $(document).on('page_ready', function() {
   makeDataTable('#rooms_table', {}, fixedColumnsOptions);
 
   $('.del_room_btn').click(function(){
-    if(confirm('该操作会删除房间内所有的会议，确定删除？')){
+    if(confirm('该操作会删除会议室内所有的会议，确定删除？')){
       $(this).parent('form').submit();
     }
   })

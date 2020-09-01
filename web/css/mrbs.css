@@ -213,7 +213,7 @@ tr:nth-child(odd) td.new,
   border-top-width: thin;
   border-top-style: solid;
   border-top-color:#edebe9;
-  
+
 }
 
 .table_container table tr:nth-child(even) td.new,
@@ -687,7 +687,7 @@ div#div_custom_html {
   background-clip: content-box;
 }
 
-::-webkit-scrollbar-track, 
+::-webkit-scrollbar-track,
  body::-webkit-scrollbar-track {
   background: transparent;
 }
@@ -698,7 +698,7 @@ div.timeline {
   background-color: #0078d4;
   position: absolute;
   width: 0;
-  height: 2px;  
+  height: 2px;
   transform: translate(0, -50%);
   z-index: 90;
   pointer-events: none;
@@ -706,7 +706,7 @@ div.timeline {
 
 div.timeline.times_along_top {
   height: 0;
-  width: 2px;  
+  width: 2px;
   transform: translate(-50%, 0);
 }
 
@@ -810,7 +810,7 @@ table.dwm_main#month_main{
   /* color: #0B263B; */
   color: #605e5c;
   background-color: #ffffff;
-  background-clip: padding-box; 
+  background-clip: padding-box;
 }
 
 .dwm_main thead th a{
@@ -922,7 +922,7 @@ table.dwm_main#month_main{
 
 .dwm_main .booking {
   width: 100%;
-  height: 100%;   
+  height: 100%;
   min-height: 1.5em;
 }
 
@@ -1137,13 +1137,13 @@ div.cell_container {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 10; 
+  z-index: 10;
  }
 
 div.cell_header {
   position: relative;
   width: 100%;
-  z-index: 20;   
+  z-index: 20;
    /* min-height: 20%;
   height: 20%;
   max-height: 20%; */
@@ -1175,7 +1175,7 @@ div.cell_header {
 
 div.booking_list {
   position: relative;
-  z-index: 20;  
+  z-index: 20;
   /* max-height: 80%; */
   margin-right: -18px;/*隐藏滚动条*/
   font-size: x-small;
@@ -1467,7 +1467,7 @@ div#div_custom_html {
 }
 
 .standard .new_dialog_header{
-  
+
   padding:0 20px;
   height: 36px;
   line-height: 36px;
@@ -1515,13 +1515,13 @@ div#div_custom_html {
 .standard fieldset .field_text_area label {
   vertical-align: top;
   padding-top: 0.2em;
-  
+
 }
 .standard fieldset .field_text_area textarea{
   resize: none;
   width: 272px;
 }
-  
+
 .standard fieldset > div > div > * {
   float: left;
 }
@@ -2375,7 +2375,7 @@ div#site_faq_body {
   background-size: contain;
   background-position: center;
   cursor: pointer;
-  
+
 }
 .view_entry_header .view_entry_close_icon svg{
   position: absolute;
@@ -2681,9 +2681,9 @@ h2.date.loading::after {
 }
 .bootstrap-datetimepicker-widget table thead tr:nth-child(1){
     font-size: 14px;
-} 
+}
  tr:nth-child(even) td.new{
- background-color: none!important;   
+ background-color: none!important;
 }
 
 
@@ -2760,7 +2760,7 @@ h2.date.loading::after {
 }
 
 
-/* 左侧抽屉收起：内容区，顶部区域添加样式*/
+/* 左侧抽屉收起：内容区，顶部办公室添加样式*/
 .main_calendar.leftNav--small-state{
   position: relative;
   left: 88px;

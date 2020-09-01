@@ -1190,7 +1190,7 @@ $(document).on('page_ready', function() {
   });
 
   //新增
-  $('select#rooms').wrap('<div></div>').select2({ //房间
+  $('select#rooms').wrap('<div></div>').select2({ //会议室
     width:272,
     multiple:true,
     minimumResultsForSearch: -1

@@ -1,4 +1,10 @@
 <?php
+
+use function MRBS\get_calendar_nav;
+use function MRBS\get_location_nav;
+
+$area_left_html = get_location_nav($view, $view_all, $year, $month, $day, $area, $room);
+
 echo <<<EOF
 <div class="leftNav--large">
     <div class="leftNav--topbar">
@@ -16,6 +22,7 @@ echo <<<EOF
     <div class="leftNav--DatepickerWrap">
         <div id="leftNavDatepicker"></div>
     </div>
+     $area_left_html
 </div>
 <div class="leftNav--small">
     <div class="leftNav--small-topbar">
@@ -32,3 +39,6 @@ echo <<<EOF
     </div>
 </div>
 EOF;
+
+
+

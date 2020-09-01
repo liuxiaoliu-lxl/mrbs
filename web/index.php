@@ -223,7 +223,8 @@ function get_view_nav($current_view, $view_all, $year, $month, $day, $area, $roo
   $html .= '<nav class="view">';
   $html .= '<div class="container_date">';  // helps the CSS
 
-  $views = array('day' => 'nav_day',
+  $views = array(
+//    'day' => 'nav_day',
                  'week' => 'nav_week',
                  'month' => 'nav_month');
 
@@ -302,7 +303,7 @@ function get_calendar_nav($view, $view_all, $year, $month, $day, $area, $room, $
            "\">\n";
 
   $html .= get_arrow_nav($view, $view_all, $year, $month, $day, $area, $room);
-  $html .= get_location_nav($view, $view_all, $year, $month, $day, $area, $room);
+//  $html .= get_location_nav($view, $view_all, $year, $month, $day, $area, $room);
   $html .= get_view_nav($view, $view_all, $year, $month, $day, $area, $room);
 
   $html .= "</nav>\n";
@@ -408,7 +409,7 @@ if (!checkAuthorised(this_page(), $refresh))
 switch ($view)
 {
   case 'day':
-    $inner_html = day_table_innerhtml($view, $year, $month, $day, $area, $room, $timetohighlight);
+//    $inner_html = day_table_innerhtml($view, $year, $month, $day, $area, $room, $timetohighlight);
     break;
   case 'week':
     $inner_html = week_table_innerhtml($view, $view_all, $year, $month, $day, $area, $room, $timetohighlight);
