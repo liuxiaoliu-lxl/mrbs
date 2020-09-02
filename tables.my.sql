@@ -77,7 +77,7 @@ CREATE TABLE mrbs_room
   custom_html      text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
 
   PRIMARY KEY (id),
-  FOREIGN KEY (area_id) 
+  FOREIGN KEY (area_id)
     REFERENCES mrbs_area(id)
     ON UPDATE CASCADE
     ON DELETE RESTRICT,
@@ -110,9 +110,9 @@ CREATE TABLE mrbs_repeat
   info_text      text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   ical_uid       varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '' NOT NULL,
   ical_sequence  smallint DEFAULT 0 NOT NULL,
-  
+
   PRIMARY KEY (id),
-  FOREIGN KEY (room_id) 
+  FOREIGN KEY (room_id)
     REFERENCES mrbs_room(id)
     ON UPDATE CASCADE
     ON DELETE RESTRICT
@@ -142,11 +142,11 @@ CREATE TABLE mrbs_entry
   ical_recur_id  varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
 
   PRIMARY KEY (id),
-  FOREIGN KEY (room_id) 
+  FOREIGN KEY (room_id)
     REFERENCES mrbs_room(id)
     ON UPDATE CASCADE
     ON DELETE RESTRICT,
-  FOREIGN KEY (repeat_id) 
+  FOREIGN KEY (repeat_id)
     REFERENCES mrbs_repeat(id)
     ON UPDATE CASCADE
     ON DELETE CASCADE,
@@ -160,7 +160,7 @@ CREATE TABLE mrbs_variables
   id               int NOT NULL auto_increment,
   variable_name    varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   variable_content text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-      
+
   PRIMARY KEY (id),
   UNIQUE KEY uq_variable_name (variable_name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -172,7 +172,7 @@ CREATE TABLE mrbs_zoneinfo
   outlook_compatible tinyint unsigned NOT NULL DEFAULT 0,
   vtimezone          text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   last_updated       int NOT NULL DEFAULT 0,
-  
+
   /* Note that there is a limit on the length of keys which imposes a constraint
      on the size of VARCHAR that can be keyed */
   PRIMARY KEY (id),
@@ -184,7 +184,7 @@ CREATE TABLE mrbs_sessions
   id      varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   access  int unsigned DEFAULT NULL,
   data    text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  
+
   /* Note that there is a limit on the length of keys which imposes a constraint
      on the size of VARCHAR that can be keyed */
   PRIMARY KEY (id),
@@ -211,3 +211,6 @@ INSERT INTO mrbs_variables (variable_name, variable_content)
   VALUES ( 'db_version', '63');
 INSERT INTO mrbs_variables (variable_name, variable_content)
   VALUES ( 'local_db_version', '1');
+
+alter table mrbs_entry add column device tinyint default 0 comment '设备 0无, 1投影, 2视频';
+alter table mrbs_repeat add column device tinyint default 0 comment '设备 0无, 1投影, 2视频';

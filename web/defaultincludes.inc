@@ -22,6 +22,7 @@ require_once 'systemdefaults.inc.php';
 require_once 'areadefaults.inc.php';
 require_once 'functions_error.inc';
 require_once 'config.inc.php';
+require_once 'status_var.inc.php';
 require_once 'internalconfig.inc.php';
 require_once 'functions.inc';
 require_once 'language.inc';

@@ -744,6 +744,7 @@ function mrbsCreateEntry($table, $data)
         case 'room_id':
         case 'status':
         case 'ical_sequence':
+        case 'device':
           $sql_col[] = $key;
           $sql_val[] = '?';
           $sql_params[] = (isset($data[$key])) ? (int)$data[$key] : null;
@@ -1351,6 +1352,7 @@ function get_booking_info($id, $series, $silent=FALSE)
   // Build an array of the field names in the repeat table so that
   // we'll be able to do some sanity checking later
   $repeat_fields = db()->field_info($tbl_repeat);
+//  dd($repeat_fields);exit;
   $rep_fields = array();
   foreach ($repeat_fields as $field)
   {
@@ -1899,7 +1901,7 @@ function mrbsAddRoom($name, $area, &$error, $description='', $capacity='', $room
 function mrbsMakeBookings(array $bookings, $id=NULL, $just_check=FALSE, $skip=FALSE, $original_room_id=NULL, $send_mail=FALSE, $edit_type='')
 {
   global $max_rep_entrys, $enable_periods, $resolution, $mail_settings;
-  global $tbl_room, $tbl_area;
+  global $tbl_room, $tbl_area, $device_list;
 
   // All the data, except for the status and room id, will be common
   // across the bookings
@@ -2154,6 +2156,7 @@ function mrbsMakeBookings(array $bookings, $id=NULL, $just_check=FALSE, $skip=FA
       $booking['entry_type'] = (isset($repeat_id)) ? ENTRY_RPT_CHANGED : ENTRY_SINGLE;
       $booking['repeat_id'] = $repeat_id;
     }
+
     // Add in the list of bookings to skip
     if (!empty($skip_lists) && !empty($skip_lists[$booking['room_id']]))
     {

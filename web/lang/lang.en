@@ -47,6 +47,7 @@ $vocab["viewmonth"]          = "月视图";
 $vocab["ppreview"]           = "打印预览";
 
 // Used in edit_entry.php
+$vocab["device"]             = "设备";
 $vocab["addentry"]           = "新增条目";
 $vocab["editentry"]          = "修改条目";
 $vocab["copyentry"]          = "复制条目";

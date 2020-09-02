@@ -83,7 +83,7 @@ $custom_fields = array();
 
 // Fill $edit_entry_field_order with not yet specified entries.
 $entry_fields = array('create_by', 'name', 'start_time', 'end_time', 'room_id',
-                      'type', 'confirmation_status', 'privacy_status', 'description');
+                      'type', 'confirmation_status', 'privacy_status', 'description', 'device');
 
 foreach ($entry_fields as $field)
 {
@@ -696,6 +696,33 @@ function get_field_privacy_status($value, $disabled=false)
 }
 
 
+function get_device($value, $disabled=false)
+{
+  global $device_list;
+
+  $field = new FieldSelect();
+
+  $options = array();
+  // go through the areas and create the options
+  foreach ($device_list as $k => $v)
+  {
+    $options[$k] = $v;
+  }
+
+  // We will set the display to none and then turn it on in the JavaScript.  That's
+  // because if there's no JavaScript we don't want to display it because we won't
+  // have any means of changing the rooms if the area is changed.
+  $field->setAttributes(array('id'    => 'device'))
+    ->addClass('none')
+    ->setLabel(get_vocab('device'))
+    ->setControlAttributes(array('name'     => 'device',
+      'disabled' => $disabled))
+    ->addSelectOptions($options, $value, true);
+
+  return $field;
+}
+
+
 function get_field_custom($key, $disabled=false)
 {
   global $custom_fields, $custom_fields_map, $tbl_entry;
@@ -803,7 +830,7 @@ function get_field_rep_type($value, $disabled=false)
 
   $select = new ElementSelect();
   $select->setAttributes(array('id'     => 'rep_type_select', 'name'     => 'rep_type', 'disabled' => $disabled))
-    ->addSelectOptions($options, 0, true);
+    ->addSelectOptions($options, $value, true);
 
   $radio_group->addElement($select);
 
@@ -1200,6 +1227,7 @@ $end_seconds = get_form_var('end_seconds', 'int');
 $selected_rooms = get_form_var('rooms', 'array');
 $start_date = get_form_var('start_date', 'string');
 $end_date = get_form_var('end_date', 'string');
+$device = get_form_var('device', 'int');
 
 
 // Check the CSRF token.
@@ -1377,6 +1405,10 @@ if (isset($id))
       case 'end_time':
         $end_time = $entry['end_time'];
         $duration = $entry['end_time'] - $entry['start_time'] - cross_dst($entry['start_time'], $entry['end_time']);
+        break;
+
+      case 'device':
+        $device = $entry['device'];
         break;
 
       default:
@@ -1831,6 +1863,10 @@ foreach ($edit_entry_field_order as $key)
 
     case 'privacy_status':
       $fieldset->addElement(get_field_privacy_status($private));
+      break;
+
+    case 'device':
+      $fieldset->addElement(get_device($device));
       break;
 
     default:

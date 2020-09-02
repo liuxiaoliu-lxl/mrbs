@@ -94,7 +94,8 @@ $form_vars = array(
   'confirmed'          => 'string',
   'back_button'        => 'string',
   'timetohighlight'    => 'int',
-  'commit'             => 'string'
+  'commit'             => 'string',
+  'device'             => 'int',
 );
 
 foreach($form_vars as $var => $var_type)
@@ -201,7 +202,6 @@ foreach($fields as $field)
 
   }
 }
-
 
 // (3) Clean up the form variables
 // -------------------------------
@@ -650,6 +650,7 @@ if (isset($rep_type) && ($rep_type != REP_NONE) &&
 // (4) Assemble the booking data
 // -----------------------------
 
+zz($device);
 // Assemble an array of bookings, one for each room
 $bookings = array();
 foreach ($rooms as $room_id)
@@ -676,6 +677,7 @@ foreach ($rooms as $room_id)
   $booking['ical_uid'] = $ical_uid;
   $booking['ical_sequence'] = $ical_sequence;
   $booking['ical_recur_id'] = $ical_recur_id;
+  $booking['device'] = $device;
   if ($booking['rep_type'] == REP_MONTHLY)
   {
     if ($month_type == REP_MONTH_ABSOLUTE)
@@ -687,6 +689,7 @@ foreach ($rooms as $room_id)
       $booking['month_relative'] = $month_relative;
     }
   }
+
 
   // Do the custom fields
   foreach ($custom_fields as $key => $value)
@@ -713,6 +716,7 @@ foreach ($rooms as $room_id)
 
   $bookings[] = $booking;
 }
+
 
 $just_check = $is_ajax && !$commit;
 $this_id = (isset($id)) ? $id : null;

@@ -389,7 +389,8 @@ $standard_fields['entry'] = array('id',
                                   'info_text',
                                   'ical_uid',
                                   'ical_sequence',
-                                  'ical_recur_id');
+                                  'ical_recur_id',
+                                  'device');
 
 $standard_fields['repeat'] = array('id',
                                    'start_time',

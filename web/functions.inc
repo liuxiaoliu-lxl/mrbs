@@ -2158,3 +2158,14 @@ function get_server_software()
 
   return '';
 }
+
+
+function zz($array){
+  file_put_contents('../log.txt', json_encode($array) . PHP_EOL, FILE_APPEND);
+}
+
+function dd($array){
+  echo '<pre>';
+  print_r($array);
+  echo '</pre';
+}
