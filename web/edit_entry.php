@@ -394,7 +394,7 @@ function get_all_day($area, $input_id, $input_name, $display_none=false, $disabl
 
   $label = new ElementLabel();
   $label->setText(get_vocab('all_day'))
-        ->setAttribute('class', 'no_suffix');
+        ->setAttribute('class', 'no_suffix font14');
 
   $label->addElement($checkbox);
   $element->addElement($label);
