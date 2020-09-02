@@ -89,9 +89,9 @@ else
 
 // All pages
 ?>
-<script src="js/functions.js.php?<?php echo $escaped_standard_query_string ?>"></script>
-<script src="js/general.js.php?<?php echo $escaped_standard_query_string ?>"></script>
-<script src="js/datepicker.js.php?<?php echo $escaped_standard_query_string ?>"></script>
+<script src="js/functions.js.php?<?php echo $escaped_standard_query_string ?>&v=<?php echo JCS_VERSION;?>"></script>
+<script src="js/general.js.php?<?php echo $escaped_standard_query_string ?>&v=<?php echo JCS_VERSION;?>"></script>
+<script src="js/datepicker.js.php?<?php echo $escaped_standard_query_string ?>&v=<?php echo JCS_VERSION;?>"></script>
 <!--<script src="js/flatpickr/flatpickr.min.js"></script>-->
 <script src="jquery/select2/dist/js/select2.full.min.js"></script>
 
