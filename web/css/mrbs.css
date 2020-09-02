@@ -1468,7 +1468,7 @@ div#div_custom_html {
 
 .standard .new_dialog_header{
 
-  padding:0 20px;
+  padding:0 13px;
   height: 36px;
   line-height: 36px;
   background-color: rgb(0, 120, 212);
@@ -2361,7 +2361,7 @@ div#site_faq_body {
   justify-content: space-between;
   height: 36px;
   line-height: 36px;
-  padding:0 20px;
+  padding:0 13px;
   background-color: rgb(0, 120, 212);
   font-size: 18px;
   color:#fff;
