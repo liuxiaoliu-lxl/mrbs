@@ -1191,13 +1191,13 @@ $(document).on('page_ready', function() {
 
   //新增
   $('select#rooms').wrap('<div></div>').select2({ //会议室
-    width:272,
+    width:282,
     multiple:true,
     minimumResultsForSearch: -1
   })
 
   $('select#area').wrap('<div></div>').select2({ //标题
-    width:272,
+    width:282,
     minimumResultsForSearch: -1
   })
   $('select#start_seconds').wrap('<div></div>').select2({// 开始时间段
@@ -1209,7 +1209,7 @@ $(document).on('page_ready', function() {
     minimumResultsForSearch: -1
   })
   $('select#rep_type_select').wrap('<div></div>').select2({// 重复类型
-    width:70,
+    width:80,
     minimumResultsForSearch: -1
   })
 

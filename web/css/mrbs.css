@@ -56,7 +56,8 @@ input{
 input.date,
 .js input[type="date"],
 input.form-control.input {
-  width: 130px;
+  width: 140px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 input.form-control.input.flatpickr-mobile {
@@ -1519,7 +1520,9 @@ div#div_custom_html {
 }
 .standard fieldset .field_text_area textarea{
   resize: none;
-  width: 272px;
+  width: 282px;
+  color: #323130;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .standard fieldset > div > div > * {
@@ -1559,7 +1562,7 @@ fieldset > div > label,
   width: 60px!important;
 }
 .edit_entry.logged_in .standard input[type="text"]:not(.date):not(.form-control){
-  width: 272px;
+  width: 282px;
 }
 
 .standard fieldset > div > div {
@@ -1607,12 +1610,14 @@ fieldset > div > label,
 .standard input[type="search"],
 .standard textarea {
   /* width: 17rem; */
-  width: 272px;
+  width: 282px;
   border:1px solid #aaa;
   outline:none;
   height:28px;
   border-radius:2px;
-    }
+  color: #323130;
+}
+
 
 .standard input[type="text"].short {
   width: 4em;
@@ -1732,6 +1737,7 @@ div#checks {
   white-space: nowrap;
   letter-spacing: 0.9em;
   margin-left: 3em;
+  display: none;
 }
 
 div#checks span {
@@ -2363,7 +2369,8 @@ div#site_faq_body {
   line-height: 36px;
   padding:0 13px;
   background-color: rgb(0, 120, 212);
-  font-size: 18px;
+  /* font-size: 18px; */
+  font-size: 14px;
   color:#fff;
 }
 .view_entry_header .view_entry_close_icon{
@@ -2748,6 +2755,7 @@ h2.date.loading::after {
     color: #fff;
     border-radius: 2px;
     cursor: pointer;
+    z-index: 2;
 }
 
 .leftNav--topbar-newBtn:hover{
@@ -2757,16 +2765,22 @@ h2.date.loading::after {
 .leftNav--topbar-newBtn a{
   text-decoration: none;
   color:#fff;
+  font-weight: normal;
 }
+
 
 
 /* 左侧抽屉收起：内容区，顶部办公室添加样式*/
 .main_calendar.leftNav--small-state{
-  position: relative;
+  /* position: relative;
   left: 88px;
-  width: calc(100% - 88px);
+  width: calc(100% - 88px); */
 }
 
+.main_calendar.leftNav--small-state nav.arrow{
+  position: relative;
+  left: 88px;
+}
 
 /* 右侧抽屉 */
 .user_container{
