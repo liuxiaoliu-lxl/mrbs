@@ -187,7 +187,7 @@ $(document).on('page_ready', function() {
 
     if(target.nodeName == "A"){
       if($target.hasClass('edit_booking')){//如果点击的是已有会议，则直接弹出查看窗
-        showDialog(e || window.event); 
+        showDialog(e || window.event);
       }else{//点击的不是已有会议
         if($parent.hasClass('active')){ //如果是选中状态，则再次点击弹出新建窗
           showDialog(e || window.event);
@@ -229,7 +229,7 @@ function initMonthBookList(){
     var day = args.pageDate.split("-")[2];
     day = parseInt(day);
     var $selectedTd = $('table#month_main > tbody').find('td[data-day="' + day + '"]');
- 
+
     var $booking_list = $selectedTd.find('div.booking_list div'); //copy 会议列表
     if($booking_list.length == 0){
       $("div.booking--list-content").empty();
@@ -296,7 +296,7 @@ function genBookListTitle(str){
     case 0:
       week = "周日";
       break;
-  } 
+  }
   dateStr += week;
   return dateStr;
 }
@@ -317,7 +317,8 @@ function genBookListTitle(str){
   // show the location menu (it's hidden to avoid screen jiggling).
   ?>
   $('.room_area_select').mrbsSelect({
-    minimumResultsForSearch: -1
+    minimumResultsForSearch: -1,
+    width:200
   });
   $('nav.location').removeClass('js_hidden');
 
