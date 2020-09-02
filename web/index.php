@@ -1,6 +1,7 @@
 <?php
 namespace MRBS;
 
+use MRBS\Form\ElementDiv;
 use MRBS\Form\Form;
 use MRBS\Form\ElementInputSubmit;
 use MRBS\Form\ElementSelect;
@@ -53,6 +54,7 @@ function make_area_select_html($view, $year, $month, $day, $current)
     $form = new Form();
 
     $form->setAttributes(array('class'  => 'areaChangeForm',
+                               'id'     => 'areaChangeForm',
                                'method' => 'get',
                                'action' => 'index.php'));
 
@@ -73,8 +75,13 @@ function make_area_select_html($view, $year, $month, $day, $current)
                                  'value' => get_vocab('change')));
     $form->addElement($submit);
 
-    $out_html .= $form->toHTML();
+    $area_change_div = new ElementDiv();
+    $area_change_div->setAttributes(['class' => 'area_change_div']);
+    $area_change_div->addElement($form);
+
+    $out_html .= $area_change_div->toHTML();
   }
+
 
   return $out_html;
 } // end make_area_select_html
@@ -109,32 +116,58 @@ function make_room_select_html ($view, $view_all, $year, $month, $day, $area, $c
 //      $options = array($all => get_vocab('all')) + $options;
     }
 
-    $form = new Form();
+//    $form = new Form();
 
-    $form->setAttributes(array('class'  => 'roomChangeForm',
-                               'method' => 'get',
-                               'action' => 'index.php'));
+//    $form->setAttributes(array('class'  => 'roomChangeForm',
+//                               'method' => 'get',
+//                               'action' => 'index.php'));
+//
+//    $form->addHiddenInputs(array('view'      => $view,
+//                                 'view_all'  => 0,
+//                                 'page_date' => $page_date,
+//                                 'area'      => $area));
+//
+//    $select = new ElementSelect();
+//    $select->setAttributes(array('class'      => 'room_area_select',
+//                                 'name'       => 'room',
+//                                 'aria-label' => get_vocab('select_room'),
+//                                 'onchange'   => 'this.form.submit()'))
+//           ->addSelectOptions($options, $current, true);
+//    $form->addElement($select);
 
-    $form->addHiddenInputs(array('view'      => $view,
-                                 'view_all'  => 0,
-                                 'page_date' => $page_date,
-                                 'area'      => $area));
+//    $room_div = new ElementDiv();
+//    $room_div->setAttributes(['class' => 'room_change_div']);
+//
 
-    $select = new ElementSelect();
-    $select->setAttributes(array('class'      => 'room_area_select',
-                                 'name'       => 'room',
-                                 'aria-label' => get_vocab('select_room'),
-                                 'onchange'   => 'this.form.submit()'))
-           ->addSelectOptions($options, $current, true);
-    $form->addElement($select);
 
+//    $form->addElement($room_div);
     // Note:  the submit button will not be displayed if JavaScript is enabled
-    $submit = new ElementInputSubmit();
-    $submit->setAttributes(array('class' => 'js_none',
-                                 'value' => get_vocab('change')));
-    $form->addElement($submit);
+//    $submit = new ElementInputSubmit();
+//    $submit->setAttributes(array('class' => 'js_none',
+//                                 'value' => get_vocab('change')));
+//    $form->addElement($submit);
 
-    $out_html .= $form->toHTML();
+//    $out_html .= $form->toHTML();
+    $room_list_html = "";
+    foreach($options as $k => $v){
+      $vars = array(
+        'view'      => $view,
+        'view_all'  => $view_all,
+        'page_date' => format_iso_date($year, $month, $day),
+        'area'      => $area,
+        'room'      => $k);
+
+      $url = 'index.php?' . http_build_query($vars, '', '&');
+      $class = $room == $k ? 'class="selected"' : '';
+      $room_list_html .= "<a href='{$url}' $class>{$v}</a>";
+    }
+
+$out_html = <<<EOF
+<div class="room_change_div">
+$room_list_html
+</div>
+EOF;
+
   }
 
   return $out_html;

@@ -217,13 +217,18 @@ function create_details_body($data, $as_html=false, $keep_private=false, $room_d
 
       case 'modified_by':
         // Modified by
-        $class = ($keep_private && !empty($is_private_field['entry.modified_by'])) ? "private" : "";
-        $tbody .= create_details_row(get_vocab("modifiedby"), $data['modified_by'], $as_html, $class);
+//        $class = ($keep_private && !empty($is_private_field['entry.modified_by'])) ? "private" : "";
+//        $tbody .= create_details_row(get_vocab("modifiedby"), $data['modified_by'], $as_html, $class);
         break;
 
       case 'timestamp':
         // Last updated
-        $tbody .= create_details_row(get_vocab("lastupdate"), time_date_string($data['last_updated']), $as_html);
+        $tbody .= create_details_row(get_vocab("device"), time_date_string($data['last_updated']), $as_html);
+        break;
+
+      case 'device':
+        global $device_list;
+        $tbody .= create_details_row(get_vocab("device"), $device_list[$data['device']], $as_html);
         break;
 
       default:

@@ -119,6 +119,7 @@ $vocab["start_after_end"]    = "开始日期晚于结束日期";
 $vocab["start_after_end_long"] = "错误: 开始日期不能晚于结束日期.";
 
 // Used in view_entry.php
+$vocab["device"]              = "设备";
 $vocab["description"]         = "说明";
 $vocab["room"]                = "会议室";
 $vocab["createdby"]           = "预订人";

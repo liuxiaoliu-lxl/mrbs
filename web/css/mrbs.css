@@ -440,6 +440,10 @@ nav.location .select2-container {
   margin: 0 0.5em;
 }
 
+nav.location div{
+  margin-top: 10px;
+}
+
 .none {
   display: none;
 }
@@ -603,7 +607,28 @@ div#div_custom_html {
 }
 
 .areaChangeForm div {
-  float: left;
+  /*float: left;*/
+}
+
+.room_change_div{
+  padding: 0 0.5em;
+}
+
+.room_change_div a{
+  display: block;
+  height: 28px;
+  line-height: 28px;
+  width: 200px;
+  border-radius: 2px;
+  margin-top: 1px;
+  font-size: 14px;
+  padding: 0 5px;
+}
+
+.room_change_div a:hover{
+  background: #0078d4;
+  color: #ffffff;
+  text-decoration: none;
 }
 
 .roomChangeForm select, .areaChangeForm select {
@@ -1500,9 +1525,10 @@ div#div_custom_html {
 .standard > fieldset:nth-of-type(1){
   margin-top:10px;
 }
-.edit_entry.logged_in .standard > fieldset:nth-of-type(1) > div:nth-of-type(1){ /*新建：预订人隐藏*/
-  display: none;
-}
+
+/*.edit_entry.logged_in .standard > fieldset:nth-of-type(1) > div:nth-of-type(1){ !*新建：预订人隐藏*!*/
+/*  display: none;*/
+/*}*/
 
 .standard fieldset > div > *:not(.none) {
   display: table-cell;

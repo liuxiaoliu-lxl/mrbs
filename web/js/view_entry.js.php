@@ -14,7 +14,7 @@ if ($use_strict)
 
 $(document).on('page_ready', function() {
 
-  var form = $('#view_del_form');
+  var form = $('#view_del_form_1, #view_del_form_2');
 
   <!-- 删除触发弹窗关闭 -->
   form.on('submit', function() {

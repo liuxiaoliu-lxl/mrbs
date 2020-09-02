@@ -1208,8 +1208,16 @@ $(document).on('page_ready', function() {
     width:130,
     minimumResultsForSearch: -1
   })
+  $('select#device').wrap('<div></div>').select2({// 结束时间段
+    width:282,
+    minimumResultsForSearch: -1
+  })
   $('select#rep_type_select').wrap('<div></div>').select2({// 重复类型
-    width:80,
+    width:282,
+    minimumResultsForSearch: -1
+  })
+  $('select[name="month_absolute"]').wrap('<div></div>').select2({// 重复月
+    width:50,
     minimumResultsForSearch: -1
   })
 
