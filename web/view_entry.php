@@ -569,7 +569,7 @@ if ($approval_enabled && !$room_disabled && $awaiting_approval)
             'series' => 0,
             'returl' => $returl),
           'target' => 'view_iframe_display',
-          'id' => 'view_del_form'
+          'id' => 'view_del_form_1'
         );
 
         generate_button($params, $button_attributes);
@@ -584,7 +584,7 @@ if ($approval_enabled && !$room_disabled && $awaiting_approval)
             'series' => 1,
             'returl' => $returl),
           'target' => 'view_iframe_display',
-          'id' => 'view_del_form'
+          'id' => 'view_del_form_2'
         );
 
         generate_button($params, $button_attributes);
