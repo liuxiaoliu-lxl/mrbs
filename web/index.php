@@ -158,8 +158,8 @@ function make_room_select_html ($view, $view_all, $year, $month, $day, $area, $c
         'room'      => $k);
 
       $url = 'index.php?' . http_build_query($vars, '', '&');
-      $class = $room == $k ? 'selected' : '';
-      $room_list_html .= "<a href='{$url}' class='$class'/>{$v}</a>";
+      $class = $room == $k ? 'class="selected"' : '';
+      $room_list_html .= "<a href='{$url}' $class>{$v}</a>";
     }
 
 $out_html = <<<EOF
