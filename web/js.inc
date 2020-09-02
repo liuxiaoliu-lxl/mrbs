@@ -32,7 +32,7 @@ else
   <?php
 }
 
-echo "<script src=\"js/init.js.php\"></script>\n";
+echo "<script src=\"js/init.js.php?v=" . JCS_VERSION . "\"></script>\n";
 
 // We need the migration script now that we are running jQuery 3.0+, or at least
 // until we are confident that our JavaScript is not using any features that have
@@ -127,7 +127,7 @@ if (in_array($page, array('admin', 'edit_users', 'pending', 'report', 'search'))
   ?>
 
   <script src="jquery/datatables/plugins.js"></script>
-  <script src="js/datatables.js.php?<?php echo $escaped_standard_query_string ?>"></script>
+  <script src="js/datatables.js.php?<?php echo $escaped_standard_query_string ?>&v=<?php echo JCS_VERSION;?>"></script>
 
   <?php
     if($page == 'admin'){
@@ -145,13 +145,13 @@ if (in_array($page, array('admin', 'edit_users', 'pending', 'report', 'search'))
 if (is_readable("js/$page.js"))
 {
   ?>
-  <script src="js/<?php echo htmlspecialchars($page)?>.js"></script>
+  <script src="js/<?php echo htmlspecialchars($page)?>.js?v=<?php echo JCS_VERSION;?>"></script>
   <?php
 }
 if (is_readable("js/$page.js.php"))
 {
   ?>
-  <script src="js/<?php echo htmlspecialchars($page)?>.js.php?<?php echo $escaped_standard_query_string ?>"></script>
+  <script src="js/<?php echo htmlspecialchars($page)?>.js.php?<?php echo $escaped_standard_query_string ?>&v=<?php echo JCS_VERSION;?>"></script>
   <?php
 }
 
@@ -163,12 +163,12 @@ if (is_readable("js/$page.js.php"))
   if (in_array($page, ['index', 'search']))
   {
     ?>
-    <script src="js/refresh.js.php?<?php echo $escaped_standard_query_string ?>"></script>
-    <script src="js/resizable.js.php?<?php echo $escaped_standard_query_string ?>"></script>
-    <script src="js/js_date/js/moment-with-locales.js"></script>
+    <script src="js/refresh.js.php?<?php echo $escaped_standard_query_string ?>&v=<?php echo JCS_VERSION;?>"></script>
+    <script src="js/resizable.js.php?<?php echo $escaped_standard_query_string ?>&v=<?php echo JCS_VERSION;?>"></script>
+    <script src="js/js_date/js/moment-with-locales.js?v=<?php echo JCS_VERSION;?>"></script>
     <script src="js/js_date/js/bootstrap.min.js"></script>
     <script src="js/js_date/js/bootstrap-datetimepicker.min.js"></script>
-    <script src="js/left_nav.js.php?<?php echo $escaped_standard_query_string ?>"></script>
+    <script src="js/left_nav.js.php?<?php echo $escaped_standard_query_string ?>&v=<?php echo JCS_VERSION;?>"></script>
     <?php
   }
 ?>

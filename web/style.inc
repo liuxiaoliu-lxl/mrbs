@@ -36,7 +36,7 @@ if (in_array($page, ['index']))
 
 <link rel="stylesheet" href="js/flatpickr/css/flatpickr.min.css" type="text/css">
 <link rel="stylesheet" href="jquery/select2/dist/css/select2.min.css" type="text/css">
-<link rel="stylesheet" href="css/mrbs.css" type="text/css">
+<link rel="stylesheet" href="css/mrbs.css?v=<?php echo JCS_VERSION;?>" type="text/css">
 
 <?php
 if (using_rtl_lang())
