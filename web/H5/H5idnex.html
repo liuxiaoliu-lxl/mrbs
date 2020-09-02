@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta name="format-detection" content="address=no;">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>MRBS</title>
+    <link  rel="stylesheet" href="./style.css">
+    <script src="../jquery/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <div class="page">
+        <div class="header">
+            <table class="calendar"  border="0" cellpadding="0">
+                <thead>
+                    <tr>
+                        <th><span>九月</span></th>
+                        <th colspan="5"></th>
+                        <th>icon</th>
+                    </tr>
+                    <tr><th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span>29</span></td>
+                        <td><span>30</span></td>
+                        <td><span>31</span></td>
+                        <td><span>1</span></td>
+                        <td><span>2</span></td>
+                        <td><span>3</span></td>
+                        <td><span>4</span></td>
+                    </tr>
+                    <tr>
+                        <td><span>5</span></td>
+                        <td><span>6</span></td>
+                        <td><span>7</span></td>
+                        <td><span>8</span></td>
+                        <td><span>9</span></td>
+                        <td><span>10</span></td>
+                        <td><span>11</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="content">
+            <table class="day_main">
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        var fHeight=0;
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                                fHeight=32 * (clientWidth / 375);
+                    docEl.style.fontSize = fHeight + 'px';
+                };
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+            recalc();
+        })(document, window);
+    </script>
+    <script>
+        function renderTbody(){
+            const times = ["00:00","00:30","01:00","01:30","02:00","02:30","03:00","03:30","04:00","04:30","05:00","05:30","06:00","06:30","07:00","07:30",
+            "08:00","08:30","09:00","09:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:30",
+            "16:00","16:30","17:00","17:30","18:00","18:30","19:00","19:30","20:00","20:30","21:00","22:30","23:00","23:30"];
+            let domStr = ""
+            for(let i = 0; i < times.length; i++){
+                domStr += "<tr><th>"+ times[i] +"</th><td></td></tr>"
+            }
+            let dom = $(domStr);
+            dom.appendTo(".day_main >tbody");
+        }
+        $(function(){
+            renderTbody()
+        })
+
+    </script>
+</body>
+</html>
