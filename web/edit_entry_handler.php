@@ -650,7 +650,6 @@ if (isset($rep_type) && ($rep_type != REP_NONE) &&
 // (4) Assemble the booking data
 // -----------------------------
 
-zz($device);
 // Assemble an array of bookings, one for each room
 $bookings = array();
 foreach ($rooms as $room_id)
