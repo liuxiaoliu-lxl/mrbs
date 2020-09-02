@@ -168,7 +168,7 @@ if (isset($action))
     // Problems have been reported on Windows IIS with session data not being
     // written out without a call to session_write_close()
     session_write_close();
-    header ("Location: $target_url"); /* Redirect browser to initial page */
+    header ("Location: index.php"); /* Redirect browser to initial page */
     exit;
   }
 }
