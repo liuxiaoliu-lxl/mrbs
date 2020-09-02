@@ -14,7 +14,7 @@ if (!function_exists('version_compare') || version_compare(PHP_VERSION, $min_PHP
 // are assigned to variables will change depending on the context in which the file
 // is called.
 
-define('JCS_VERSION', '20200902-02');
+define('JCS_VERSION', '20200902-03');
 
 require_once 'lib/autoload.inc';
 require_once 'grab_globals.inc.php';   // this must be included before mrbs_auth.inc (due to WordPress - see comment in file)

@@ -316,10 +316,16 @@ function genBookListTitle(str){
   // Turn the room and area selects into fancy select boxes and then
   // show the location menu (it's hidden to avoid screen jiggling).
   ?>
-  $('.room_area_select').mrbsSelect({
-    minimumResultsForSearch: -1,
-    width:200
-  });
+  //$('.room_area_select').mrbsSelect({
+  //  minimumResultsForSearch: -1,
+  //  width:200
+  //});
+
+  $('select.room_area_select').wrap('<div></div>').select2({ //标题
+    width:200,
+    minimumResultsForSearch: -1
+  })
+
   $('nav.location').removeClass('js_hidden');
 
   <?php
