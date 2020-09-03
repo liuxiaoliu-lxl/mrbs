@@ -46,6 +46,7 @@ echo <<<EOF
   <div class="user_container_navs">
     <a href="edit_users.php">用户设置</a>
     <a href="admin.php">会议室设置</a>
+    <a href="report.php">数据导出</a>
   </div>
 </div>
 EOF;

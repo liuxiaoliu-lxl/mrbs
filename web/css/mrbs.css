@@ -103,7 +103,8 @@ button.image {
 .edit_users.logged_in .contents,
 .admin.logged_in .contents,
 .search.logged_in .contents,
-.edit_room.logged_in .contents
+.edit_room.logged_in .contents,
+.report.logged_in .contents
 {
   background-color: #fff;
   display:flex;
@@ -113,7 +114,8 @@ button.image {
 .edit_users.logged_in .contents .main_div,
 .admin.logged_in .contents .main_div,
 .search.logged_in .contents .main_div,
-.edit_room.logged_in .contents .main_div
+.edit_room.logged_in .contents .main_div,
+.report.logged_in .contents .main_div
 {
   padding:0 20px;
   flex:1;

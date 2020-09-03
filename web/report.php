@@ -310,7 +310,7 @@ function get_fieldset_search_criteria($data)
         break;
 
       case 'typematch':
-        $fieldset->addElement(get_field_typematch($data));
+//        $fieldset->addElement(get_field_typematch($data));
         break;
 
       case 'namematch':
@@ -322,11 +322,11 @@ function get_fieldset_search_criteria($data)
         break;
 
       case 'descrmatch':
-        $params = array('label' => get_vocab('match_descr'),
-                        'name'  => 'descrmatch',
-                        'value' => $data['descrmatch'],
-                        'field' => 'entry.description');
-        $fieldset->addElement(get_field_report_input($params));
+//        $params = array('label' => get_vocab('match_descr'),
+//                        'name'  => 'descrmatch',
+//                        'value' => $data['descrmatch'],
+//                        'field' => 'entry.description');
+//        $fieldset->addElement(get_field_report_input($params));
         break;
 
       case 'creatormatch':
@@ -342,7 +342,7 @@ function get_fieldset_search_criteria($data)
         break;
 
       case 'match_confirmed':
-        $fieldset->addElement(get_field_match_confirmed($data));
+//        $fieldset->addElement(get_field_match_confirmed($data));
         break;
 
       case 'match_approved':
@@ -937,12 +937,12 @@ function report_row(&$rows, &$data)
     {
       switch ($field)
       {
-        case 'name':
-          // Add a link to the entry and also a data-id value for the Bulk Delete JavaScript
-          $value = "<a href=\"view_entry.php?id=" . $data['id'] . "\"" .
-                   " data-id=\"" . $data['id'] . "\"" .
-                   " title=\"$value\">$value</a>";
-          break;
+//        case 'name':
+//          // Add a link to the entry and also a data-id value for the Bulk Delete JavaScript
+//          $value = "<a href=\"view_entry.php?id=" . $data['id'] . "\"" .
+//                   " data-id=\"" . $data['id'] . "\"" .
+//                   " title=\"$value\">$value</a>";
+//          break;
         case 'end_time':
           // Process the duration and then fall through to the end_time
           // Include the duration in a seconds as a title in an empty span so
@@ -1464,7 +1464,7 @@ foreach ($custom_fields as $key => $value)
 
 // Set the field order list
 $field_order_list = array('name', 'area_name', 'room_name', 'start_time', 'end_time',
-                          'description', 'type', 'create_by', 'confirmation_enabled',
+                          'description',  'create_by',
                           'approval_enabled');
 foreach ($custom_fields as $key => $value)
 {
@@ -1674,6 +1674,8 @@ else
 // Upper part: The form.
 if ($output_form)
 {
+  echo "<div class=\"main_div\">\n";
+
   echo "<div class=\"screenonly\">\n";
 
   $form = new Form();
@@ -1733,7 +1735,7 @@ if ($phase == 2)
     }
     else
     {
-      echo "<p class=\"report_entries\">" . get_vocab("nothing_found") . "</p>\n";
+//      echo "<p class=\"report_entries\">" . get_vocab("nothing_found") . "</p>\n";
     }
     unset($res);
   }
@@ -1754,9 +1756,9 @@ if ($phase == 2)
 
     if (($output_format == OUTPUT_HTML) && !$is_ajax)
     {
-      echo "<p class=\"report_entries\"><span id=\"n_entries\">" . $nmatch . "</span> "
-      . ($nmatch == 1 ? get_vocab("entry_found") : get_vocab("entries_found"))
-      .  "</p>\n";
+//      echo "<p class=\"report_entries\"><span id=\"n_entries\">" . $nmatch . "</span> "
+//      . ($nmatch == 1 ? get_vocab("entry_found") : get_vocab("entries_found"))
+//      .  "</p>\n";
     }
 
     // Report
@@ -1807,6 +1809,8 @@ if ($cli_mode)
 
 if ($output_form)
 {
+  echo "</div>\n";
+
   require_once 'user_menu.php';
 
   print_footer();
