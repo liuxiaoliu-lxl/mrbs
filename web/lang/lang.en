@@ -283,8 +283,8 @@ $vocab["from"]               = "从";
 
 // Used in report.php
 $vocab["report_on"]             = "会议室报表";
-$vocab["report_start"]          = "报表起始日期";
-$vocab["report_end"]            = "报表结束日期";
+$vocab["report_start"]          = "起始日期";
+$vocab["report_end"]            = "结束日期";
 $vocab["match_area"]            = "办公室";
 $vocab["match_room"]            = "会议室";
 $vocab["match_type"]            = "类型";
