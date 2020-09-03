@@ -1807,5 +1807,7 @@ if ($cli_mode)
 
 if ($output_form)
 {
+  require_once 'user_menu.php';
+
   print_footer();
 }

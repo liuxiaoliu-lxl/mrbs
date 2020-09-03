@@ -220,11 +220,20 @@ function get_field_create_by($create_by, $disabled=false)
       }
     }
 
-    $field = new FieldSelect();
-    $field->setLabel(get_vocab('createdby'))
-          ->setControlAttributes(array('name'     => 'create_by',
-                                       'disabled' => $disabled))
-          ->addSelectOptions($options, $create_by, true);
+
+//    $field = new FieldSelect();
+//    $field->setLabel(get_vocab('createdby'))
+//          ->setControlAttributes(array('name'     => 'create_by',
+//                                       'disabled' => $disabled))
+//          ->addSelectOptions($options, $create_by, true);
+
+    $field = new ElementInputHidden();
+    $field->setAttributes([
+      'name'  => 'create_by',
+      'disabled' => $disabled,
+      'value' => $create_by,
+    ]);
+
   }
   else
   {
