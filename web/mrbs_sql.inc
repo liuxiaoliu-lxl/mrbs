@@ -1561,7 +1561,8 @@ function get_area_names($all=FALSE, $origin=false)
   {
     $sql .= " WHERE disabled=0";
   }
-  $sql .= " ORDER BY sort_key";
+//  $sql .= " ORDER BY sort_key";
+  $sql .= " ORDER BY id asc";
 
   $res = db()->query($sql);
 
@@ -1641,7 +1642,9 @@ function get_room_names($area_id, $all=FALSE, $origin=false)
   {
     $sql .= " AND disabled=0";
   }
-  $sql .= " ORDER BY sort_key";
+//  $sql .= " ORDER BY sort_key";
+
+  $sql .= " ORDER BY id asc";
 
   $res = db()->query($sql, array(':area_id' => $area_id));
 
@@ -1662,6 +1665,41 @@ function get_room_names($area_id, $all=FALSE, $origin=false)
   }
 
   return $rooms;
+}
+
+function get_rooms_list($areas = [])
+{
+
+  global $tbl_room;
+
+  $rooms = array();
+
+  if($areas){
+    $areas_str = implode(',', $areas);
+  }
+
+  $sql = "SELECT id as room_id, area_id, room_name FROM $tbl_room";
+
+  if($areas_str){
+    $sql .= " WHERE area_id in ($areas_str) ";
+  }
+
+  if (empty($all))
+  {
+    $sql .= " AND disabled=0";
+  }
+//  $sql .= " ORDER BY sort_key";
+
+  $sql .= " ORDER BY id asc";
+
+  $res = db()->query($sql);
+
+  while (false !== ($row = $res->next_row_keyed()))
+  {
+    $rooms[] = $row;
+  }
+  return $rooms;
+
 }
 
 
