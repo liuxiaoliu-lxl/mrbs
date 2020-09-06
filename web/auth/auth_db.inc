@@ -19,9 +19,9 @@ namespace MRBS;
 function rehash($password, $column_name, $column_value)
 {
   global $tbl_users;
-  
+
   $sql_params = array(password_hash($password, PASSWORD_DEFAULT));
-  
+
   switch ($column_name)
   {
     case 'name':
@@ -41,11 +41,11 @@ function rehash($password, $column_name, $column_value)
       return;
       break;
   }
-  
+
   $sql = "UPDATE $tbl_users
              SET password_hash=?
            WHERE $condition";
-    
+
   db()->command($sql, $sql_params);
 }
 
@@ -90,12 +90,12 @@ function checkPassword($password, $password_hash, $column_name, $column_value)
 }
 
 /* authValidateUser($user, $pass)
- * 
+ *
  * Checks if the specified username/password pair are valid
- * 
+ *
  * $user  - The user name
  * $pass  - The password
- * 
+ *
  * Returns:
  *   false    - The pair are invalid or do not exist
  *   string   - The validated username
@@ -110,7 +110,7 @@ function authValidateUser($user, $pass)
   // username | email address | local-part.    If we get more than one, then we don't
   // know which user it is, so we return false.
   $valid_usernames = array();
-  
+
   if (($valid_username = authValidateUsername($user, $pass)) !== false)
   {
     $valid_usernames[] = $valid_username;
@@ -137,12 +137,12 @@ function authValidateUser($user, $pass)
 
 
 /* authValidateUsername($user, $pass)
- * 
+ *
  * Checks if the specified username/password pair are valid
- * 
+ *
  * $user  - The user name
  * $pass  - The password
- * 
+ *
  * Returns:
  *   false    - The pair are invalid or do not exist
  *   string   - The validated username
@@ -157,7 +157,7 @@ function authValidateUsername($user, $pass)
   // permits trailing spacings, eg 'john' = 'john '.   We could use LIKE, but that then
   // permits wildcards, so we could use a comnination of LIKE and '=' but that's a bit
   // messy.  WE could use STRCMP, but that's MySQL only.
-  
+
   // Usernames are unique in the users table, so we only look for one.
   $sql = "SELECT password_hash
             FROM $tbl_users
@@ -167,9 +167,9 @@ function authValidateUsername($user, $pass)
            LIMIT 1";
 
   $res = db()->query($sql, $sql_params);
-  
+
   $row = $res->next_row_keyed();
-  
+
   if (!isset($row['password_hash']))
   {
     // No user found with that name
@@ -181,12 +181,12 @@ function authValidateUsername($user, $pass)
 
 
 /* authValidateEmail($email, $pass)
- * 
+ *
  * Checks if the specified email/password pair are valid
- * 
+ *
  * $email - The email address
  * $pass  - The password
- * 
+ *
  * Returns:
  *   array    - An array of valid usernames, empty if none found
  */
@@ -194,9 +194,9 @@ function authValidateEmail($email, $pass)
 {
   global $tbl_users;
   global $auth;
-  
+
   $valid_usernames = array();
-  
+
   $sql_params = array($email);
 
   // For the moment we will assume that email addresses are case insensitive.   Whilst it is true
@@ -228,10 +228,10 @@ function authValidateEmail($email, $pass)
            WHERE $condition";
 
   $res = db()->query($sql, $sql_params);
-  
+
   $rows = $res->all_rows_keyed();
-  
-  // Check all the users that have this email address and password hash. 
+
+  // Check all the users that have this email address and password hash.
   foreach($rows as $row)
   {
     if (checkPassword($pass, $row['password_hash'], 'email', $email))
@@ -239,7 +239,7 @@ function authValidateEmail($email, $pass)
       $valid_usernames[] = $row['name'];
     }
   }
-  
+
   return $valid_usernames;
 }
 
@@ -253,9 +253,9 @@ function canValidateByEmail()
 
 
 /* authGetUserLevel($user)
- * 
+ *
  * Determines the user's access level
- * 
+ *
  * $user - The user name
  *
  * Returns:
@@ -269,7 +269,7 @@ function authGetUserLevel($user)
   {
     return 0;
   }
-  
+
   $result = db()->query1("SELECT level FROM $tbl_users WHERE name=? LIMIT 1",
                        array(utf8_strtolower($user)));
 
@@ -282,19 +282,19 @@ function authGetUserLevel($user)
 function authGetUserEmail($user)
 {
   global $tbl_users;
-  
+
   if (!isset($user) || $user === '')
   {
     return '';
   }
-  
-  $sql = "SELECT email 
-            FROM $tbl_users 
+
+  $sql = "SELECT email
+            FROM $tbl_users
            WHERE name=?
            LIMIT 1";
-           
+
   $email = db()->query1($sql, array($user));
-  
+
   return ($email == -1) ? '' : $email;
 }
 
@@ -303,9 +303,9 @@ function authGetUserEmail($user)
 function authGetUsers()
 {
   global $tbl_users;
-  
+
   $res = db()->query("SELECT * FROM $tbl_users ORDER BY name");
-  
+
   return $res->all_rows_keyed();
 }
 
@@ -314,9 +314,25 @@ function authGetUsers()
 function authGetUsernames()
 {
   global $tbl_users;
-  
+
   $res = db()->query("SELECT name AS username, name AS display_name FROM $tbl_users ORDER BY name");
-  
+
   return $res->all_rows_keyed();
 }
 
+function authUserCAS($username){
+
+  global $tbl_users;
+
+  $res = db()->query1("SELECT `name` FROM $tbl_users WHERE `name`=? LIMIT 1", array(utf8_strtolower($username)));
+
+  if($res === -1){
+
+    $sql = "INSERT INTO $tbl_users (`level`, `name`, `password_hash`) VALUES (?, ?, ?)";
+
+    db()->command($sql, array(1, $username, password_hash($username, PASSWORD_DEFAULT)));
+
+    $id = db()->insert_id($tbl_users, 'id');
+  }
+
+}
