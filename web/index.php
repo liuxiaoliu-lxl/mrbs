@@ -9,6 +9,10 @@ use MRBS\Form\ElementSelect;
 require "defaultincludes.inc";
 require_once "functions_table.inc";
 
+if(!$_SESSION['UserName'] || $_REQUEST['logout']){
+  require_once "mrbs_cas.php";
+}
+
 
 // Display the entry-type color key.
 function get_color_key()

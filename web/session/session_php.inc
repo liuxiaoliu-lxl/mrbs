@@ -142,6 +142,8 @@ if (isset($action))
     if ($username == "")
     {
       logoff_user();
+      header ("Location: index.php?logout=true"); /* Redirect browser to initial page */
+      exit;
     }
     else
     {
