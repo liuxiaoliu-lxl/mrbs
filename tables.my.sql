@@ -212,5 +212,9 @@ INSERT INTO mrbs_variables (variable_name, variable_content)
 INSERT INTO mrbs_variables (variable_name, variable_content)
   VALUES ( 'local_db_version', '1');
 
+insert into mrbs_users (`level`, `name`, `password_hash`) value ('2', 'admin', '$2y$10$xwrva2kVWo5buNcp5Kz0m.XSyP1C3FOkqSMi6MVkAbnV6IZ6Bap8i');
+
 alter table mrbs_entry add column device tinyint default 0 comment '设备 0无, 1投影, 2视频';
 alter table mrbs_repeat add column device tinyint default 0 comment '设备 0无, 1投影, 2视频';
+
+
