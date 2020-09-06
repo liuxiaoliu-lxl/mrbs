@@ -1,0 +1,95 @@
+
+
+body,a, tr, th, p{
+    margin: 0;
+    padding:0;
+}
+
+
+
+
+table{
+    width: 100%;
+    height: 100%;
+    border-spacing: 0;
+    border-collapse: separate;
+}
+.header{
+    position: fixed;
+    left:0;
+    top:0;
+    right: 0;
+}
+.header .md_panel{
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-bottom: 1px solid #c6c6c6;
+}
+
+
+
+.content{
+    width: 100%;
+    margin-top:164px;
+    margin-bottom: 50px;
+}
+
+.content table.day_main{
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    background: #fff;
+}
+
+.content table.day_main  th{
+    height: 2rem;
+    line-height: 2rem;
+    width: 2rem;
+    font-size:14px;
+    color: #323130;
+    font-weight: normal;
+    padding-right: 8px;
+    background: #fff;
+
+}
+.content table.day_main td{
+    background-color: #f3f9fd;
+    padding-left: 5px;
+    vertical-align: baseline;
+    line-height: 32px;
+}
+.content table.day_main td.booked{
+    background-color: #f8d9c080;
+    color:#a6500a;
+}
+
+.content table.day_main tr:nth-child(odd) td {
+  border-top-width: thin;
+  border-top-style: solid;
+  border-top-color:#e4e4e4;
+}
+
+.content table.day_main tr:nth-child(even) td {
+  border-top-width: thin;
+  border-top-style: dashed;
+  border-top-color:#e4e4e4;
+}
+
+.content table.day_main tr:first-child td{
+    border:none;
+}
+
+
+.footer{
+    background: #c6c6c6;
+    line-height: 50px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 50px;
+}
+
+.footer-select{
+    padding-left:20px;
+}

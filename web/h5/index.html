@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta name="format-detection" content="address=no;">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>MRBS</title>
+
+    <link rel="stylesheet" href="./week.css">
+    <link rel='stylesheet' href="./month.css">
+    <link rel="stylesheet" href="./style.css">
+    <link  rel="stylesheet" href="http://fkktv.com:18867/web/jquery/select2/dist/css/select2.min.css">
+
+    <script src='http://fkktv.com:18867/web/jquery/jquery-3.4.1.min.js'></script>
+    <script src='http://fkktv.com:18867/web/jquery/select2/dist/js/select2.full.min.js'></script>
+
+</head>
+
+<body>
+    <div class="page">
+        <div class="header">
+            <div class="md_panel" id="md_panel">
+                <div class="md_head">
+                    <div class="md_selectarea month">
+                        <h1 class="md_headtext monthtag">月</h1>
+                    </div>
+                </div>
+                <div class="md_body" id="md_body">
+                    <ul class="md_weekarea">
+                        <li>日</li>
+                        <li>一</li>
+                        <li>二</li>
+                        <li>三</li>
+                        <li>四</li>
+                        <li>五</li>
+                        <li>六</li>
+                    </ul>
+                    <div id="md_datearea"></div>
+                    <div id='calendar_tr'></div>
+                </div>
+                <div class="md_foot">
+                    <div class="md_cancel week"></div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <table class="day_main" id="day_main">
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <div class="footer">
+            <div class="footer-select">
+                <select id="room_area">
+                </select>
+                <select id="room_office"></select>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var fHeight = 0;
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    fHeight = 16 * (clientWidth / 375);
+                    docEl.style.fontSize = fHeight + 'px';
+                };
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+            recalc();
+        })(document, window);
+    </script>
+    <script src='./week.js'></script>
+    <script src='./month.js'></script>
+    <script src="./index.js"></script>
+</body>
+
+</html>
