@@ -138,12 +138,19 @@ if (isset($action))
     // If we're going to do something then check the CSRF token first
     Form::checkToken();
 
+    $name = getUserName();
     // First make sure the password is valid
     if ($username == "")
     {
       logoff_user();
-      header ("Location: index.php?logout=true"); /* Redirect browser to initial page */
-      exit;
+      if($name == 'admin'){
+        header ("Location: admin.php");
+        exit;
+      }
+      else{
+        header ("Location: index.php?logout=true"); /* Redirect browser to initial page */
+        exit;
+      }
     }
     else
     {
