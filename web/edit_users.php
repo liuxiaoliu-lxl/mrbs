@@ -721,6 +721,8 @@ if (isset($action) && ( ($action == "edit") or ($action == "add") ))
     $form->addHiddenInput('id', $id);
   }
 
+  $isAdmin = !empty($data) && $data['name'] == 'admin';
+
   $fieldset = new ElementFieldset();
 
   foreach ($fields as $field)
@@ -753,7 +755,8 @@ if (isset($action) && ( ($action == "edit") or ($action == "add") ))
         // Work out whether the level select input should be disabled (NB you can't make a <select> readonly)
         // We don't want the user to be able to change the level if (a) it's the first user being created or
         // (b) it's the last admin left or (c) they don't have admin rights
-        $level_disabled = $initial_user_creation || $editing_last_admin || $disabled;
+        $level_disabled = $initial_user_creation || $editing_last_admin || $disabled || $isAdmin;
+
         $fieldset->addElement(get_field_level($params, $level_disabled));
         // Add a hidden input if the field is disabled
         if ($level_disabled)
@@ -785,7 +788,8 @@ if (isset($action) && ( ($action == "edit") or ($action == "add") ))
   // the same level as them or lower.  Otherwise present a Back button.
   $delete = isset($id) &&
             is_user_admin() &&
-            ($level >= $data['level']);
+            ($level >= $data['level']) &&
+            !$isAdmin;
 
   // Don't let the last admin be deleted, otherwise you'll be locked out.
   $button_disabled = $delete && $editing_last_admin;
