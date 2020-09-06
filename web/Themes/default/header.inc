@@ -279,6 +279,8 @@ function print_banner($view, $year, $month, $day, $area, $room, $simple=false)
 //    print_menu_items($query);
     $user = getUserName();
     if(isset($user)){
+
+      if(authGetUserLevel($user) == 2){
 echo <<<EOF
     <div class="header_set_info">
     <span>
@@ -289,7 +291,9 @@ echo <<<EOF
     </span>
     </div>
 EOF;
+      };
     echo "</nav>\n";
+
 
     echo "<nav class=\"logon\">\n";
 //    print_outstanding($query);
