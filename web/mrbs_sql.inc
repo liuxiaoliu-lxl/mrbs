@@ -1550,7 +1550,7 @@ function get_area_name($id, $all=FALSE)
 // Gets an array of area names indexed by area id.
 // If $all=TRUE then all areas are returned, otherwise just the ones that
 // are not disabled
-function get_area_names($all=FALSE)
+function get_area_names($all=FALSE, $origin=false)
 {
   global $tbl_area;
 
@@ -1564,6 +1564,14 @@ function get_area_names($all=FALSE)
   $sql .= " ORDER BY sort_key";
 
   $res = db()->query($sql);
+
+  if($origin){
+    while (false !== ($row = $res->next_row_keyed()))
+    {
+      $areas[] = $row;
+    }
+    return $areas;
+  }
 
   while (false !== ($row = $res->next_row_keyed()))
   {
@@ -1620,7 +1628,7 @@ function get_room_name($room_id, $all=FALSE)
 // Gets an array of room names in an area indexed by room id.
 // If $all=TRUE then all areas are returned, otherwise just the ones that
 // are not disabled
-function get_room_names($area_id, $all=FALSE)
+function get_room_names($area_id, $all=FALSE, $origin=false)
 {
   global $tbl_room;
 
@@ -1636,6 +1644,14 @@ function get_room_names($area_id, $all=FALSE)
   $sql .= " ORDER BY sort_key";
 
   $res = db()->query($sql, array(':area_id' => $area_id));
+
+  if($origin){
+    while (false !== ($row = $res->next_row_keyed()))
+    {
+      $rooms[] = $row;
+    }
+    return $rooms;
+  }
 
   while (false !== ($row = $res->next_row_keyed()))
   {
